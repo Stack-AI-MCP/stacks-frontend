@@ -37,7 +37,7 @@ export async function deleteTrailingMessages({ id }: { id: string }) {
   const [message] = await getMessageById({ id });
 
   await deleteMessagesByChatIdAfterTimestamp({
-    chatId: message.chatId,
+    chatId: message?.chatId,
     timestamp: message.createdAt,
   });
 }

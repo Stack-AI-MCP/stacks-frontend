@@ -183,7 +183,7 @@ export function MultimodalInput({
   const [uploadQueue, setUploadQueue] = useState<Array<string>>([]);
 
   function submitForm() {
-    if (!isConnected) {
+    if (!isConnected || !address) {
       toast.error("Please connect your Stacks wallet to send a message");
       return;
     }

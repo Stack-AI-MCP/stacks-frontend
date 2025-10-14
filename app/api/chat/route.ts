@@ -66,7 +66,8 @@ export async function POST(request: Request) {
   try {
     const json = await request.json();
     requestBody = postRequestBodySchema.parse(json);
-  } catch (_) {
+  } catch (error) {
+    console.error("❌ Failed to parse request body:", error);
     return new ChatSDKError("bad_request:api").toResponse();
   }
 
@@ -85,8 +86,9 @@ export async function POST(request: Request) {
 
     // Get wallet address from request body or headers
     const walletAddress = requestBody.walletAddress || request.headers.get('x-wallet-address');
-    
+
     if (!walletAddress) {
+      console.error("❌ No wallet address provided");
       return new ChatSDKError(
         "unauthorized:api",
         "Wallet address is required. Please connect your wallet."

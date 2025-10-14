@@ -11,7 +11,7 @@ import type { User } from "@/lib/db/schema";
 export function useWalletAuth() {
   const [address, setAddress] = useState<string | null>(null);
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Start as loading
 
   const connected = isConnected();
 
@@ -43,10 +43,13 @@ export function useWalletAuth() {
           } finally {
             setIsLoading(false);
           }
+        } else {
+          setIsLoading(false);
         }
       } else {
         setAddress(null);
         setUser(null);
+        setIsLoading(false);
       }
     };
 

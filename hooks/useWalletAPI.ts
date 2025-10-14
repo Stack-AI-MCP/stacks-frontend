@@ -22,6 +22,7 @@ export function useWalletAPI() {
 
     // Add Stacks wallet headers if connected
     if (connected && address) {
+      headers['x-wallet-address'] = address;
       headers['X-Stacks-Address'] = address;
 
       // Determine network from address prefix (SP = mainnet, ST = testnet)
@@ -42,6 +43,7 @@ export function useWalletAPI() {
     const headers: Record<string, string> = {};
 
     if (connected && address) {
+      headers['x-wallet-address'] = address;
       headers['X-Stacks-Address'] = address;
 
       // Determine network from address prefix

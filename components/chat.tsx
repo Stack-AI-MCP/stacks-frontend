@@ -2,7 +2,7 @@
 
 import { DefaultChatTransport } from "ai";
 import { useChat } from "@ai-sdk/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import useSWR, { useSWRConfig } from "swr";
 import { ChatHeader } from "@/components/chat-header";
 import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
@@ -48,6 +48,14 @@ export function Chat({
   // Stacks wallet integration with auto-registration
   const { fetchWithWalletHeaders, address, isConnected, getWalletHeaders } = useAutoRegisterUser();
 
+  // Use a ref to track the current address so prepareSendMessagesRequest can access it
+  const addressRef = useRef<string | null>(null);
+
+  // Update ref whenever address changes
+  useEffect(() => {
+    addressRef.current = address;
+  }, [address]);
+
   const [input, setInput] = useState<string>("");
 
   const {
@@ -67,7 +75,10 @@ export function Chat({
       api: "/api/chat",
       fetch: fetchWithErrorHandlers,
       prepareSendMessagesRequest({ messages, id, body }) {
-        // Get wallet headers from centralized hook
+        // Get current wallet address from ref (not from closure)
+        const currentAddress = addressRef.current;
+
+        // Get wallet headers
         const walletHeaders = getWalletHeaders();
 
         return {
@@ -77,7 +88,7 @@ export function Chat({
             message: messages.at(-1),
             selectedChatModel: initialChatModel,
             selectedVisibilityType: visibilityType,
-            walletAddress: address, // Add wallet address to body as backup
+            walletAddress: currentAddress, // Use current address from ref
             ...body,
           },
         };

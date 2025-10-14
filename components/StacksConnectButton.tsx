@@ -52,7 +52,7 @@ export function StacksConnectButton({
     try {
       setIsConnecting(true);
       const response = await connect();
-      const stxAddress = response.addresses.stx[0].address;
+      const stxAddress = response.addresses[0].address;
 
       setConnected(true);
       setAddress(stxAddress);
