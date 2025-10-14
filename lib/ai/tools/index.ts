@@ -74,6 +74,10 @@ export { granitePrepareStake } from './defi/granite/prepareStake';
 
 // ==================== CONTRACT TOOLS ====================
 export { getContractInfo } from './contract/getContractInfo';
+export { makeContractCall } from './contract/makeContractCall';
+export { deployContract } from './contract/deployContract';
+export { signMessage } from './contract/signMessage';
+export { signStructuredMessage } from './contract/signStructuredMessage';
 
 // ==================== MEMPOOL/FEE TOOLS ====================
 export { getFeeEstimates } from './mempool/getFeeEstimates';
