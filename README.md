@@ -1,8 +1,8 @@
-# StacksAI - AI for Bitcoin DeFi
+# StacksAI - Talk to Bitcoin
 
-**Stop visiting websites. Start talking to Bitcoin DeFi.**
+**Talk to Bitcoin. Trade, lend, stack - through conversation.**
 
-StacksAI makes the entire Bitcoin DeFi ecosystem accessible through natural conversation. Trade on DEXs, borrow from lending protocols, stack for Bitcoin yields - all by just talking.
+StacksAI makes the entire Bitcoin DeFi ecosystem accessible through natural language. Access ALEX, Velar, BitFlow, Arkadiko, Granite, and more - just by talking.
 
 ## Overview
 
@@ -378,4 +378,6 @@ MIT License - see LICENSE file for complete terms and conditions.
 
 ---
 
-**StacksAI** - Making Bitcoin DeFi as simple as conversation. Built for the Stacks Vibe Coding Hackathon.
+**StacksAI - Talk to Bitcoin**
+
+Making Bitcoin DeFi as simple as conversation. Built for the Stacks Vibe Coding Hackathon.

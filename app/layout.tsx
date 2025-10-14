@@ -8,8 +8,8 @@ import StacksWalletProvider from "@/components/StacksWalletProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://stacksai.xyz"),
-  title: "StacksAI - AI for Bitcoin DeFi",
-  description: "The most advanced AI-powered interface for Bitcoin DeFi on Stacks. Access 100+ operations across ALEX, Velar, BitFlow, Arkadiko, and more through natural conversation.",
+  title: "StacksAI - Talk to Bitcoin",
+  description: "Talk to Bitcoin. Access the entire Bitcoin DeFi ecosystem through conversation. Trade on ALEX, Velar, BitFlow. Lend on Arkadiko, Granite. Stack for Bitcoin yields - just by talking.",
 };
 
 export const viewport = {

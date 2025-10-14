@@ -99,9 +99,11 @@ export default function LandingPage() {
             {/* Hero Hook */}
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-primary to-orange-500 bg-clip-text text-transparent">
-                Stop visiting websites.<br />
-                Start talking to Bitcoin DeFi.
+                Talk to Bitcoin
               </h2>
+              <p className="text-xl md:text-2xl text-muted-foreground">
+                Access the entire Bitcoin DeFi ecosystem through conversation.
+              </p>
             </div>
 
             {/* Story Section */}
@@ -125,7 +127,7 @@ export default function LandingPage() {
             <div className="text-center mb-8">
               <p className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                 StacksAI isn't just another blockchain tool -<br />
-                it's <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">the interface for Bitcoin DeFi's post-website era.</span>
+                it's <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">the voice of Bitcoin DeFi.</span>
               </p>
             </div>
 
@@ -144,7 +146,7 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <Button size="lg" asChild className="text-lg px-10 py-7 bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-500/90 text-white font-bold">
                 <Link href="/chat">
-                  🚀 Start Talking to Stacks
+                  🚀 Talk to Bitcoin
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -268,7 +270,7 @@ export default function LandingPage() {
                 <span className="text-xl font-bold">StacksAI</span>
               </div>
               <p className="text-muted-foreground max-w-md">
-                The most advanced AI-powered interface for Bitcoin DeFi on Stacks.
+                Talk to Bitcoin. Access the entire Bitcoin DeFi ecosystem through conversation.
               </p>
             </div>
 

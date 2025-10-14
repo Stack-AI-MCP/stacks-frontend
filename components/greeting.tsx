@@ -30,7 +30,7 @@ export const Greeting = () => {
         transition={{ delay: 0.6 }}
         className="text-lg md:text-xl text-zinc-500"
       >
-        AI co-pilot for Stacks blockchain
+        Talk to Bitcoin
       </motion.div>
     </div>
   );

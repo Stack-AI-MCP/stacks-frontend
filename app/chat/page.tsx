@@ -45,10 +45,10 @@ export default function Page() {
       <div className="flex flex-col items-center justify-center min-h-screen gap-6 p-4 terminal-bg">
         <div className="text-center max-w-md">
           <h1 className="text-4xl font-bold text-theme-orange mb-4 vechain-glow">
-            Welcome to StacksAI
+            Talk to Bitcoin
           </h1>
           <p className="text-muted-foreground mb-6 text-lg">
-            Your AI co-pilot for the Stacks blockchain. Connect your wallet to get started and explore the power of Stacks with intelligent assistance.
+            Access the entire Bitcoin DeFi ecosystem through conversation. Trade, lend, stack - just by talking. Connect your wallet to get started.
           </p>
           <StacksConnectButton />
         </div>
