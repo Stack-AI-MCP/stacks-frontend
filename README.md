@@ -1,8 +1,40 @@
-# StacksAI - Talk to Bitcoin
+# Stacks AI ~ Frontend
+
+![Stacks AI Banner](https://raw.githubusercontent.com/Stack-AI-MCP/stacks-mcp-server/main/docs/images/stacksAIBanner.png)
 
 **Talk to Bitcoin. Trade, lend, stack - through conversation.**
 
-StacksAI makes the entire Bitcoin DeFi ecosystem accessible through natural language. Access ALEX, Velar, BitFlow, Arkadiko, Granite, and more - just by talking.
+Stacks AI makes the entire Bitcoin DeFi ecosystem accessible through natural language. Access ALEX, Velar, BitFlow, Arkadiko, Granite, and more - just by talking.
+
+Part of the **Stacks AI** project - a comprehensive AI-powered interface for Bitcoin DeFi built on Stacks.
+
+[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue)](https://www.typescriptlang.org/)
+[![Stacks](https://img.shields.io/badge/Stacks-Bitcoin%20L2-orange)](https://www.stacks.co/)
+[![Tools](https://img.shields.io/badge/Tools-144+-green)](#protocol-integrations)
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+  - [AI-Powered Bitcoin DeFi](#ai-powered-bitcoin-defi)
+  - [DeFi Protocol Operations](#defi-protocol-operations)
+- [Architecture](#architecture)
+  - [System Overview](#system-overview)
+  - [MCP Plugin Architecture](#mcp-plugin-architecture)
+  - [Data Flow](#data-flow)
+- [Protocol Integrations](#protocol-integrations)
+- [Technology Stack](#technology-stack)
+- [Quick Start](#quick-start)
+- [Usage Examples](#usage-examples)
+- [Component Architecture](#component-architecture)
+- [Security Considerations](#security-considerations)
+- [Contributing](#contributing)
+
+---
 
 ## Overview
 
@@ -378,6 +410,14 @@ MIT License - see LICENSE file for complete terms and conditions.
 
 ---
 
-**StacksAI - Talk to Bitcoin**
+## Summary
 
-Making Bitcoin DeFi as simple as conversation. Built for the Stacks Vibe Coding Hackathon.
+**Stacks AI Frontend** is the user-facing component of the Stacks AI project, providing a natural language chat interface to interact with Bitcoin DeFi on Stacks Layer 2. Built with Next.js 15, React 19, and the Vercel AI SDK, it integrates with the Stacks AI MCP Server to expose 144+ DeFi operations through conversational AI.
+
+The frontend implements real-time AI streaming, Stacks wallet integration (Leather/Xverse), and a comprehensive component library for displaying DeFi data. It follows modern React patterns with TypeScript type safety and responsive design.
+
+---
+
+**Stacks AI - Talk to Bitcoin**
+
+Making Bitcoin DeFi as simple as conversation.
