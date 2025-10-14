@@ -13,6 +13,7 @@ export { getStackingInfo } from './stacking/getStackingInfo';
 
 // ==================== TOKEN TOOLS ====================
 export { getTokenInfo } from './token/getTokenInfo';
+export { transferFungibleToken } from './token/transferFungibleToken';
 
 // ==================== BLOCK TOOLS ====================
 export { getCurrentBlockHeight } from './block/getCurrentBlockHeight';
@@ -22,6 +23,7 @@ export { getBlockByHash } from './block/getBlockByHash';
 // ==================== NFT TOOLS ====================
 export { getNFTHoldings } from './nft/getNFTHoldings';
 export { getNFTHistory } from './nft/getNFTHistory';
+export { transferNFT } from './nft/transferNFT';
 
 // ==================== ALEX DEX TOOLS ====================
 export { alexGetAllPools } from './defi/alex/getAllPools';
@@ -34,6 +36,7 @@ export { alexGetAllTickers } from './defi/alex/getAllTickers';
 export { alexGetPoolStats } from './defi/alex/getPoolStats';
 export { alexGetAmmPoolStats } from './defi/alex/getAmmPoolStats';
 export { alexGetTokenMappings } from './defi/alex/getTokenMappings';
+export { alexSwapTokens } from './defi/alex/swapTokens';
 
 // ==================== VELAR DEX TOOLS ====================
 export { velarGetAllPools } from './defi/velar/getAllPools';
@@ -44,12 +47,14 @@ export { velarGetPriceByContract } from './defi/velar/getPriceByContract';
 export { velarGetHistoricalPrices } from './defi/velar/getHistoricalPrices';
 export { velarGetCirculatingSupply } from './defi/velar/getCirculatingSupply';
 export { velarGetPoolByTokenPair } from './defi/velar/getPoolByTokenPair';
+export { velarSwapTokens } from './defi/velar/swapTokens';
 
 // ==================== BITFLOW DEX TOOLS ====================
 export { bitflowGetAvailableTokens } from './defi/bitflow/getAvailableTokens';
 export { bitflowGetPossibleSwaps } from './defi/bitflow/getPossibleSwaps';
 export { bitflowGetQuoteForRoute } from './defi/bitflow/getQuoteForRoute';
 export { bitflowGetKeeperTokens } from './defi/bitflow/getKeeperTokens';
+export { bitflowSwapTokens } from './defi/bitflow/swapTokens';
 
 // ==================== ARKADIKO DEFI TOOLS ====================
 export { arkadikoGetVaultInfo } from './defi/arkadiko/getVaultInfo';
@@ -57,12 +62,15 @@ export { arkadikoGetSwapPair } from './defi/arkadiko/getSwapPair';
 export { arkadikoGetStakeInfo } from './defi/arkadiko/getStakeInfo';
 export { arkadikoGetProposal } from './defi/arkadiko/getProposal';
 export { arkadikoGetTokenPrice } from './defi/arkadiko/getTokenPrice';
+export { arkadikoSwapTokens } from './defi/arkadiko/swapTokens';
+export { arkadikoCreateVault } from './defi/arkadiko/createVault';
 
 // ==================== CHARISMA DEX TOOLS ====================
 export { charismaGetQuote } from './defi/charisma/getQuote';
 export { charismaListOrders } from './defi/charisma/listOrders';
 export { charismaGetOrder } from './defi/charisma/getOrder';
 export { charismaListApiKeys } from './defi/charisma/listApiKeys';
+export { charismaExecuteSwap } from './defi/charisma/executeSwap';
 
 // ==================== GRANITE LENDING TOOLS ====================
 export { granitePrepareBorrow } from './defi/granite/prepareBorrow';
