@@ -38,6 +38,28 @@ import TokenBalances from "@/components/stacks-tokens/TokenBalances";
 // Stacks Core Components
 import BlockchainInfo from "@/components/stacks-core/BlockchainInfo";
 
+// Stacks Account Components
+import AccountInfo from "@/components/stacks-account/AccountInfo";
+import TransactionHistory from "@/components/stacks-account/TransactionHistory";
+
+// Stacks NFT Components
+import NFTGallery from "@/components/stacks-nfts/NFTGallery";
+
+// Stacks Contract Components
+import ContractInfo from "@/components/stacks-contracts/ContractInfo";
+
+// Stacks Event Components
+import EventList from "@/components/stacks-events/EventList";
+
+// Stacks Mempool Components
+import FeeEstimate from "@/components/stacks-mempool/FeeEstimate";
+
+// Stacks PoX Components
+import CycleInfo from "@/components/stacks-pox/CycleInfo";
+
+// Import PoolStats for detailed pool statistics
+import PoolStats from "@/components/stacks-dex/PoolStats";
+
 // Type narrowing is handled by TypeScript's control flow analysis
 // The AI SDK provides proper discriminated unions for tool calls
 
@@ -532,6 +554,790 @@ const PurePreviewMessage = ({
                     const { output } = part;
                     return (
                       <BlockchainInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKS ACCOUNT TOOLS =========================
+
+              if (type === "tool-getAccountInfo") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting account information..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <AccountInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-getTransactionHistory" || type === "tool-searchById") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting transaction history..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TransactionHistory
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-getAccountNonces") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting account nonces..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <AccountInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKS TRANSACTION TOOLS =========================
+
+              if (type === "tool-makeSendSTX" || type === "tool-getTransactionInfo") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Processing transaction..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <StacksTransactionComponent
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKS NFT TOOLS =========================
+
+              if (type === "tool-getNFTHoldings") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting NFT holdings..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <NFTGallery
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-getNFTHistory" || type === "tool-transferNFT") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Processing NFT operation..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <StacksTransactionComponent
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKS TOKEN INFO TOOLS =========================
+
+              if (type === "tool-getTokenInfo" || type === "tool-transferFungibleToken") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Processing token operation..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TokenBalances
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKS BLOCK TOOLS =========================
+
+              if (type === "tool-getCurrentBlockHeight" || type === "tool-getBlockByHeight" ||
+                  type === "tool-getBlockByHash") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting block information..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <BlockchainInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= ALEX DEX POOL/PRICE TOOLS =========================
+
+              if (type === "tool-alexGetAllPools" || type === "tool-alexGetTradingPairs") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting ALEX pools..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <PoolList
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-alexGetAllTokenPrices" || type === "tool-alexGetTokenPrice" ||
+                  type === "tool-alexGetAllTickers") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting ALEX token prices..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TokenPrices
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-alexGetPoolStats" || type === "tool-alexGetAmmPoolStats") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting ALEX pool statistics..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <PoolStats
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-alexGetTotalTVL" || type === "tool-alexGetAllSwaps" ||
+                  type === "tool-alexGetTokenMappings") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting ALEX DeFi data..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-alexSwapTokens") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Executing ALEX swap..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= VELAR DEX DETAILED TOOLS =========================
+
+              if (type === "tool-velarGetAllPools" || type === "tool-velarGetPoolByTokenPair") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Velar pools..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <PoolList
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-velarGetAllTickers" || type === "tool-velarGetCurrentPrices" ||
+                  type === "tool-velarGetTokenDetails" || type === "tool-velarGetPriceByContract" ||
+                  type === "tool-velarGetHistoricalPrices" || type === "tool-velarGetCirculatingSupply") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Velar token data..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TokenPrices
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-velarSwapTokens") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Executing Velar swap..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= BITFLOW DEX DETAILED TOOLS =========================
+
+              if (type === "tool-bitflowGetAvailableTokens" || type === "tool-bitflowGetPossibleSwaps" ||
+                  type === "tool-bitflowGetKeeperTokens") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting BitFlow token data..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TokenPrices
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-bitflowGetQuoteForRoute") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting BitFlow quote..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-bitflowSwapTokens") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Executing BitFlow swap..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= ARKADIKO DEFI TOOLS =========================
+
+              if (type === "tool-arkadikoGetVaultInfo" || type === "tool-arkadikoGetSwapPair" ||
+                  type === "tool-arkadikoGetStakeInfo" || type === "tool-arkadikoGetProposal") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Arkadiko data..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <LendingInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-arkadikoGetTokenPrice") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Arkadiko token prices..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TokenPrices
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-arkadikoSwapTokens" || type === "tool-arkadikoCreateVault") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Processing Arkadiko operation..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= CHARISMA DEX DETAILED TOOLS =========================
+
+              if (type === "tool-charismaGetQuote") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Charisma quote..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-charismaListOrders" || type === "tool-charismaGetOrder" ||
+                  type === "tool-charismaListApiKeys") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Charisma data..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <PoolList
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= GRANITE LENDING DETAILED TOOLS =========================
+
+              if (type === "tool-granitePrepareBorrow" || type === "tool-granitePrepareRepay" ||
+                  type === "tool-granitePrepareAddCollateral" || type === "tool-granitePrepareDeposit" ||
+                  type === "tool-granitePrepareWithdraw" || type === "tool-granitePrepareStake") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing Granite lending operation..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <LendingInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= CONTRACT TOOLS =========================
+
+              if (type === "tool-getContractInfo" || type === "tool-makeContractCall" ||
+                  type === "tool-deployContract") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Processing contract operation..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ContractInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-signMessage" || type === "tool-signStructuredMessage") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Signing message..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <StacksTransactionComponent
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= EVENT TOOLS =========================
+
+              if (type === "tool-getTransactionEvents" || type === "tool-getContractLogEvents" ||
+                  type === "tool-getStxTransferEvents") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting events..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <EventList
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= MEMPOOL/FEE TOOLS =========================
+
+              if (type === "tool-getFeeEstimates") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting fee estimates..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <FeeEstimate
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= POX/CYCLE TOOLS =========================
+
+              if (type === "tool-getPoxCycles" || type === "tool-getPoxCycle" ||
+                  type === "tool-getCycleSigners") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting PoX cycle information..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <CycleInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKPOOL TOOLS =========================
+
+              if (type === "tool-getPoolDelegations" || type === "tool-getBurnchainRewardSlots" ||
+                  type === "tool-getBurnchainRewards") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting stacking pool data..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <StackingInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKING INFO TOOL =========================
+
+              if (type === "tool-getStackingInfo") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting stacking information..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <StackingInfo
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
