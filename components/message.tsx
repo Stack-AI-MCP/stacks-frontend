@@ -133,6 +133,16 @@ const PurePreviewMessage = ({
               const { type } = part;
               const key = `message-${message.id}-part-${index}`;
 
+              // Debug logging for tool calls
+              if (type.startsWith("tool-")) {
+                console.log("🔧 Tool call detected:", {
+                  type,
+                  state: "state" in part ? part.state : "unknown",
+                  hasOutput: "output" in part,
+                  part
+                });
+              }
+
               if (type === "reasoning" && part.text?.trim().length > 0) {
                 return (
                   <MessageReasoning
@@ -530,8 +540,6 @@ const PurePreviewMessage = ({
                   }
                 }
               }
-
-              // All tool routing complete - handlers above cover all Stacks MCP tools
 
             })}
 
