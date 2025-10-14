@@ -28,7 +28,7 @@ import { ArrowDown } from "lucide-react";
 import { useScrollToBottom } from "@/hooks/use-scroll-to-bottom";
 import type { VisibilityType } from "./visibility-selector";
 import type { Attachment, ChatMessage } from "@/lib/types";
-// import { useWallet } from "@vechain/vechain-kit";
+import { useWalletAuth } from "@/hooks/use-wallet-auth";
 import Disclaimer from "@/components/disclaimer";
 
 function AttachmentsButton({
@@ -130,10 +130,7 @@ export function MultimodalInput({
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
-  const { account, connection } = useWallet();
-
-  // console.log("is connected multimodal", isConnected);
-  // console.log("sessionStatus multimodal", sessionStatus);
+  const { address, isConnected } = useWalletAuth();
   useEffect(() => {
     if (textareaRef.current) {
       adjustHeight();
@@ -186,11 +183,8 @@ export function MultimodalInput({
   const [uploadQueue, setUploadQueue] = useState<Array<string>>([]);
 
   function submitForm() {
-    // console.log("is conencted in submit form ---- ", isConnected);
-    // console.log("sessionStatus submit form", sessionStatus);
-
-    if (!connection.isConnected) {
-      toast.error("Please connect your wallet to send a message");
+    if (!isConnected) {
+      toast.error("Please connect your Stacks wallet to send a message");
       return;
     }
 
