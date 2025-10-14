@@ -1,108 +1,156 @@
-# Stacks Bitcoin DeFi Terminal ~ Frontend
+# StacksAI - AI for Bitcoin DeFi
 
 **Stop visiting websites. Start talking to Bitcoin DeFi.**
 
-The Stacks ecosystem offers the most comprehensive Bitcoin DeFi infrastructure - but users are drowning in interfaces. We solved it by making Bitcoin DeFi operations as simple as sending a text message.
-
-#### THIS IS THE INTERFACE FOR BITCOIN DEFI.
+StacksAI makes the entire Bitcoin DeFi ecosystem accessible through natural conversation. Trade on DEXs, borrow from lending protocols, stack for Bitcoin yields - all by just talking.
 
 ## Overview
 
-**232+ operations. 8+ protocols. 1 conversation.**
+**100+ operations. 8+ protocols. 1 conversation.**
 
-Stacks' Bitcoin DeFi ecosystem is exploding with innovation - DEXes, lending protocols, stacking, NFTs, and more. We've built the first comprehensive chat interface that makes all of it accessible through natural language.
+```mermaid
+graph LR
+    User[👤 You] -->|"swap 100 STX for sBTC"| AI[🤖 StacksAI]
+    AI -->|Executes| DEX[ALEX/Velar/BitFlow]
+    AI -->|Executes| Lending[Arkadiko/Granite]
+    AI -->|Executes| Stacking[PoX Cycles]
+    AI -->|Executes| NFTs[SIP-009 NFTs]
+
+    style AI fill:#fc8d36
+    style User fill:#5546ff
+```
 
 **We've built what everyone else is promising:**
-- 232+ live Bitcoin DeFi operations (not promises)
-- Natural language access to ALEX, Velar, BitFlow, Charisma, Arkadiko, Granite, and more
+- 100+ live Bitcoin DeFi operations (not promises)
+- Natural language access to ALEX, Velar, BitFlow, Charisma, Arkadiko, Granite
 - Real-time AI streaming with live blockchain data
 - Native Bitcoin security with Stacks Proof of Transfer
 
-## Architecture Frontend
+## Architecture
+
+### System Overview
 
 ```mermaid
 graph TB
-    subgraph "Frontend Application"
-        A[Next.js App Router]
-        B[React Components]
+    subgraph "Frontend - StacksAI Terminal"
+        A[Next.js 15 App]
+        B[React 19 Components]
         C[AI Chat Interface]
-        D[Stacks Wallet Integration]
+        D[Wallet Integration]
     end
 
     subgraph "AI Layer"
         E[Vercel AI SDK]
-        F[MCP Server]
-        G[Streaming Responses]
+        F[MCP Server<br/>100+ Tools]
+        G[Streaming Engine]
     end
 
-    subgraph "Blockchain Integration"
-        H[Stacks Connect]
-        I[Leather/Xverse Wallets]
-        J[Transaction Engine]
+    subgraph "Stacks Wallet Layer"
+        H[@stacks/connect]
+        I[Leather Wallet]
+        J[Xverse Wallet]
     end
 
-    subgraph "DeFi Protocols"
-        K[ALEX Protocol]
-        L[Velar DEX]
-        M[BitFlow]
-        N[Charisma]
-        O[Arkadiko]
-        P[Granite]
+    subgraph "Bitcoin DeFi Protocols"
+        K[🔄 ALEX Protocol]
+        L[🔄 Velar DEX]
+        M[🔄 BitFlow]
+        N[🔄 Charisma]
+        O[💰 Arkadiko]
+        P[💰 Granite]
+        Q[🏦 PoX Stacking]
     end
 
-    subgraph "Database & Storage"
-        Q[Drizzle ORM]
-        R[SQLite/PostgreSQL]
-        S[Vercel Blob Storage]
+    subgraph "Stacks Blockchain"
+        R[Bitcoin Layer 2]
+        S[Smart Contracts]
+        T[Bitcoin Security]
     end
 
-    A --> B
-    B --> C
-    C --> E
-    E --> F
-    F --> G
-    D --> H
-    H --> I
-    I --> J
+    A --> B --> C
+    C --> E --> F --> G
+    D --> H --> I & J
+    F --> K & L & M & N & O & P & Q
+    K & L & M & N & O & P & Q --> R
+    R --> S --> T
 
-    F --> K
-    F --> L
-    F --> M
-    F --> N
-    F --> O
-    F --> P
-
-    A --> Q
-    Q --> R
-    A --> S
+    style A fill:#5546ff
+    style F fill:#fc8d36
+    style R fill:#f7931a
 ```
 
-## System Components
+### MCP Plugin Architecture
 
-### Frontend Framework
-- **Next.js 15**: React framework with App Router for modern web development
-- **TypeScript**: Type-safe development with comprehensive type definitions
-- **Tailwind CSS**: Utility-first styling with responsive design patterns
-- **Framer Motion**: Advanced animations and interactive transitions
+```mermaid
+graph TB
+    subgraph "MCP Server Core"
+        Core[Plugin Manager]
+    end
 
-### AI Integration
-- **Vercel AI SDK**: Streaming AI responses with tool calling capabilities
-- **MCP Server**: Model Context Protocol server exposing 232+ Stacks operations
-- **OpenAI Integration**: GPT models fine-tuned for Bitcoin DeFi and Stacks context
-- **Real-time Streaming**: Live AI responses with progressive data loading
+    subgraph "Account Plugins"
+        A1[getAccountInfo]
+        A2[getTransactionHistory]
+        A3[searchById]
+        A4[getAccountNonces]
+    end
 
-### Blockchain Connectivity
-- **Stacks Connect**: Official Stacks wallet integration via @stacks/connect
-- **Leather & Xverse**: Primary wallet support for transaction signing
-- **Transaction Engine**: Automated transaction building and broadcasting
-- **Multi-Network Support**: Testnet and Mainnet compatibility
+    subgraph "DEX Plugins"
+        D1[ALEX<br/>11 tools]
+        D2[Velar<br/>9 tools]
+        D3[BitFlow<br/>5 tools]
+        D4[Charisma<br/>5 tools]
+    end
+
+    subgraph "Lending Plugins"
+        L1[Arkadiko<br/>7 tools]
+        L2[Granite<br/>6 tools]
+    end
+
+    subgraph "Core Stacks"
+        C1[STX Transfer]
+        C2[Contract Calls]
+        C3[NFT Operations]
+        C4[PoX Stacking]
+    end
+
+    Core --> A1 & A2 & A3 & A4
+    Core --> D1 & D2 & D3 & D4
+    Core --> L1 & L2
+    Core --> C1 & C2 & C3 & C4
+
+    style Core fill:#fc8d36
+```
+
+### Data Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant AI
+    participant MCP
+    participant Wallet
+    participant Stacks
+
+    User->>Frontend: "swap 100 STX for ALEX"
+    Frontend->>AI: Process natural language
+    AI->>MCP: Call alexSwapTokens tool
+    MCP->>MCP: Build transaction
+    MCP->>Frontend: Return unsigned tx
+    Frontend->>Wallet: Request signature
+    Wallet->>User: Confirm transaction?
+    User->>Wallet: Approve
+    Wallet->>Stacks: Broadcast signed tx
+    Stacks->>Frontend: Transaction hash
+    Frontend->>User: "✅ Swap executed"
+```
 
 ## Features
 
 ### AI-Powered Bitcoin DeFi
 - **Natural Language Processing**: Convert conversational commands to DeFi operations
 - **Context-Aware Responses**: AI understands Stacks and Bitcoin DeFi terminology
-- **Tool Execution**: Automated execution of DeFi operations through 232+ MCP tools
+- **Tool Execution**: Automated execution of DeFi operations through 100+ MCP tools
 - **Progressive Loading**: Real-time streaming of AI responses and blockchain data
 
 ### DeFi Protocol Operations
@@ -139,25 +187,25 @@ graph TB
 
 ## Protocol Integrations
 
-### **ALEX Protocol**
+### **ALEX Protocol** (11 tools)
 Comprehensive AMM and orderbook DEX with launchpad features. Supports 1-4 hop multi-path swaps for optimal pricing across the liquidity network.
 
-### **Velar DEX**
+### **Velar DEX** (9 tools)
 Multi-chain DEX with advanced liquidity pools. Provides real-time price feeds and cross-chain swap capabilities.
 
-### **BitFlow**
+### **BitFlow** (5 tools)
 Stable-focused DEX with concentrated liquidity. Optimized for stablecoin swaps and low slippage trading.
 
-### **Charisma**
+### **Charisma** (5 tools)
 Composable DeFi protocol with customizable vaults. Includes the Blaze intent protocol for advanced trading strategies.
 
-### **Arkadiko Protocol**
+### **Arkadiko Protocol** (7 tools)
 Decentralized stablecoin protocol issuing USDA. Enables collateralized borrowing and yield farming with STX.
 
-### **Granite Finance**
+### **Granite Finance** (6 tools)
 Multi-collateral lending market with isolated risk pools. Supports various Stacks tokens as collateral.
 
-### **Bitcoin Name Service (BNS)**
+### **Bitcoin Name Service** (BNS)
 Decentralized naming system for Stacks addresses using .btc domains. Fully integrated for human-readable addresses.
 
 ## Technology Stack
@@ -185,12 +233,6 @@ Decentralized naming system for Stacks addresses using .btc domains. Fully integ
 - **Better SQLite3**: High-performance local database
 - **Vercel Postgres**: Scalable cloud database option
 - **Vercel Blob Storage**: File and asset management
-
-### Development Tools
-- **Biome**: Fast code formatting and linting
-- **Playwright**: End-to-end testing framework
-- **ESLint**: Code quality and consistency
-- **Vercel Analytics**: Performance monitoring and insights
 
 ## Quick Start
 
@@ -235,22 +277,6 @@ Decentralized naming system for Stacks addresses using .btc domains. Fully integ
 
    The application will be available at `http://localhost:3000`
 
-### Database Management
-
-```bash
-# Generate database migrations
-pnpm db:generate
-
-# Run migrations
-pnpm db:migrate
-
-# Open database studio
-pnpm db:studio
-
-# Push schema changes
-pnpm db:push
-```
-
 ## Usage Examples
 
 ### DEX Trading
@@ -285,103 +311,36 @@ pnpm db:push
 "What SIP-010 tokens do I hold?"
 ```
 
-### Blockchain Data
-```
-"Get information about block 150000"
-"Show me transaction details for 0x1234..."
-"What's the current network status?"
-"Check the latest PoX cycle information"
-```
+## Component Architecture
 
-## Development
+### UI Component Structure
 
-### Project Structure
+```mermaid
+graph TB
+    subgraph "Message Router"
+        M[message.tsx<br/>Tool Routing Hub]
+    end
 
+    subgraph "Display Components"
+        D1[🔄 DEX Components<br/>SwapInfo, PoolList, TokenPrices, PoolStats]
+        D2[💰 Lending Components<br/>LendingInfo]
+        D3[📊 Account Components<br/>AccountInfo, TransactionHistory]
+        D4[🖼️ NFT Components<br/>NFTGallery]
+        D5[📜 Contract Components<br/>ContractInfo, EventList]
+        D6[🏦 Stacking Components<br/>StackingInfo, CycleInfo]
+        D7[⛓️ Core Components<br/>BlockchainInfo, FeeEstimate]
+    end
+
+    M --> D1 & D2 & D3 & D4 & D5 & D6 & D7
+
+    style M fill:#fc8d36
 ```
-src/
-├── app/                          # Next.js App Router pages
-├── components/
-│   ├── stacks-dex/              # DEX components (swaps, pools, prices)
-│   ├── stacks-lending/          # Lending protocol components
-│   ├── stacks-stacking/         # PoX stacking components
-│   ├── stacks-tokens/           # Token and NFT displays
-│   ├── stacks-core/             # Blockchain info components
-│   ├── stacks-transactions/     # Transaction execution
-│   └── message.tsx              # Message router
-├── hooks/
-│   ├── useHandleTransaction.ts  # Transaction signing hook
-│   └── use-wallet-auth.ts       # Wallet authentication
-├── lib/
-│   ├── ai/                      # AI integration
-│   │   └── prompts.ts           # Stacks-specific prompts
-│   ├── db/                      # Database configuration
-│   └── utils/                   # Utility functions
-└── types/                       # TypeScript type definitions
-```
-
-### Component Architecture
 
 All components follow a consistent three-state pattern:
 
 1. **Loading State**: Skeleton loaders with pulsing animation
 2. **Error State**: Descriptive error messages in red cards
 3. **Success State**: Clean, organized data display
-
-Example component structure:
-```typescript
-export default function ComponentName({ data, isLoading }: Props) {
-  if (isLoading) {
-    return <LoadingSkeleton />;
-  }
-
-  if (!data.success || !data.data) {
-    return <ErrorCard error={data.error} />;
-  }
-
-  return <SuccessDisplay data={data.data} />;
-}
-```
-
-### Adding New Components
-
-1. **Create component in appropriate directory**
-   ```typescript
-   // components/stacks-dex/NewComponent.tsx
-   export default function NewComponent({ data, isLoading }: Props) {
-     // Implementation
-   }
-   ```
-
-2. **Add routing in `components/message.tsx`**
-   ```typescript
-   if (type === "tool-new_operation") {
-     if ("toolCallId" in part && "state" in part) {
-       const { toolCallId, state } = part;
-       if (state === "output-available" && "output" in part) {
-         return <NewComponent data={output} isLoading={false} />;
-       }
-     }
-   }
-   ```
-
-3. **Update MCP server to expose new tool**
-
-### Testing
-
-```bash
-# Run development server
-pnpm dev
-
-# Type checking
-pnpm typecheck
-
-# Linting and formatting
-pnpm lint
-pnpm format
-
-# End-to-end testing
-pnpm test
-```
 
 ## Security Considerations
 
@@ -403,12 +362,6 @@ pnpm test
 - Input validation and sanitization
 - HTTPS-only communication
 
-### Application Security
-- Content Security Policy implementation
-- XSS protection through React's built-in safeguards
-- SQL injection prevention with Drizzle ORM
-- Secure session management
-
 ## Contributing
 
 This project welcomes contributions for improving Bitcoin DeFi accessibility:
@@ -425,4 +378,4 @@ MIT License - see LICENSE file for complete terms and conditions.
 
 ---
 
-**Stacks Bitcoin DeFi Terminal** - Making Bitcoin DeFi as simple as conversation. Built for the Stacks Vibe Coding Hackathon.
+**StacksAI** - Making Bitcoin DeFi as simple as conversation. Built for the Stacks Vibe Coding Hackathon.
