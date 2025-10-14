@@ -15,41 +15,28 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import type { ChatMessage } from "@/lib/types";
 import { useDataStream } from "./data-stream-provider";
 
-// import TransactionComponent, {
-//   TransactionComponentProps,
-// } from "@/components/TransactionComponent";
+// Stacks Components
+import StacksTransactionComponent from "@/components/stacks-transactions/StacksTransactionComponent";
 import ToolCallLoader from "@/components/tool-call-loader";
 import { SuggestionAwareMarkdown } from "@/components/SuggestionAwareMarkdown";
 import { InfoIcon } from "lucide-react";
-// 
-// // VeChain Card Components
-// import VETVTHOBalance from "@/components/vechain-portfolio/VETVTHOBalance";
-// import AccountStats from "@/components/vechain-portfolio/AccountStats";
-// import TokenList from "@/components/vechain-tokens/TokenList";
-// import NFTList from "@/components/vechain-nfts/NFTList";
-// import NetworkStats from "@/components/vechain-network/NetworkStats";
-// import TransactionInfo from "@/components/vechain-transactions/TransactionInfo";
-// import ContractInfo from "@/components/vechain-contracts/ContractInfo";
-// import ContractCode from "@/components/vechain-contracts/ContractCode";
-// import AddressEmission from "@/components/vechain-carbon/AddressEmission";
-// import BlockEmission from "@/components/vechain-carbon/BlockEmission";
-// import TransactionEmission from "@/components/vechain-carbon/TransactionEmission";
-// import NetworkEmission from "@/components/vechain-carbon/NetworkEmission";
 
-// VeChain Bridge Components
-// import BridgeTokenPairs from "@/components/vechain-bridge/BridgeTokenPairs";
-// import BridgeQuotaAndFee from "@/components/vechain-bridge/BridgeQuotaAndFee";
-// import BridgeStatus from "@/components/vechain-bridge/BridgeStatus";
-// import XFlowsQuote from "@/components/vechain-bridge/XFlowsQuote";
-// import BridgeDashboard from "@/components/vechain-bridge/BridgeDashboard";
+// Stacks DEX Components
+import SwapInfo from "@/components/stacks-dex/SwapInfo";
+import PoolList from "@/components/stacks-dex/PoolList";
+import TokenPrices from "@/components/stacks-dex/TokenPrices";
 
-// VeChain StarGate Components
-// import StargateStakingLevels from "@/components/vechain-stargate/StargateStakingLevels";
-// import StargateUserStakes from "@/components/vechain-stargate/StargateUserStakes";
-// import StargateStakeInfo from "@/components/vechain-stargate/StargateStakeInfo";
+// Stacks Lending Components
+import LendingInfo from "@/components/stacks-lending/LendingInfo";
 
-// Contract Verification Component
-// import ContractVerification from "@/components/ContractVerification";
+// Stacks Stacking Components
+import StackingInfo from "@/components/stacks-stacking/StackingInfo";
+
+// Stacks Token Components
+import TokenBalances from "@/components/stacks-tokens/TokenBalances";
+
+// Stacks Core Components
+import BlockchainInfo from "@/components/stacks-core/BlockchainInfo";
 
 // Type narrowing is handled by TypeScript's control flow analysis
 // The AI SDK provides proper discriminated unions for tool calls
@@ -222,819 +209,329 @@ const PurePreviewMessage = ({
                 }
               }
 
-              // Transaction tools temporarily disabled - components need to be refactored for Stacks
-              // if (type === "tool-makeSendTransaction") {
-              //   const { toolCallId, state } = part;
-              //   if (state === "input-available") {
-              //     return (
-              //       <div key={toolCallId}>
-              //         <ToolCallLoader loadingMessage="Making transaction..." />
-              //       </div>
-              //     );
-              //   }
-              // }
+              // ========================= STACKS DEX TOOLS =========================
 
-              if (type === "tool-makeContractTransaction") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Creating contract transaction..." />
-                    </div>
-                  );
-                }
-
-                if (state === "output-available") {
-                  const { output } = part;
-                  const {
-                    from,
-                    contractAddress,
-                    functionName,
-                    functionArgs,
-                    value,
-                    data,
-                    network,
-                    gasLimit,
-                    comment,
-                    clauses,
-                  } = output as any;
-                  return (
-                    <TransactionComponent
-                      from={from}
-                      contractAddress={contractAddress}
-                      functionName={functionName}
-                      functionArgs={functionArgs}
-                      value={value}
-                      data={data}
-                      network={network}
-                      gasLimit={gasLimit}
-                      comment={comment}
-                      clauses={clauses}
-                      type="contract_interaction"
-                      key={toolCallId}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-makeBridgeTransaction") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Creating bridge transaction..." />
-                    </div>
-                  );
-                }
-
-                if (state === "output-available") {
-                  const { output } = part;
-                  const {
-                    from,
-                    value,
-                    network,
-                    clauses,
-                    bridgeDetails,
-                    approveRequired,
-                    receiveAmount,
-                    instructions,
-                    tokenSymbol,
-                  } = output as TransactionComponentProps;
-                  return (
-                    <TransactionComponent
-                      from={from}
-                      value={value}
-                      network={network}
-                      clauses={clauses}
-                      bridgeDetails={bridgeDetails}
-                      approveRequired={approveRequired}
-                      receiveAmount={receiveAmount}
-                      instructions={instructions}
-                      tokenSymbol={tokenSymbol}
-                      type="bridge_transaction"
-                      key={toolCallId}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-makeTokenTransfer") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Creating token transfer..." />
-                    </div>
-                  );
-                }
-
-                if (state === "output-available") {
-                  const { output } = part;
-                  const {
-                    from,
-                    tokenAddress,
-                    to,
-                    amount,
-                    tokenSymbol,
-                    network,
-                    clauses,
-                    comment,
-                  } = output as any;
-                  return (
-                    <TransactionComponent
-                      from={from}
-                      value="0" // Token transfers don't send VET
-                      network={network}
-                      clauses={clauses}
-                      tokenAddress={tokenAddress}
-                      tokenSymbol={tokenSymbol}
-                      amount={amount}
-                      to={to}
-                      comment={comment}
-                      type="token_transfer"
-                      key={toolCallId}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-makeTokenApproval") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Creating token approval..." />
-                    </div>
-                  );
-                }
-
-                if (state === "output-available") {
-                  const { output } = part;
-                  const {
-                    from,
-                    tokenAddress,
-                    spender,
-                    amount,
-                    tokenSymbol,
-                    network,
-                    clauses,
-                    comment,
-                  } = output as any;
-                  return (
-                    <TransactionComponent
-                      from={from}
-                      value="0" // Approvals don't send VET
-                      network={network}
-                      clauses={clauses}
-                      tokenAddress={tokenAddress}
-                      tokenSymbol={tokenSymbol}
-                      amount={amount}
-                      spender={spender}
-                      comment={comment}
-                      type="token_approval"
-                      key={toolCallId}
-                    />
-                  );
-                }
-              }
-
-              // VeChain Portfolio Tools
-              if (type === "tool-getVETVTHOBalance") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting VET/VTHO balance..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <VETVTHOBalance
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-getAccountStats") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting account statistics..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <AccountStats
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              // VeChain Token Tools
-              if (type === "tool-getTokenList") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting token list..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <TokenList
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              // VeChain NFT Tools
-              if (type === "tool-getNFTList") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting NFT collections..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <NFTList
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              // VeChain Network Tools
-              if (type === "tool-getNetworkStats") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting network statistics..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <NetworkStats
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              // VeChain Transaction Tools
-              if (type === "tool-getTransactionInfo") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting transaction details..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <TransactionInfo
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              // VeChain Contract Tools
-              if (type === "tool-getContractInfo") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting contract information..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <ContractInfo
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              // VeChain Carbon Emission Tools
-              if (type === "tool-getAddressEmission") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting carbon emissions for address..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <AddressEmission
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-getBlockEmission") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting block carbon emissions..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <BlockEmission
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-getTransactionEmission") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting transaction carbon emissions..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <TransactionEmission
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-getNetworkEmission") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting network carbon emissions..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <NetworkEmission
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              // VeChain Bridge Tools
-              if (type === "tool-getTokenPairs") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting cross-chain token pairs..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <BridgeTokenPairs
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-getQuotaAndFee") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting bridge quota and fees..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <BridgeQuotaAndFee
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-checkBridgeStatus") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Checking bridge transaction status..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <BridgeStatus
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-getXFlowsQuote") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting XFlows cross-chain swap quote..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <XFlowsQuote
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-buildXFlowsTransaction") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Building XFlows transaction..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  const {
-                    from,
-                    value,
-                    network,
-                    clauses,
-                    bridgeDetails,
-                    approveRequired,
-                    receiveAmount,
-                    instructions,
-                    tokenSymbol,
-                  } = output as TransactionComponentProps;
-                  return (
-                    <TransactionComponent
-                      from={from}
-                      value={value}
-                      network={network}
-                      clauses={clauses}
-                      bridgeDetails={bridgeDetails}
-                      approveRequired={approveRequired}
-                      receiveAmount={receiveAmount}
-                      instructions={instructions}
-                      tokenSymbol={tokenSymbol}
-                      type="bridge_transaction"
-                      key={toolCallId}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-checkXFlowsStatus") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Checking XFlows transaction status..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <BridgeStatus
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              // VeChain StarGate Tools
-              if (type === "tool-getStakingLevels") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting StarGate staking levels..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <StargateStakingLevels
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-stakeVET") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Creating VET staking transaction..." />
-                    </div>
-                  );
-                }
-
-                if (state === "output-available") {
-                  const { output } = part;
-                  const {
-                    from,
-                    contractAddress,
-                    functionName,
-                    functionArgs,
-                    value,
-                    data,
-                    network,
-                    levelId,
-                    levelName,
-                    vetStaked,
-                    isX,
-                    autoDelegate,
-                    comment,
-                    clauses,
-                  } = output as any;
-                  return (
-                    <TransactionComponent
-                      from={from}
-                      contractAddress={contractAddress}
-                      functionName={functionName}
-                      functionArgs={functionArgs}
-                      value={value}
-                      data={data}
-                      network={network}
-                      comment={comment}
-                      clauses={clauses}
-                      type="stargate_stake"
-                      key={toolCallId}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-getUserStakes") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting your StarGate stakes..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <StargateUserStakes
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-getStakeInfo") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Getting StarGate NFT details..." />
-                    </div>
-                  );
-                }
-                if (state === "output-available") {
-                  const { output } = part;
-                  return (
-                    <StargateStakeInfo
-                      key={toolCallId}
-                      data={output as any}
-                      isLoading={false}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-claimVTHORewards") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Creating VTHO claim transaction..." />
-                    </div>
-                  );
-                }
-
-                if (state === "output-available") {
-                  const { output } = part;
-                  const {
-                    from,
-                    contractAddress,
-                    functionName,
-                    functionArgs,
-                    value,
-                    data,
-                    network,
-                    tokenId,
-                    comment,
-                    clauses,
-                  } = output as any;
-                  return (
-                    <TransactionComponent
-                      from={from}
-                      contractAddress={contractAddress}
-                      functionName={functionName}
-                      functionArgs={functionArgs}
-                      value={value}
-                      data={data}
-                      network={network}
-                      comment={comment}
-                      clauses={clauses}
-                      type="stargate_claim"
-                      key={toolCallId}
-                    />
-                  );
-                }
-              }
-
-              if (type === "tool-unstakeStargate") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Creating unstake transaction..." />
-                    </div>
-                  );
-                }
-
-                if (state === "output-available") {
-                  const { output } = part;
-                  const {
-                    from,
-                    contractAddress,
-                    functionName,
-                    functionArgs,
-                    value,
-                    data,
-                    network,
-                    tokenId,
-                    comment,
-                    clauses,
-                  } = output as any;
-                  return (
-                    <TransactionComponent
-                      from={from}
-                      contractAddress={contractAddress}
-                      functionName={functionName}
-                      functionArgs={functionArgs}
-                      value={value}
-                      data={data}
-                      network={network}
-                      comment={comment}
-                      clauses={clauses}
-                      type="stargate_unstake"
-                      key={toolCallId}
-                    />
-                  );
-                }
-              }
-
-              // Contract verification tool
-              if (type === "tool-verifyContract") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ContractVerification
-                        onVerify={(data) => {
-                          // This would typically trigger the AI to use the verifyContract tool
-                          console.log('Contract verification data:', data);
-                        }}
+              // ALEX Swap Tools
+              if (type.startsWith("tool-alex_execute_swap")) {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Executing ALEX swap..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
                       />
-                    </div>
-                  );
-                }
-
-                if (state === "output-available") {
-                  const { output } = part as any;
-                  return (
-                    <div key={toolCallId} className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <h3 className="font-semibold text-green-800 mb-2">Contract Verification Result</h3>
-                      {output.success ? (
-                        <div className="text-green-700">
-                          <p>✓ Contract verification submitted successfully!</p>
-                          {output.data?.verificationId && (
-                            <p className="text-sm mt-1">Verification ID: {output.data.verificationId}</p>
-                          )}
-                        </div>
-                      ) : (
-                        <div className="text-red-700">
-                          <p>✗ Contract verification failed: {output.error}</p>
-                        </div>
-                      )}
-                    </div>
-                  );
+                    );
+                  }
                 }
               }
 
-              // Contract code tool
-              if (type === "tool-getContractCode") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Fetching contract source code..." />
-                    </div>
-                  );
-                }
-
-                if (state === "output-available") {
-                  const { output } = part as any;
-                  return (
-                    <ContractCode
-                      data={output}
-                      key={toolCallId}
-                    />
-                  );
+              // Velar Swap Tools
+              if (type === "tool-velar_execute_swap") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Executing Velar swap..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
                 }
               }
+
+              // Velar Pool/Price Tools
+              if (type === "tool-velar_get_all_pools" || type === "tool-velar_get_pairs") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Velar pools..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <PoolList
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-velar_get_current_prices") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Velar prices..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TokenPrices
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // BitFlow Tools
+              if (type === "tool-bitflow_execute_swap" || type === "tool-bitflow_prepare_swap_execution") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Executing BitFlow swap..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-bitflow_get_possible_swaps" || type === "tool-bitflow_get_all_possible_token_y") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting BitFlow pools..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <PoolList
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // Charisma Tools
+              if (type === "tool-charisma_execute_swap") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Executing Charisma swap..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SwapInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-charisma_get_pools") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Charisma pools..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <PoolList
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKS LENDING TOOLS =========================
+
+              // Granite Lending Tools
+              if (type === "tool-granite_borrow" || type === "tool-granite_repay" ||
+                  type === "tool-granite_deposit" || type === "tool-granite_withdraw" ||
+                  type === "tool-granite_stake") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Processing Granite operation..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <LendingInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // Arkadiko Lending Tools
+              if (type === "tool-arkadiko_open_vault" || type === "tool-arkadiko_deposit" ||
+                  type === "tool-arkadiko_mint" || type === "tool-arkadiko_burn" ||
+                  type === "tool-arkadiko_withdraw") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Processing Arkadiko operation..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <LendingInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKS STACKING (PoX) TOOLS =========================
+
+              if (type.startsWith("tool-stacks_stack") || type === "tool-stacks_delegate_stx" ||
+                  type === "tool-stacks_get_pox_info" || type === "tool-stacks_get_stacker_info") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Processing stacking operation..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <StackingInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKS TOKEN & BALANCE TOOLS =========================
+
+              if (type === "tool-get_address_ft_balances" || type === "tool-get_ft_balance") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting token balances..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TokenBalances
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= STACKS BLOCKCHAIN INFO TOOLS =========================
+
+              if (type.startsWith("tool-get_block") || type === "tool-get_transaction" ||
+                  type === "tool-get_network_info") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting blockchain information..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <BlockchainInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // All tool routing complete - handlers above cover all Stacks MCP tools
 
             })}
 
