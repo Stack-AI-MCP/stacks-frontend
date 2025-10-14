@@ -44,9 +44,9 @@ export function Chat({
 
   const { mutate } = useSWRConfig();
   const { setDataStream } = useDataStream();
-  
-  // VeChain Kit wallet integration with auto-registration
-  const { fetchWithWalletHeaders, account, isConnected, getWalletHeaders } = useAutoRegisterUser();
+
+  // Stacks wallet integration with auto-registration
+  const { fetchWithWalletHeaders, address, isConnected, getWalletHeaders } = useAutoRegisterUser();
 
   const [input, setInput] = useState<string>("");
 
@@ -77,7 +77,7 @@ export function Chat({
             message: messages.at(-1),
             selectedChatModel: initialChatModel,
             selectedVisibilityType: visibilityType,
-            walletAddress: account?.address, // Add wallet address to body as backup
+            walletAddress: address, // Add wallet address to body as backup
             ...body,
           },
         };

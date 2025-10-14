@@ -4,26 +4,26 @@ import { useEffect, useRef } from 'react';
 import { useWalletAPI } from './useWalletAPI';
 
 export function useAutoRegisterUser() {
-  const { fetchWithWalletHeaders, account, isConnected, network, getWalletHeaders } = useWalletAPI();
+  const { fetchWithWalletHeaders, address, isConnected, network, getWalletHeaders } = useWalletAPI();
   const hasRegistered = useRef(false);
 
   useEffect(() => {
-    if (isConnected && account?.address && !hasRegistered.current) {
-      registerUser(account.address);
+    if (isConnected && address && !hasRegistered.current) {
+      registerUser(address);
       hasRegistered.current = true;
     }
-    
+
     // Reset registration flag when wallet disconnects
     if (!isConnected) {
       hasRegistered.current = false;
     }
-  }, [isConnected, account?.address]);
+  }, [isConnected, address]);
 
-  const registerUser = async (address: string) => {
+  const registerUser = async (walletAddress: string) => {
     try {
       const response = await fetchWithWalletHeaders('/api/users/register', {
         method: 'POST',
-        body: JSON.stringify({ address }),
+        body: JSON.stringify({ address: walletAddress }),
       });
 
       if (!response.ok) {
@@ -32,7 +32,7 @@ export function useAutoRegisterUser() {
 
       const userData = await response.json();
       console.log('User registered/found:', userData);
-      
+
       return userData;
     } catch (error) {
       console.error('Error registering user:', error);
@@ -41,7 +41,7 @@ export function useAutoRegisterUser() {
 
   return {
     isRegistered: hasRegistered.current,
-    account,
+    address,
     isConnected,
     network,
     fetchWithWalletHeaders, // Export this for other components to use

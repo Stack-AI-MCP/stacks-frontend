@@ -7,7 +7,7 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import type { VisibilityType } from "./visibility-selector";
 import type { ChatMessage } from "@/lib/types";
 import { toast } from "sonner";
-// import { useWallet } from "@vechain/vechain-kit";
+import { useConnect } from "@stacks/connect-react";
 
 interface SuggestedActionsProps {
   chatId: string;
@@ -20,28 +20,28 @@ function PureSuggestedActions({
   sendMessage,
   selectedVisibilityType,
 }: SuggestedActionsProps) {
-  const { account, connection } = useWallet();
+  const { isSignedIn } = useConnect();
 
   const suggestedActions = [
     {
-      title: "Check my VET and VTHO balances",
-      label: "view wallet token balances",
-      action: "Show me my VET and VTHO balances",
+      title: "Check my STX balance",
+      label: "view wallet STX balance",
+      action: "Show me my STX balance and account information",
     },
     {
-      title: "Get VeChain network statistics",
-      label: "current blockchain metrics",
-      action: "What are the current VeChain network statistics?",
+      title: "Get ALEX DEX prices",
+      label: "current DeFi token prices",
+      action: "What are the current token prices on ALEX DEX?",
     },
     {
-      title: "View my NFT collections",
-      label: "check VIP-181 NFT holdings",
-      action: "Show me my NFT collections and balances",
+      title: "View my NFT holdings",
+      label: "check Stacks NFT collections",
+      action: "Show me my NFT collections and holdings",
     },
     {
-      title: "What is VeChain's carbon tracking?",
-      label: "learn about sustainability features",
-      action: "Explain VeChain's carbon emission tracking and environmental impact",
+      title: "What is Bitcoin stacking?",
+      label: "learn about earning Bitcoin rewards",
+      action: "Explain how stacking works and how to earn Bitcoin rewards on Stacks",
     },
   ];
 
@@ -63,8 +63,8 @@ function PureSuggestedActions({
             variant="ghost"
             onClick={async (e) => {
               e.preventDefault();
-              if (!connection.isConnected) {
-                toast.error("Please connect your wallet to send a message");
+              if (!isSignedIn) {
+                toast.error("Please connect your Stacks wallet to send a message");
                 return;
               }
 
