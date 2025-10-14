@@ -7,7 +7,7 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import type { VisibilityType } from "./visibility-selector";
 import type { ChatMessage } from "@/lib/types";
 import { toast } from "sonner";
-import { useConnect } from "@stacks/connect-react";
+import { useWalletAuth } from "@/hooks/use-wallet-auth";
 
 interface SuggestedActionsProps {
   chatId: string;
@@ -20,7 +20,7 @@ function PureSuggestedActions({
   sendMessage,
   selectedVisibilityType,
 }: SuggestedActionsProps) {
-  const { isSignedIn } = useConnect();
+  const { isConnected } = useWalletAuth();
 
   const suggestedActions = [
     {
@@ -63,7 +63,7 @@ function PureSuggestedActions({
             variant="ghost"
             onClick={async (e) => {
               e.preventDefault();
-              if (!isSignedIn) {
+              if (!isConnected) {
                 toast.error("Please connect your Stacks wallet to send a message");
                 return;
               }

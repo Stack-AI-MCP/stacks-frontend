@@ -222,40 +222,17 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-makeSendTransaction") {
-                const { toolCallId, state } = part;
-                if (state === "input-available") {
-                  return (
-                    <div key={toolCallId}>
-                      <ToolCallLoader loadingMessage="Making transaction..." />
-                    </div>
-                  );
-                }
-
-                if (state === "output-available") {
-                  const { output } = part;
-                  const {
-                    from,
-                    receiver_address,
-                    receiver_ensName,
-                    value,
-                    network,
-                    clauses,
-                  } = output as TransactionComponentProps;
-                  return (
-                    <TransactionComponent
-                      from={from}
-                      receiver_address={receiver_address}
-                      receiver_ensName={receiver_ensName}
-                      value={value}
-                      network={network}
-                      clauses={clauses}
-                      type="simple_transfer"
-                      key={toolCallId}
-                    />
-                  );
-                }
-              }
+              // Transaction tools temporarily disabled - components need to be refactored for Stacks
+              // if (type === "tool-makeSendTransaction") {
+              //   const { toolCallId, state } = part;
+              //   if (state === "input-available") {
+              //     return (
+              //       <div key={toolCallId}>
+              //         <ToolCallLoader loadingMessage="Making transaction..." />
+              //       </div>
+              //     );
+              //   }
+              // }
 
               if (type === "tool-makeContractTransaction") {
                 const { toolCallId, state } = part;

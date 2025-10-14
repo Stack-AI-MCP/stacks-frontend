@@ -1,5 +1,6 @@
 import { tool } from "ai";
 import z from "zod";
+import { VelarSDK } from '@velarprotocol/velar-sdk';
 
 export const velarSwapTokens = tool({
   description: `Execute a token swap on Velar DEX.
@@ -17,7 +18,7 @@ export const velarSwapTokens = tool({
     tokenIn: z.string().describe("Input token symbol or contract (e.g., 'STX', 'WELSH')"),
     tokenOut: z.string().describe("Output token symbol or contract"),
     amountIn: z.string().describe("Amount of input token (in token's base units)"),
-    minAmountOut: z.string().describe("Minimum output amount (slippage protection)"),
+    slippage: z.number().optional().default(1).describe("Slippage tolerance percentage (default: 1%)"),
     network: z.enum(["mainnet", "testnet"]).default("mainnet").describe("Stacks network"),
   }),
 
@@ -26,45 +27,50 @@ export const velarSwapTokens = tool({
     tokenIn,
     tokenOut,
     amountIn,
-    minAmountOut,
+    slippage,
     network,
   }) => {
     try {
-      const VELAR_CONTRACT_ADDRESS = "SP1Y5YSTAHZ88XYK1VPDH24GY0HPX5J4JECTMY4A1";
-      const VELAR_SWAP_CONTRACT = "univ2-core";
+      // Initialize Velar SDK
+      const sdk = new VelarSDK();
 
-      const transaction = {
-        type: "contract_call" as const,
-        from,
-        contractAddress: VELAR_CONTRACT_ADDRESS,
-        contractName: VELAR_SWAP_CONTRACT,
-        functionName: "swap-exact-tokens-for-tokens",
-        functionArgs: [
-          { type: "uint", value: amountIn },
-          { type: "uint", value: minAmountOut },
-          { type: "principal", value: `${VELAR_CONTRACT_ADDRESS}.${tokenIn}` },
-          { type: "principal", value: `${VELAR_CONTRACT_ADDRESS}.${tokenOut}` },
-          { type: "principal", value: from }
-        ],
-        network,
-        comment: `Swap ${amountIn} ${tokenIn} for ${tokenOut} on Velar DEX`,
-      };
+      // Get swap instance from SDK
+      const swapInstance = await sdk.getSwapInstance({
+        account: from,
+        inToken: tokenIn,
+        outToken: tokenOut,
+      });
+
+      // Get swap contract call parameters from SDK
+      const swapCallData = await swapInstance.swap({
+        amount: parseInt(amountIn),
+        slippage: slippage,
+      });
+
+      // Get computed amount for display
+      const computedAmount = await swapInstance.getComputedAmount({
+        amount: parseInt(amountIn),
+        slippage: slippage,
+      });
 
       return {
         success: true,
-        transaction,
+        transaction: swapCallData,
         message: `Velar swap prepared: ${tokenIn} → ${tokenOut}. Please confirm in your wallet.`,
         details: {
           dex: "Velar",
           inputToken: tokenIn,
           outputToken: tokenOut,
           amountIn,
-          minAmountOut,
+          estimatedOutput: computedAmount.value?.toString() || "calculating...",
+          slippage: `${slippage}%`,
+          route: computedAmount.route?.join(" → ") || "direct",
         },
         instructions: [
           "1. Review the swap details in your wallet",
-          "2. Verify the minimum output amount",
-          "3. Confirm the transaction",
+          "2. Check the estimated output amount and price impact",
+          "3. Verify the slippage tolerance",
+          "4. Confirm the transaction",
         ],
       };
     } catch (error: any) {

@@ -14,7 +14,7 @@ export const getCycleSigners = tool({
     network: z.enum(["mainnet", "testnet"]).default("mainnet").describe("Stacks network"),
   }),
 
-  execute: async ({ cycle_number, limit, offset, network }) => {
+  execute: async ({ cycle_number, limit = 20, offset = 0, network }) => {
     try {
       const apiUrl = network === "mainnet" ? STACKS_API_MAINNET : STACKS_API_TESTNET;
       const params = new URLSearchParams({

@@ -1,33 +1,31 @@
 "use client";
 
-import { useWallet } from "@vechain/vechain-kit";
+import { useWalletAuth } from "@/hooks/use-wallet-auth";
 import { useClientMounted } from "@/hooks/useClientMount";
 
 export const InfoList = () => {
-  const { account, connection, smartAccount } = useWallet();
+  const { address, isConnected, isLoading } = useWalletAuth();
   const mounted = useClientMounted();
+
+  // Determine network from address (SP = mainnet, ST = testnet)
+  const network = address ? (address.startsWith('SP') ? 'mainnet' : 'testnet') : 'unknown';
 
   return !mounted ? null : (
     <div className="bg-gray-100 p-5 rounded-lg shadow-md">
       <section>
         <h2 className="mb-4 text-gray-800">Account Information</h2>
         <div className="mb-2 p-2 bg-white rounded shadow-sm">
-          Address: {account?.address || 'Not connected'}
+          Address: {address || 'Not connected'}
         </div>
         <div className="mb-2 p-2 bg-white rounded shadow-sm">
-          Connected: {connection.isConnected.toString()}
+          Connected: {isConnected.toString()}
         </div>
         <div className="mb-2 p-2 bg-white rounded shadow-sm">
-          Network: {connection.network}
+          Network: {network}
         </div>
         <div className="mb-2 p-2 bg-white rounded shadow-sm">
-          Connection Source: {String(connection.source)}
+          Loading: {isLoading.toString()}
         </div>
-        {smartAccount?.address && (
-          <div className="mb-2 p-2 bg-white rounded shadow-sm">
-            Smart Account: {smartAccount.address}
-          </div>
-        )}
       </section>
     </div>
   );

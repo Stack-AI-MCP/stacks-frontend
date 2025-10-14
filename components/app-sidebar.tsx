@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-// import { useWallet } from "@vechain/vechain-kit";
+import { useWalletAuth } from "@/hooks/use-wallet-auth";
 
 import { PlusIcon } from "@/components/icons";
 import { SidebarHistory } from "@/components/sidebar-history";
@@ -21,7 +21,7 @@ import Image from "next/image";
 export function AppSidebar() {
   const router = useRouter();
   const { setOpenMobile } = useSidebar();
-  const { account, connection } = useWallet();
+  const { address, isConnected, isLoading } = useWalletAuth();
 
   return (
     <Sidebar className="group-data-[side=left]:border-r-0">
@@ -66,15 +66,15 @@ export function AppSidebar() {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarHistory 
-          user={connection.isConnected && account?.address ? { address: account.address } : undefined} 
+        <SidebarHistory
+          user={isConnected && address ? { address: address } : undefined}
           status={
-            connection.isConnected && account?.address 
-              ? "authenticated" 
-              : connection.isLoading 
-                ? "loading" 
+            isConnected && address
+              ? "authenticated"
+              : isLoading
+                ? "loading"
                 : "unauthenticated"
-          } 
+          }
         />
       </SidebarContent>
       {/* <SidebarFooter>{user && <SidebarUserNav user={user} />}</SidebarFooter> */}

@@ -4,14 +4,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useWindowSize } from "usehooks-ts";
 
-import { ModelSelector } from "@/components/model-selector";
 import { SidebarToggle } from "@/components/sidebar-toggle";
 import { Button } from "@/components/ui/button";
 import { PlusIcon, VercelIcon } from "./icons";
 import { useSidebar } from "./ui/sidebar";
 import { memo } from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-import { type VisibilityType, VisibilitySelector } from "./visibility-selector";
 import { StacksConnectButton } from "@/components/StacksConnectButton";
 
 function PureChatHeader() {
@@ -42,22 +40,6 @@ function PureChatHeader() {
             <TooltipContent>New Chat</TooltipContent>
           </Tooltip>
         )}
-
-        {/* {!isReadonly && (
-          <ModelSelector
-            session={session}
-            selectedModelId={selectedModelId}
-            className="order-1 md:order-2"
-          />
-        )} */}
-
-        {/* {!isReadonly && (
-          <VisibilitySelector
-            chatId={chatId}
-            selectedVisibilityType={selectedVisibilityType}
-            className="order-1 md:order-3"
-          />
-        )} */}
       </div>
       <div className="flex flex-row gap-2 items-center">
         <StacksConnectButton />

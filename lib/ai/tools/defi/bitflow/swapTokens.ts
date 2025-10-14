@@ -1,5 +1,6 @@
 import { tool } from "ai";
 import z from "zod";
+import { BitflowSDK } from '@bitflowlabs/core-sdk';
 
 export const bitflowSwapTokens = tool({
   description: `Execute a token swap on BitFlow DEX.
@@ -14,11 +15,10 @@ export const bitflowSwapTokens = tool({
 
   inputSchema: z.object({
     from: z.string().describe("Trader's Stacks address"),
-    tokenIn: z.string().describe("Input token identifier"),
-    tokenOut: z.string().describe("Output token identifier"),
+    tokenIn: z.string().describe("Input token identifier (e.g., 'token-stx', 'token-usda')"),
+    tokenOut: z.string().describe("Output token identifier (e.g., 'token-usda', 'token-susdt')"),
     amountIn: z.string().describe("Amount of input token (in token's base units)"),
-    minAmountOut: z.string().describe("Minimum output amount (slippage protection)"),
-    route: z.array(z.string()).optional().describe("Optional routing path through pools"),
+    slippageTolerance: z.number().optional().default(1).describe("Slippage tolerance percentage (default: 1%)"),
     network: z.enum(["mainnet", "testnet"]).default("mainnet").describe("Stacks network"),
   }),
 
@@ -27,52 +27,58 @@ export const bitflowSwapTokens = tool({
     tokenIn,
     tokenOut,
     amountIn,
-    minAmountOut,
-    route,
+    slippageTolerance,
     network,
   }) => {
     try {
-      const BITFLOW_CONTRACT_ADDRESS = "SP2ZNGJ85ENDY6QRHQ5P2D4FXKGZWCKTB2T0Z55KS";
-      const BITFLOW_SWAP_CONTRACT = "charisma-swap-v1";
+      // Initialize BitFlow SDK
+      const sdk = new BitflowSDK();
 
-      const transaction = {
-        type: "contract_call" as const,
-        from,
-        contractAddress: BITFLOW_CONTRACT_ADDRESS,
-        contractName: BITFLOW_SWAP_CONTRACT,
-        functionName: "swap-tokens",
-        functionArgs: [
-          { type: "principal", value: tokenIn },
-          { type: "principal", value: tokenOut },
-          { type: "uint", value: amountIn },
-          { type: "uint", value: minAmountOut },
-          ...(route ? [{ type: "list", value: route.map(r => ({ type: "principal", value: r }))}] : [])
-        ],
-        network,
-        comment: `Swap ${amountIn} on BitFlow DEX`,
+      // Get quote for the swap route
+      const quote = await sdk.getQuoteForRoute(tokenIn, tokenOut, parseInt(amountIn));
+
+      if (!quote || !quote.bestRoute) {
+        throw new Error(`No swap route found for ${tokenIn} → ${tokenOut}`);
+      }
+
+      // Create swap execution data from best route
+      const swapExecutionData = {
+        route: quote.bestRoute.route,
+        amount: parseInt(amountIn),
+        tokenXDecimals: quote.bestRoute.tokenXDecimals,
+        tokenYDecimals: quote.bestRoute.tokenYDecimals,
       };
+
+      // Get swap parameters from SDK
+      const swapParams = await sdk.getSwapParams(
+        swapExecutionData,
+        from,
+        slippageTolerance
+      );
 
       return {
         success: true,
-        transaction,
+        transaction: swapParams,
         message: `BitFlow swap prepared: ${tokenIn} → ${tokenOut}. Please confirm in your wallet.`,
         details: {
           dex: "BitFlow",
           inputToken: tokenIn,
           outputToken: tokenOut,
           amountIn,
-          minAmountOut,
-          route: route || "auto",
+          estimatedOutput: quote.bestRoute.quote?.toString() || "calculating...",
+          slippage: `${slippageTolerance}%`,
+          route: quote.bestRoute.dexPath.join(" → ") || "direct",
+          priceImpact: "calculating...",
         },
         instructions: [
           "1. Review the swap route in your wallet",
-          "2. Check the minimum output amount",
+          "2. Check the estimated output amount and price impact",
           "3. Verify the slippage tolerance",
           "4. Confirm the transaction",
         ],
         tips: [
           "💡 BitFlow specializes in stable swaps with low slippage",
-          "💡 Use bitflowGetQuoteForRoute for optimal routing",
+          "💡 Optimal route automatically selected by SDK",
           "💡 Consider using Keeper for DCA (dollar-cost averaging)",
         ],
       };
