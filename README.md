@@ -62,9 +62,11 @@ graph LR
 
 ### System Overview
 
+![Stacks AI Architecture](https://raw.githubusercontent.com/Stack-AI-MCP/stacks-mcp-server/main/docs/images/stacksAiArchitecture.png)
+
 ```mermaid
 graph TB
-    subgraph "Frontend - StacksAI Terminal"
+    subgraph "Frontend - Stacks AI Terminal"
         A[Next.js 15 App]
         B[React 19 Components]
         C[AI Chat Interface]
@@ -73,24 +75,24 @@ graph TB
 
     subgraph "AI Layer"
         E[Vercel AI SDK]
-        F[MCP Server<br/>100+ Tools]
+        F[MCP Server<br/>144+ Tools]
         G[Streaming Engine]
     end
 
     subgraph "Stacks Wallet Layer"
-        H[@stacks/connect]
+        H[Stacks Connect]
         I[Leather Wallet]
         J[Xverse Wallet]
     end
 
     subgraph "Bitcoin DeFi Protocols"
-        K[🔄 ALEX Protocol]
-        L[🔄 Velar DEX]
-        M[🔄 BitFlow]
-        N[🔄 Charisma]
-        O[💰 Arkadiko]
-        P[💰 Granite]
-        Q[🏦 PoX Stacking]
+        K[ALEX Protocol]
+        L[Velar DEX]
+        M[BitFlow]
+        N[Charisma]
+        O[Arkadiko]
+        P[Granite]
+        Q[PoX Stacking]
     end
 
     subgraph "Stacks Blockchain"
@@ -99,12 +101,30 @@ graph TB
         T[Bitcoin Security]
     end
 
-    A --> B --> C
-    C --> E --> F --> G
-    D --> H --> I & J
-    F --> K & L & M & N & O & P & Q
-    K & L & M & N & O & P & Q --> R
-    R --> S --> T
+    A --> B
+    B --> C
+    C --> E
+    E --> F
+    F --> G
+    D --> H
+    H --> I
+    H --> J
+    F --> K
+    F --> L
+    F --> M
+    F --> N
+    F --> O
+    F --> P
+    F --> Q
+    K --> R
+    L --> R
+    M --> R
+    N --> R
+    O --> R
+    P --> R
+    Q --> R
+    R --> S
+    S --> T
 
     style A fill:#5546ff
     style F fill:#fc8d36
