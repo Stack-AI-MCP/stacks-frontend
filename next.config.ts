@@ -20,6 +20,23 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  webpack: (config, { isServer }) => {
+    // Make pino-pretty optional (it's an optional dev dependency from @walletconnect/logger via @stacks/connect)
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      'pino-pretty': false,
+    };
+
+    // Ignore optional dependencies that are not needed in browser
+    if (!isServer) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'pino-pretty': false,
+      };
+    }
+
+    return config;
+  },
 };
 
 export default nextConfig;
