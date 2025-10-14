@@ -27,7 +27,7 @@ export function useHandleTransaction() {
         memo: params.memo
       });
 
-      console.log("✅ STX transfer sent:", result.txId);
+      console.log("✅ STX transfer sent:", result?.txid!);
       return result;
     } catch (err) {
       console.error("❌ Error sending STX transfer:", err);
@@ -49,8 +49,12 @@ export function useHandleTransaction() {
     }
 
     try {
-      const result = await request('stx_callContract', params);
-      console.log("✅ Contract call sent:", result.txId);
+      const result = await request('stx_callContract', {
+        contract: `${params.contractAddress}.${params.contractName}`,
+        functionName: params.functionName,
+        functionArgs: params.functionArgs
+      });
+      console.log("✅ Contract call sent:", result?.txid!);
       return result;
     } catch (err) {
       console.error("❌ Error calling contract:", err);
@@ -73,11 +77,11 @@ export function useHandleTransaction() {
     try {
       const result = await request('stx_deployContract', {
         name: params.name,
-        code: params.code,
+        clarityCode: params.code,
         clarityVersion: params.clarityVersion || 3
       });
 
-      console.log("✅ Contract deployed:", result.txId);
+      console.log("✅ Contract deployed:", result?.txid!);
       return result;
     } catch (err) {
       console.error("❌ Error deploying contract:", err);
@@ -101,14 +105,12 @@ export function useHandleTransaction() {
 
     try {
       const result = await request('stx_transferSip10Ft', {
-        contractAddress: params.contractAddress,
-        contractName: params.contractName,
+        asset: `${params.contractAddress}.${params.contractName}`,
         recipient: params.recipient,
-        amount: params.amount,
-        memo: params.memo
+        amount: params.amount
       });
 
-      console.log("✅ Token transfer sent:", result.txId);
+      console.log("✅ Token transfer sent:", result?.txid!);
       return result;
     } catch (err) {
       console.error("❌ Error sending token transfer:", err);

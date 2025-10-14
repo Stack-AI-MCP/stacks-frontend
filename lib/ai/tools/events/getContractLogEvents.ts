@@ -19,8 +19,8 @@ export const getContractLogEvents = tool({
     try {
       const apiUrl = network === "mainnet" ? STACKS_API_MAINNET : STACKS_API_TESTNET;
       const params = new URLSearchParams({
-        limit: limit.toString(),
-        offset: offset.toString(),
+        limit: limit?.toString() ?? '20',
+        offset: offset?.toString() ?? '0',
       });
 
       if (contract_id) params.append('contract_id', contract_id);

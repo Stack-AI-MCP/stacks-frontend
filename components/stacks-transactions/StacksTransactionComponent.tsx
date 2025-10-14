@@ -125,7 +125,7 @@ export default function StacksTransactionComponent(props: StacksTransactionProps
           throw new Error("Unsupported transaction type");
       }
 
-      setTxId(result.txId);
+      setTxId(result?.txid!);
       setStatus("success");
     } catch (err: any) {
       console.error("Transaction error:", err);

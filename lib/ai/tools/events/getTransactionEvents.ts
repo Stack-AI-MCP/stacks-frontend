@@ -21,8 +21,8 @@ export const getTransactionEvents = tool({
       const apiUrl = network === "mainnet" ? STACKS_API_MAINNET : STACKS_API_TESTNET;
       const params = new URLSearchParams({
         tx_id,
-        offset: offset.toString(),
-        limit: limit.toString(),
+        offset: offset?.toString() ?? '0',
+        limit: limit?.toString() ?? '20',
       });
 
       if (address) params.append('address', address);

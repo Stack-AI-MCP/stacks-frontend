@@ -70,9 +70,20 @@ export default function AccountInfo({
     return `${stx.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 6 })} STX`;
   };
 
-  const balanceSTX = account.balance?.stx || account.balance || '0';
-  const lockedSTX = account.balance?.locked_stx || account.locked || '0';
-  const unlockHeight = account.balance?.unlock_height || account.unlock_height;
+  // Handle balance which can be either a string or an object
+  const balanceSTX = typeof account.balance === 'object' && account.balance?.stx 
+    ? account.balance.stx 
+    : typeof account.balance === 'string' 
+    ? account.balance 
+    : '0';
+    
+  const lockedSTX = typeof account.balance === 'object' && account.balance?.locked_stx 
+    ? account.balance.locked_stx 
+    : account.locked || '0';
+    
+  const unlockHeight = typeof account.balance === 'object' && account.balance?.unlock_height 
+    ? account.balance.unlock_height 
+    : account.unlock_height;
 
   return (
     <Card className="bg-zinc-900 border-zinc-700">

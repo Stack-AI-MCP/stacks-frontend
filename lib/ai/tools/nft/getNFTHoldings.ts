@@ -20,8 +20,8 @@ export const getNFTHoldings = tool({
       const apiUrl = network === "mainnet" ? STACKS_API_MAINNET : STACKS_API_TESTNET;
 
       const params = new URLSearchParams({
-        limit: limit.toString(),
-        offset: offset.toString(),
+        limit: limit?.toString() ?? '50',
+        offset: offset?.toString() ?? '0',
       });
 
       const response = await fetch(

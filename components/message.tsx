@@ -651,8 +651,7 @@ const PurePreviewMessage = ({
                     return (
                       <StacksTransactionComponent
                         key={toolCallId}
-                        data={output as any}
-                        isLoading={false}
+                        {...(output as any)}
                       />
                     );
                   }
@@ -699,8 +698,7 @@ const PurePreviewMessage = ({
                     return (
                       <StacksTransactionComponent
                         key={toolCallId}
-                        data={output as any}
-                        isLoading={false}
+                        {...(output as any)}
                       />
                     );
                   }
@@ -1211,8 +1209,7 @@ const PurePreviewMessage = ({
                     return (
                       <StacksTransactionComponent
                         key={toolCallId}
-                        data={output as any}
-                        isLoading={false}
+                        {...(output as any)}
                       />
                     );
                   }

@@ -17,8 +17,8 @@ export const getPoxCycles = tool({
     try {
       const apiUrl = network === "mainnet" ? STACKS_API_MAINNET : STACKS_API_TESTNET;
       const params = new URLSearchParams({
-        limit: limit.toString(),
-        offset: offset.toString(),
+        limit: limit?.toString() ?? '20',
+        offset: offset?.toString() ?? '0',
       });
 
       const response = await fetch(`${apiUrl}/extended/v2/pox/cycles?${params}`, {

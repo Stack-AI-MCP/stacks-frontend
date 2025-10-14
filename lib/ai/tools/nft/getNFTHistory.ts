@@ -21,7 +21,7 @@ export const getNFTHistory = tool({
       const [contractAddress, contractName] = contractId.split('.');
 
       const params = new URLSearchParams({
-        limit: limit.toString(),
+        limit: limit?.toString() ?? '50',
       });
 
       const response = await fetch(
