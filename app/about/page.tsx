@@ -23,7 +23,7 @@ export default function AboutPage() {
             className="max-w-4xl mx-auto text-center"
           >
             <Badge variant="outline" className="mb-6">
-              <span className="text-muted-foreground">About VeChain Terminal</span>
+              <span className="text-muted-foreground">About StacksAI</span>
             </Badge>
             
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
@@ -32,12 +32,12 @@ export default function AboutPage() {
             
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
               Remember when we used to open apps for everything? Now we just talk to AI. 
-              We're bringing this same revolution to blockchain - making VeChain operations as simple as conversation.
+              We're bringing this same revolution to blockchain - making Stacks operations as simple as conversation.
             </p>
 
             <Button size="lg" asChild className="text-lg px-8 py-6">
               <Link href="/chat">
-                Try VeChain Terminal
+                Try StacksAI
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -57,7 +57,7 @@ export default function AboutPage() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">The Problem We're Solving</h2>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              VeChain's ecosystem is exploding with incredible innovation - but users are drowning in interfaces. 
+              Stacks's ecosystem is exploding with incredible innovation - but users are drowning in interfaces. 
               New protocols every week. Complex procedures to remember. Technical UIs to navigate. 
               We solved it by making blockchain operations as simple as sending a text message.
             </p>
@@ -90,7 +90,7 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold mb-3">The Ecosystem Play</h3>
               <p className="text-muted-foreground">
                 We're not just serving users - we're building the rails. Like ChatGPT plugins, 
-                every VeChain project can integrate their tools into our AI platform.
+                every Stacks project can integrate their tools into our AI platform.
               </p>
             </motion.div>
 
@@ -124,7 +124,7 @@ export default function AboutPage() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Vision</h2>
             <p className="text-xl text-muted-foreground">
-              Making VeChain so easy that anyone can become a power user
+              Making Stacks so easy that anyone can become a power user
             </p>
           </motion.div>
 
@@ -141,7 +141,7 @@ export default function AboutPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Plugin Ecosystem</h3>
                   <p className="text-muted-foreground">
-                    Like ChatGPT's plugin ecosystem, we're building the platform where every VeChain project 
+                    Like ChatGPT's plugin ecosystem, we're building the platform where every Stacks project 
                     can plug in. Users get one interface. Developers get instant distribution.
                   </p>
                 </div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">User Rewards</h3>
                   <p className="text-muted-foreground">
-                    Coming soon: Get rewarded for using VeChain. Earn tokens for platform engagement. 
+                    Coming soon: Get rewarded for using Stacks. Earn tokens for platform engagement. 
                     Make blockchain interaction profitable, not just functional.
                   </p>
                 </div>
@@ -183,7 +183,7 @@ export default function AboutPage() {
                   <h3 className="text-xl font-semibold mb-2">Accessibility Revolution</h3>
                   <p className="text-muted-foreground">
                     Making blockchain operations as easy as sending a text. Grandmother-friendly DeFi. 
-                    College student-accessible cross-chain bridges. Anyone can become a VeChain power user.
+                    College student-accessible cross-chain bridges. Anyone can become a Stacks power user.
                   </p>
                 </div>
               </div>
@@ -204,7 +204,7 @@ export default function AboutPage() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Powered by Innovation</h2>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              VeChain Terminal combines cutting-edge AI technology with deep blockchain expertise 
+              StacksAI combines cutting-edge AI technology with deep blockchain expertise 
               to deliver unparalleled insights and functionality.
             </p>
           </motion.div>
@@ -220,7 +220,7 @@ export default function AboutPage() {
               <div>
                 <h3 className="text-2xl font-bold mb-4">Advanced AI Models</h3>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Our AI understands VeChain's unique features including dual-token economics, 
+                  Our AI understands Stacks's unique features including dual-token economics, 
                   proof-of-authority consensus, and smart contract patterns. It can analyze 
                   complex transactions, identify patterns, and provide actionable insights.
                 </p>

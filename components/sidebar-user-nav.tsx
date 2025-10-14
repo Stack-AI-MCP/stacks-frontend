@@ -27,7 +27,7 @@ export function SidebarUserNav({ user }: { user: User }) {
   const isGuest = guestRegex.test(user?.id ?? "");
 
   const handleDisconnect = () => {
-    // For VeChain wallet disconnect, redirect to login
+    // For Stacks wallet disconnect, redirect to login
     router.push("/");
   };
 

@@ -38,7 +38,7 @@ const upcomingFeatures = [
   },
   {
     title: "🤖 Local AI Operation",
-    description: "Your AI, your control - run VeChain AI Terminal completely locally",
+    description: "Your AI, your control - run StacksAI completely locally",
     icon: Brain,
     category: "Privacy & Control",
     eta: "Q1 2025", 
@@ -51,7 +51,7 @@ const upcomingFeatures = [
   },
   {
     title: "🔌 Plugin Marketplace",
-    description: "The ChatGPT moment for blockchain - any VeChain project can integrate",
+    description: "The ChatGPT moment for blockchain - any Stacks project can integrate",
     icon: Globe,
     category: "Ecosystem",
     eta: "Q2 2025",
@@ -64,7 +64,7 @@ const upcomingFeatures = [
   },
   {
     title: "💰 User Rewards System",
-    description: "Get rewarded for using VeChain - make blockchain interaction profitable",
+    description: "Get rewarded for using Stacks - make blockchain interaction profitable",
     icon: Target,
     category: "Rewards",
     eta: "Q2 2025",
@@ -77,7 +77,7 @@ const upcomingFeatures = [
   },
   {
     title: "🏢 Enterprise Solutions",
-    description: "White-label AI interfaces for any VeChain project to offer their users",
+    description: "White-label AI interfaces for any Stacks project to offer their users",
     icon: Users,
     category: "B2B",
     eta: "Q3 2025",
@@ -90,7 +90,7 @@ const upcomingFeatures = [
   },
   {
     title: "🌐 Multi-Chain Expansion", 
-    description: "While VeChain remains home, expand to support the entire blockchain ecosystem",
+    description: "While Stacks remains home, expand to support the entire blockchain ecosystem",
     icon: Rocket,
     category: "Platform",
     eta: "Q3 2025",
@@ -267,7 +267,7 @@ export default function ComingSoonPage() {
               </div>
               <h3 className="font-semibold text-lg mb-2">Plugin Ecosystem</h3>
               <p className="text-muted-foreground text-sm">
-                Any VeChain project can integrate - building the ChatGPT moment for blockchain
+                Any Stacks project can integrate - building the ChatGPT moment for blockchain
               </p>
             </motion.div>
 

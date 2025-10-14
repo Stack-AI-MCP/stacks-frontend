@@ -27,7 +27,7 @@ const roadmapPhases = [
     title: "Foundation ✅ COMPLETED",
     status: "completed",
     timeframe: "SHIPPED",
-    description: "64+ AI tools for VeChain operations - we've built what everyone else is promising",
+    description: "64+ AI tools for Stacks operations - we've built what everyone else is promising",
     milestones: [
       {
         title: "64+ Live Operations",
@@ -37,7 +37,7 @@ const roadmapPhases = [
       },
       {
         title: "25+ Bridge Destinations", 
-        description: "Connect VeChain to entire crypto ecosystem via WanBridge & XFlows",
+        description: "Connect Stacks to entire crypto ecosystem via WanBridge & XFlows",
         status: "completed",
         icon: Globe
       },
@@ -60,7 +60,7 @@ const roadmapPhases = [
     title: "Plugin Ecosystem 🚧 IN PROGRESS",
     status: "in-progress",
     timeframe: "Q1 2025",
-    description: "Building the ChatGPT plugin moment for blockchain - any VeChain project can integrate",
+    description: "Building the ChatGPT plugin moment for blockchain - any Stacks project can integrate",
     milestones: [
       {
         title: "MCP Integration",
@@ -70,7 +70,7 @@ const roadmapPhases = [
       },
       {
         title: "Open Plugin Registry",
-        description: "Any VeChain project can add their tools to our AI",
+        description: "Any Stacks project can add their tools to our AI",
         status: "in-progress",
         icon: Target
       },
@@ -142,13 +142,13 @@ const roadmapPhases = [
       },
       {
         title: "Ecosystem Acceleration",
-        description: "Making VeChain accessible through reward incentives",
+        description: "Making Stacks accessible through reward incentives",
         status: "planned",
         icon: Users
       },
       {
         title: "Cross-Protocol Rewards",
-        description: "Earn from multiple VeChain projects through one interface",
+        description: "Earn from multiple Stacks projects through one interface",
         status: "planned",
         icon: Brain
       }
@@ -186,12 +186,12 @@ export default function RoadmapPage() {
             </Badge>
             
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
-              Building the VeChain Operating System
+              Building the Stacks Operating System
             </h1>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
               We've already shipped 64+ working tools. Now we're building the plugin ecosystem, 
-              desktop apps, and reward systems that will make VeChain accessible to everyone.
+              desktop apps, and reward systems that will make Stacks accessible to everyone.
             </p>
 
             <Button size="lg" asChild className="text-lg px-8 py-6">
@@ -321,7 +321,7 @@ export default function RoadmapPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild className="text-lg px-8 py-6">
                 <Link href="/chat">
-                  Try VeChain Terminal
+                  Try StacksAI
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>

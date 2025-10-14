@@ -9,7 +9,7 @@ interface LoadingScreenProps {
 }
 
 export function LoadingScreen({ 
-  message = "VeChain AI Terminal", 
+  message = "StacksAI", 
   submessage = "Initializing AI systems..." 
 }: LoadingScreenProps) {
   return (
@@ -37,8 +37,8 @@ export function LoadingScreen({
             className="absolute inset-0 flex items-center justify-center"
           >
             <Image
-              src="/images/vechain.png"
-              alt="VeChain"
+              src="/images/stacks.png"
+              alt="Stacks"
               width={32}
               height={32}
               className="rounded-lg"

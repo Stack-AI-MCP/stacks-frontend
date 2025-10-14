@@ -45,7 +45,7 @@ export default function NotFound() {
 
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
             The page you're looking for doesn't exist or has been moved. 
-            Let's get you back to exploring the VeChain AI Terminal.
+            Let's get you back to exploring the StacksAI.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -76,7 +76,7 @@ export default function NotFound() {
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-                    About VeChain AI Terminal
+                    About StacksAI
                   </Link>
                 </li>
                 <li>

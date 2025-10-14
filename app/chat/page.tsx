@@ -33,7 +33,7 @@ export default function Page() {
           <div className="absolute inset-0 rounded-full h-12 w-12 border-t-2 border-primary/30 animate-pulse"></div>
         </div>
         <div className="text-center">
-          <p className="text-lg font-medium text-primary">VeChain AI Terminal</p>
+          <p className="text-lg font-medium text-primary">StacksAI</p>
           <p className="text-sm text-muted-foreground">Initializing AI systems...</p>
         </div>
       </div>
@@ -45,10 +45,10 @@ export default function Page() {
       <div className="flex flex-col items-center justify-center min-h-screen gap-6 p-4 terminal-bg">
         <div className="text-center max-w-md">
           <h1 className="text-4xl font-bold text-theme-orange mb-4 vechain-glow">
-            Welcome to VeChain AI Terminal
+            Welcome to StacksAI
           </h1>
           <p className="text-muted-foreground mb-6 text-lg">
-            Your AI co-pilot for the VeChain blockchain. Connect your wallet to get started and explore the power of VeChain with intelligent assistance.
+            Your AI co-pilot for the Stacks blockchain. Connect your wallet to get started and explore the power of Stacks with intelligent assistance.
           </p>
           <StacksConnectButton />
         </div>

@@ -57,7 +57,7 @@ export default function Page(props: { params: Promise<{ id: string }> }) {
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
         <h2 className="text-xl font-semibold">Connect Your Wallet</h2>
         <p className="text-gray-600 dark:text-gray-400 text-center max-w-md">
-          Please connect your VeChain wallet to access this chat.
+          Please connect your Stacks wallet to access this chat.
         </p>
         <StacksConnectButton />
       </div>
@@ -66,7 +66,7 @@ export default function Page(props: { params: Promise<{ id: string }> }) {
 
   if (loading) {
     return (
-      <LoadingScreen message="VeChain AI Terminal" submessage="Loading chat session..." />
+      <LoadingScreen message="StacksAI" submessage="Loading chat session..." />
     );
   }
 

@@ -36,13 +36,13 @@ export function AppSidebar() {
               className="flex flex-row gap-1 items-center"
             >
               <Image
-                src="/images/vechain.png"
-                alt="VeChain Terminal"
+                src="/images/stacks.png"
+                alt="StacksAI"
                 width={30}
                 height={30}
               />
               <h1 className="text-lg font-semibold text-theme-orange dark:text-theme-orange">
-                VeChain Terminal
+                StacksAI
               </h1>
             </Link>
             <Tooltip>

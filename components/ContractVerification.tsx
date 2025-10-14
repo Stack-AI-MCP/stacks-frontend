@@ -81,7 +81,7 @@ export default function ContractVerification({ onVerify }: ContractVerificationP
           Contract Verification
         </CardTitle>
         <CardDescription>
-          Verify your smart contract source code on VeChain
+          Verify your smart contract source code on Stacks
         </CardDescription>
       </CardHeader>
       <CardContent>

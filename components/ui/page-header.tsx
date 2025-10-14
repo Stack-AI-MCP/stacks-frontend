@@ -17,13 +17,13 @@ export function PageHeader() {
           <NavbarLeft>
             <Link href="/" className="flex items-center gap-2 text-xl font-bold">
               <Image
-                src="/images/vechain.png"
-                alt="VeChain"
+                src="/images/stacks.png"
+                alt="Stacks"
                 width={32}
                 height={32}
                 className="rounded-lg"
               />
-              VeChain AI Terminal
+              StacksAI
             </Link>
             <Navigation />
           </NavbarLeft>
@@ -50,7 +50,7 @@ export function PageHeader() {
               <SheetContent side="right">
                 <nav className="grid gap-6 text-lg font-medium">
                   <Link href="/" className="flex items-center gap-2 text-xl font-bold">
-                    <span>VeChain AI Terminal</span>
+                    <span>StacksAI</span>
                   </Link>
                   <Link href="/about" className="text-muted-foreground hover:text-foreground">
                     About
