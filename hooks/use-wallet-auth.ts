@@ -12,12 +12,14 @@ export function useWalletAuth() {
   const [address, setAddress] = useState<string | null>(null);
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true); // Start as loading
-
-  const connected = isConnected();
+  const [connected, setConnected] = useState(false);
 
   useEffect(() => {
     const handleUserAuth = async () => {
-      if (connected) {
+      const connectionStatus = isConnected();
+      setConnected(connectionStatus);
+
+      if (connectionStatus) {
         const userData = getLocalStorage();
         const stxAddress = userData?.addresses?.stx?.[0]?.address;
 
@@ -54,7 +56,11 @@ export function useWalletAuth() {
     };
 
     handleUserAuth();
-  }, [connected]);
+
+    // Poll for connection changes every 500ms to detect wallet connection
+    const interval = setInterval(handleUserAuth, 500);
+    return () => clearInterval(interval);
+  }, []);
 
   return {
     user,
