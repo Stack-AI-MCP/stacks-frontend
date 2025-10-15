@@ -134,7 +134,7 @@ export default function PoolList({ data, isLoading }: PoolListProps) {
                   const fee = pool.fee || 0;
 
                   return (
-                    <TableRow key={pool.ticker || pool.id || index}>
+                    <TableRow key={`${pool.ticker || pool.id || 'pool'}-${index}`}>
                       <TableCell className="font-medium">
                         <div className="flex items-center gap-2">
                           <span className="uppercase">{token0}</span>
