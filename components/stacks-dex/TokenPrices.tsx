@@ -9,6 +9,12 @@ export interface TokenPricesProps {
   data: {
     success: boolean;
     data?: {
+      data?: Array<{
+        contract_id: string;
+        last_price_usd: number;
+        change24h?: number;
+        volume24h?: number;
+      }>;
       prices?: Array<{
         symbol: string;
         token?: string;
@@ -19,7 +25,8 @@ export interface TokenPricesProps {
         marketCap?: string | number;
       }>;
       protocol?: string;
-    };
+      [key: string]: any;
+    } | Array<any>;
     error?: string;
   };
   isLoading: boolean;
@@ -56,9 +63,9 @@ export default function TokenPrices({ data, isLoading }: TokenPricesProps) {
   }
 
   // Handle multiple formats:
-  // 1. Array format: data.data.prices = [{symbol, price, ...}, ...]
-  // 2. Object format: data.data = {token1: price1, token2: price2, ...}
-  // 3. Wrapped object: data.data.prices = {...}
+  // 1. ALEX API: data.data.data = [{contract_id, last_price_usd}, ...]
+  // 2. Array format: data.data.prices = [{symbol, price, ...}, ...]
+  // 3. Object format: data.data = {token1: price1, token2: price2, ...}
   let prices: Array<{
     symbol: string;
     token?: string;
@@ -71,27 +78,51 @@ export default function TokenPrices({ data, isLoading }: TokenPricesProps) {
 
   if (Array.isArray(data.data)) {
     // Direct array format
-    prices = data.data;
-  } else if (data.data.prices) {
+    prices = data.data.map((item: any) => ({
+      symbol: item.symbol || item.contract_id?.split('.').pop() || 'Unknown',
+      token: item.token || item.contract_id,
+      price: item.last_price_usd || item.price || item.priceUSD || 0,
+      priceUSD: item.last_price_usd || item.priceUSD || item.price || 0,
+      change24h: item.change24h,
+      volume24h: item.volume24h,
+    }));
+  } else if (data.data?.data && Array.isArray(data.data.data)) {
+    // ALEX API format: {data: {data: [{contract_id, last_price_usd}]}}
+    prices = data.data.data.map((item: any) => ({
+      symbol: item.contract_id === 'STX' ? 'STX' : item.contract_id?.split('.').pop() || 'Unknown',
+      token: item.contract_id,
+      price: item.last_price_usd || 0,
+      priceUSD: item.last_price_usd || 0,
+      change24h: item.change24h,
+      volume24h: item.volume24h,
+    }));
+  } else if (data.data?.prices) {
     if (Array.isArray(data.data.prices)) {
       // Array in prices property
-      prices = data.data.prices;
+      prices = data.data.prices.map((item: any) => ({
+        symbol: item.symbol || item.token || 'Unknown',
+        token: item.token,
+        price: item.price || item.priceUSD || 0,
+        priceUSD: item.priceUSD || item.price || 0,
+        change24h: item.change24h,
+        volume24h: item.volume24h,
+      }));
     } else {
       // Object in prices property - convert to array
       prices = Object.entries(data.data.prices).map(([key, value]: [string, any]) => ({
         symbol: key,
-        price: typeof value === 'object' ? value.price || value : value,
-        priceUSD: typeof value === 'object' ? value.priceUSD || value.price : value,
+        price: typeof value === 'object' ? value.price || value.priceUSD || value : value,
+        priceUSD: typeof value === 'object' ? value.priceUSD || value.price || value : value,
         change24h: typeof value === 'object' ? value.change24h : undefined,
         volume24h: typeof value === 'object' ? value.volume24h : undefined,
       }));
     }
-  } else if (typeof data.data === 'object') {
+  } else if (typeof data.data === 'object' && !Array.isArray(data.data)) {
     // Direct object format - convert to array
-    prices = Object.entries(data.data).map(([key, value]: [string, any]) => ({
+    prices = Object.entries(data.data).filter(([key]) => key !== 'protocol').map(([key, value]: [string, any]) => ({
       symbol: key,
-      price: typeof value === 'object' ? value.price || value : value,
-      priceUSD: typeof value === 'object' ? value.priceUSD || value.price : value,
+      price: typeof value === 'object' ? value.price || value.priceUSD || value : value,
+      priceUSD: typeof value === 'object' ? value.priceUSD || value.price || value : value,
       change24h: typeof value === 'object' ? value.change24h : undefined,
       volume24h: typeof value === 'object' ? value.volume24h : undefined,
     }));
