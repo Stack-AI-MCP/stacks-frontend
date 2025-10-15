@@ -43,7 +43,7 @@ export default function TokenPrices({ data, isLoading }: TokenPricesProps) {
     );
   }
 
-  if (!data.success || !data.data?.prices) {
+  if (!data.success || !data.data) {
     return (
       <Card className="w-full border-destructive">
         <CardHeader>
@@ -54,7 +54,49 @@ export default function TokenPrices({ data, isLoading }: TokenPricesProps) {
     );
   }
 
-  const { prices, protocol } = data.data;
+  // Handle multiple formats:
+  // 1. Array format: data.data.prices = [{symbol, price, ...}, ...]
+  // 2. Object format: data.data = {token1: price1, token2: price2, ...}
+  // 3. Wrapped object: data.data.prices = {...}
+  let prices: Array<{
+    symbol: string;
+    token?: string;
+    price: string | number;
+    priceUSD?: string | number;
+    change24h?: string | number;
+    volume24h?: string | number;
+    marketCap?: string | number;
+  }> = [];
+
+  if (Array.isArray(data.data)) {
+    // Direct array format
+    prices = data.data;
+  } else if (data.data.prices) {
+    if (Array.isArray(data.data.prices)) {
+      // Array in prices property
+      prices = data.data.prices;
+    } else {
+      // Object in prices property - convert to array
+      prices = Object.entries(data.data.prices).map(([key, value]: [string, any]) => ({
+        symbol: key,
+        price: typeof value === 'object' ? value.price || value : value,
+        priceUSD: typeof value === 'object' ? value.priceUSD || value.price : value,
+        change24h: typeof value === 'object' ? value.change24h : undefined,
+        volume24h: typeof value === 'object' ? value.volume24h : undefined,
+      }));
+    }
+  } else if (typeof data.data === 'object') {
+    // Direct object format - convert to array
+    prices = Object.entries(data.data).map(([key, value]: [string, any]) => ({
+      symbol: key,
+      price: typeof value === 'object' ? value.price || value : value,
+      priceUSD: typeof value === 'object' ? value.priceUSD || value.price : value,
+      change24h: typeof value === 'object' ? value.change24h : undefined,
+      volume24h: typeof value === 'object' ? value.volume24h : undefined,
+    }));
+  }
+
+  const protocol = (data.data as any)?.protocol;
 
   const formatPrice = (price: string | number): string => {
     const value = typeof price === "string" ? parseFloat(price) : price;

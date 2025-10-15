@@ -50,7 +50,7 @@ export default function PoolList({ data, isLoading }: PoolListProps) {
     );
   }
 
-  if (!data.success || !data.data?.pools) {
+  if (!data.success || !data.data) {
     return (
       <Card className="w-full border-destructive">
         <CardHeader>
@@ -61,7 +61,11 @@ export default function PoolList({ data, isLoading }: PoolListProps) {
     );
   }
 
-  const { pools, protocol, totalPools } = data.data;
+  // Handle both formats: direct array or object with pools property
+  const poolsData = Array.isArray(data.data) ? data.data : data.data.pools || [];
+  const pools = poolsData;
+  const protocol = data.data.protocol;
+  const totalPools = data.data.totalPools || pools.length;
 
   const formatNumber = (num: string | number | undefined): string => {
     if (!num) return "0";

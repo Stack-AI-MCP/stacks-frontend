@@ -12,25 +12,25 @@ export const Greeting = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{ delay: 0.5 }}
-        className="text-3xl font-semibold text-theme-orange flex flex-row gap-2 items-center"
+        className="text-3xl font-semibold bg-gradient-accent bg-clip-text text-transparent flex flex-row gap-2 items-center"
       >
         <Image
           src="/images/stacks.png"
           alt="StacksAI"
           width={40}
           height={40}
-          className=" md:w-10 md:h-10"
+          className="md:w-10 md:h-10 animate-pulse-slow"
         />
-        <h1 className=" font-semibold text-theme-orange">StacksAI</h1>
+        <h1 className="font-semibold bg-gradient-accent bg-clip-text text-transparent">StacksAI</h1>
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{ delay: 0.6 }}
-        className="text-lg md:text-xl text-zinc-500"
+        className="text-lg md:text-xl text-text-muted"
       >
-        Talk to Bitcoin
+        Talk to Bitcoin. Trade, lend, stack - through conversation.
       </motion.div>
     </div>
   );

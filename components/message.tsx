@@ -600,11 +600,14 @@ const PurePreviewMessage = ({
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
+                    // Extract address from output if available
+                    const address = (output as any)?.data?.address;
                     return (
                       <TransactionHistory
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
+                        address={address}
                       />
                     );
                   }

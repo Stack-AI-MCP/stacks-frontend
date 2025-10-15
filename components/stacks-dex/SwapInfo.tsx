@@ -14,12 +14,18 @@ export interface SwapInfoProps {
         tokenY?: string;
         tokenIn?: string;
         tokenOut?: string;
+        inputToken?: string;
+        outputToken?: string;
         amountIn?: string | number;
         amountOut?: string | number;
         minAmountOut?: string | number;
         factor?: number;
         protocol?: string;
+        dex?: string;
       };
+      details?: any; // For alternative tool formats
+      transaction?: any; // For transaction-based responses
+      protocol?: string;
       explorerUrl?: string;
     };
     error?: string;
@@ -53,13 +59,18 @@ export default function SwapInfo({ data, isLoading }: SwapInfoProps) {
     );
   }
 
-  const { swapDetails, txId, explorerUrl } = data.data;
+  // Handle multiple formats from different tools
+  // Some tools return: {transaction, details, message}
+  // Others return: {txId, swapDetails, explorerUrl}
+  const swapDetails = data.data.swapDetails || data.data.details || {};
+  const txId = data.data.txId || data.data.transaction?.txid || data.data.transaction?.txId;
+  const explorerUrl = data.data.explorerUrl;
 
-  const tokenIn = swapDetails?.tokenIn || swapDetails?.tokenX || "Unknown";
-  const tokenOut = swapDetails?.tokenOut || swapDetails?.tokenY || "Unknown";
+  const tokenIn = swapDetails?.tokenIn || swapDetails?.tokenX || swapDetails?.inputToken || "Unknown";
+  const tokenOut = swapDetails?.tokenOut || swapDetails?.tokenY || swapDetails?.outputToken || "Unknown";
   const amountIn = swapDetails?.amountIn || 0;
   const amountOut = swapDetails?.amountOut || swapDetails?.minAmountOut || 0;
-  const protocol = swapDetails?.protocol || "DEX";
+  const protocol = swapDetails?.protocol || swapDetails?.dex || data.data.protocol || "DEX";
 
   return (
     <Card className="w-full">

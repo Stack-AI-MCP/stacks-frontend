@@ -73,7 +73,7 @@ export const getTransactionHistory = tool({
           total: data.total,
           limit: data.limit,
           offset: data.offset,
-          transactions,
+          results: transactions,
         },
         message: `Found ${data.total} transactions for ${address}`,
       };

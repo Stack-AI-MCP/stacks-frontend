@@ -18,6 +18,11 @@ type FeeEstimateData = {
       middle: number;
       high: number;
     };
+    // Transformed format from getFeeEstimates tool
+    low?: number;
+    medium?: number;
+    high?: number;
+    estimatedCost?: number;
   };
   error?: string;
 };
@@ -70,6 +75,10 @@ export default function FeeEstimate({
     return `${stx.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 6 })} STX`;
   };
 
+  // Handle transformed data structure from getFeeEstimates tool
+  // Tool returns: {low, medium, high, estimatedCost}
+  const hasTransformedFees = feeData.low !== undefined && feeData.medium !== undefined && feeData.high !== undefined;
+
   return (
     <Card className="bg-zinc-900 border-zinc-700">
       <CardHeader>
@@ -80,7 +89,7 @@ export default function FeeEstimate({
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Cost Scalar Options */}
-        {feeData.cost_scalar && (
+        {(feeData.cost_scalar || hasTransformedFees) && (
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <Activity className="w-4 h-4 text-zinc-400" />
@@ -94,7 +103,7 @@ export default function FeeEstimate({
                   <span className="text-xs text-zinc-500">Slower</span>
                 </div>
                 <p className="text-2xl font-bold text-green-400">
-                  {feeData.cost_scalar.low.toLocaleString()}
+                  {(hasTransformedFees ? (feeData.low ?? 0) : (feeData.cost_scalar?.low ?? 0)).toLocaleString()}
                 </p>
                 <p className="text-xs text-zinc-500 mt-1">Cost Scalar</p>
               </div>
@@ -105,7 +114,7 @@ export default function FeeEstimate({
                   <span className="text-xs text-zinc-500">Average</span>
                 </div>
                 <p className="text-2xl font-bold text-yellow-400">
-                  {feeData.cost_scalar.middle.toLocaleString()}
+                  {(hasTransformedFees ? (feeData.medium ?? 0) : (feeData.cost_scalar?.middle ?? 0)).toLocaleString()}
                 </p>
                 <p className="text-xs text-zinc-500 mt-1">Cost Scalar</p>
               </div>
@@ -116,7 +125,7 @@ export default function FeeEstimate({
                   <span className="text-xs text-zinc-500">Faster</span>
                 </div>
                 <p className="text-2xl font-bold text-red-400">
-                  {feeData.cost_scalar.high.toLocaleString()}
+                  {(hasTransformedFees ? (feeData.high ?? 0) : (feeData.cost_scalar?.high ?? 0)).toLocaleString()}
                 </p>
                 <p className="text-xs text-zinc-500 mt-1">Cost Scalar</p>
               </div>

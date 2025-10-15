@@ -8,14 +8,27 @@ import { Button } from '@/components/ui/button';
 type AccountInfoData = {
   success: boolean;
   data?: {
-    balance: {
+    address?: string;
+    network?: string;
+    stx?: {
+      balance?: string;
+      balanceMicroStx?: string;
+      locked?: string;
+      lockedMicroStx?: string;
+      totalSent?: string;
+      totalReceived?: string;
+    };
+    nonce?: number;
+    fungibleTokens?: Record<string, any>;
+    nonFungibleTokens?: Record<string, any>;
+    // Legacy format support
+    balance?: {
       stx: string;
       locked_stx?: string;
       unlock_height?: number;
     };
     locked?: string;
     unlock_height?: number;
-    nonce: number;
     balance_proof?: string;
     nonce_proof?: string;
   };
@@ -70,19 +83,79 @@ export default function AccountInfo({
     return `${stx.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 6 })} STX`;
   };
 
-  // Handle balance which can be either a string or an object
-  const balanceSTX = typeof account.balance === 'object' && account.balance?.stx 
-    ? account.balance.stx 
-    : typeof account.balance === 'string' 
-    ? account.balance 
+  // Handle new format (from getAccountInfo tool)
+  if (account.stx) {
+    const balanceSTX = account.stx.balanceMicroStx || '0';
+    const lockedSTX = account.stx.lockedMicroStx || '0';
+
+    return (
+      <Card className="bg-zinc-900 border-zinc-700">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Wallet className="w-5 h-5 text-orange-400" />
+            Account Information
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <TrendingUp className="w-4 h-4 text-zinc-400" />
+              <span className="text-sm font-medium text-zinc-400">Balances</span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-zinc-800 p-4 rounded-lg">
+                <span className="text-sm text-zinc-400">Available Balance</span>
+                <p className="text-2xl font-bold text-orange-400 mt-1">
+                  {account.stx.balance || formatSTX(balanceSTX)}
+                </p>
+              </div>
+
+              {lockedSTX !== '0' && (
+                <div className="bg-zinc-800 p-4 rounded-lg">
+                  <span className="text-sm text-zinc-400">Locked STX</span>
+                  <p className="text-2xl font-bold text-yellow-400 mt-1">
+                    {account.stx.locked || formatSTX(lockedSTX)}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {account.nonce !== undefined && (
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Hash className="w-4 h-4 text-zinc-400" />
+                <span className="text-sm font-medium text-zinc-400">Account Nonce</span>
+              </div>
+              <div className="bg-zinc-800 p-3 rounded-lg">
+                <p className="text-lg font-mono text-white">
+                  {account.nonce}
+                </p>
+                <span className="text-xs text-zinc-500">
+                  Total transactions sent from this account
+                </span>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Handle legacy format
+  const balanceSTX = typeof account.balance === 'object' && account.balance?.stx
+    ? account.balance.stx
+    : typeof account.balance === 'string'
+    ? account.balance
     : '0';
-    
-  const lockedSTX = typeof account.balance === 'object' && account.balance?.locked_stx 
-    ? account.balance.locked_stx 
+
+  const lockedSTX = typeof account.balance === 'object' && account.balance?.locked_stx
+    ? account.balance.locked_stx
     : account.locked || '0';
-    
-  const unlockHeight = typeof account.balance === 'object' && account.balance?.unlock_height 
-    ? account.balance.unlock_height 
+
+  const unlockHeight = typeof account.balance === 'object' && account.balance?.unlock_height
+    ? account.balance.unlock_height
     : account.unlock_height;
 
   return (

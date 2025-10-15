@@ -1,7 +1,7 @@
-/* Prevent white flash on page load */
+/* Prevent white flash on page load - Stacks AI colors */
 html, body {
-    background-color: hsl(220, 13%, 8%) !important;
-    color: hsl(210, 20%, 95%) !important;
+    background-color: #0A0A0A !important;
+    color: #E0E0E0 !important;
 }
 
 @tailwind base;
@@ -65,38 +65,39 @@ html, body {
         --sidebar-ring: 217.2 91.2% 59.8%;
     }
     .dark {
-        --background: 220 13% 8%;
-        --foreground: 210 20% 95%;
-        --card: 220 13% 10%;
-        --card-foreground: 210 20% 95%;
-        --popover: 220 13% 10%;
-        --popover-foreground: 210 20% 95%;
-        --primary: 26 78% 61%;
-        --primary-foreground: 220 13% 8%;
-        --secondary: 220 13% 15%;
-        --secondary-foreground: 210 20% 95%;
-        --muted: 220 13% 15%;
-        --muted-foreground: 220 9% 60%;
-        --accent: 220 13% 18%;
-        --accent-foreground: 210 20% 95%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 210 20% 95%;
-        --border: 220 13% 18%;
-        --input: 220 13% 18%;
-        --ring: 26 78% 61%;
-        --chart-1: 26 78% 61%;
-        --chart-2: 200 80% 50%;
-        --chart-3: 160 60% 45%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-        --sidebar-background: 220 13% 6%;
-        --sidebar-foreground: 210 20% 85%;
-        --sidebar-primary: 26 78% 61%;
-        --sidebar-primary-foreground: 220 13% 8%;
-        --sidebar-accent: 220 13% 12%;
-        --sidebar-accent-foreground: 210 20% 85%;
-        --sidebar-border: 220 13% 15%;
-        --sidebar-ring: 26 78% 61%;
+        /* Stacks AI Dark Theme Colors */
+        --background: 0 0% 4%;          /* #0A0A0A */
+        --foreground: 0 0% 88%;         /* #E0E0E0 */
+        --card: 0 0% 10%;               /* #1A1A1A */
+        --card-foreground: 0 0% 88%;    /* #E0E0E0 */
+        --popover: 0 0% 10%;            /* #1A1A1A */
+        --popover-foreground: 0 0% 88%; /* #E0E0E0 */
+        --primary: 243 100% 64%;        /* #5546FF - Stacks Purple */
+        --primary-foreground: 0 0% 100%; /* #FFFFFF */
+        --secondary: 0 0% 14%;          /* #242424 */
+        --secondary-foreground: 0 0% 88%; /* #E0E0E0 */
+        --muted: 0 0% 14%;              /* #242424 */
+        --muted-foreground: 0 0% 63%;   /* #A0A0A0 */
+        --accent: 243 100% 64%;         /* #5546FF - Stacks Purple */
+        --accent-foreground: 0 0% 100%; /* #FFFFFF */
+        --destructive: 4 90% 58%;       /* #F44336 */
+        --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+        --border: 0 0% 18%;             /* #2E2E2E */
+        --input: 0 0% 18%;              /* #2E2E2E */
+        --ring: 243 100% 64%;           /* #5546FF - Stacks Purple */
+        --chart-1: 243 100% 64%;        /* Stacks Purple */
+        --chart-2: 192 100% 50%;        /* Cyan */
+        --chart-3: 23 95% 54%;          /* Bitcoin Orange */
+        --chart-4: 123 43% 54%;         /* Success Green */
+        --chart-5: 0 85% 60%;           /* Coral */
+        --sidebar-background: 0 0% 7%;  /* #121212 */
+        --sidebar-foreground: 0 0% 88%; /* #E0E0E0 */
+        --sidebar-primary: 243 100% 64%; /* Stacks Purple */
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 0 0% 10%;     /* #1A1A1A */
+        --sidebar-accent-foreground: 0 0% 88%;
+        --sidebar-border: 0 0% 18%;     /* #2E2E2E */
+        --sidebar-ring: 243 100% 64%;   /* Stacks Purple */
     }
 }
 
@@ -129,41 +130,62 @@ html, body {
     }
 }
 
-/* VeChain Terminal Branding */
-.vechain-gradient {
-    background: linear-gradient(135deg, #fc8d36 0%, #ff6b35 100%);
+/* Stacks AI Terminal Branding */
+.stacks-gradient {
+    background: linear-gradient(135deg, #5546FF 0%, #6B5FFF 100%);
 }
 
-.vechain-border {
-    border-color: #fc8d36;
+.stacks-gradient-accent {
+    background: linear-gradient(90deg, #5546FF 0%, #00D4FF 100%);
 }
 
-.vechain-glow {
-    box-shadow: 0 0 20px rgba(252, 141, 54, 0.3);
+.bitcoin-gradient {
+    background: linear-gradient(135deg, #F7931A 0%, #FC8D36 100%);
+}
+
+.stacks-border {
+    border-color: #5546FF;
+}
+
+.stacks-glow {
+    box-shadow: 0 0 20px rgba(85, 70, 255, 0.3);
 }
 
 .terminal-bg {
-    background: 
-        radial-gradient(circle at 25% 25%, rgba(252, 141, 54, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(252, 141, 54, 0.03) 0%, transparent 50%);
+    background:
+        radial-gradient(circle at 25% 25%, rgba(85, 70, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(0, 212, 255, 0.03) 0%, transparent 50%);
 }
 
-/* Scrollbar styling for dark theme */
-.dark::-webkit-scrollbar {
-    width: 8px;
+/* Scrollbar styling for dark theme - Stacks AI colors */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
 }
 
-.dark::-webkit-scrollbar-track {
-    background: hsl(220, 13%, 12%);
+::-webkit-scrollbar-track {
+    background: #121212;
 }
 
-.dark::-webkit-scrollbar-thumb {
-    background: hsl(220, 13%, 20%);
-    border-radius: 4px;
+::-webkit-scrollbar-thumb {
+    background: #2E2E2E;
+    border-radius: 5px;
 }
 
-.dark::-webkit-scrollbar-thumb:hover {
-    background: hsl(26, 78%, 61%);
+::-webkit-scrollbar-thumb:hover {
+    background: #3E3E3E;
+}
+
+/* Selection */
+::selection {
+    background-color: rgba(85, 70, 255, 0.3);
+    color: #FFFFFF;
+}
+
+/* Focus Styles */
+*:focus-visible {
+    outline: 2px solid #5546FF;
+    outline-offset: 2px;
 }
 
 .ProseMirror {

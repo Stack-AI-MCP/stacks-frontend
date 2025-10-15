@@ -8,25 +8,31 @@ import { Button } from '@/components/ui/button';
 type Transaction = {
   tx_id: string;
   tx_type: string;
-  nonce: number;
+  nonce?: number;
   fee_rate: string;
-  sender_address: string;
+  sender_address?: string;  // Hiro API format
+  sender?: string;           // MCP server format
   sponsored?: boolean;
   post_condition_mode?: string;
   block_height: number;
-  burn_block_time: number;
-  burn_block_time_iso: string;
-  canonical: boolean;
+  burn_block_time?: number;
+  burn_block_time_iso?: string;  // Hiro API format
+  block_time?: string;            // MCP server format
+  canonical?: boolean;
   tx_status: string;
   tx_result?: {
     repr: string;
   };
   events?: any[];
+  recipient?: string;
+  amount?: string;
+  memo?: string;
 };
 
 type TransactionHistoryData = {
   success: boolean;
   data?: {
+    address?: string;
     results?: Transaction[];
     limit?: number;
     offset?: number;
@@ -64,7 +70,7 @@ export default function TransactionHistory({
     );
   }
 
-  if (!data.success || !data.data?.results) {
+  if (!data.success || !data.data?.results || data.data.results.length === 0) {
     return (
       <Card className="bg-zinc-900 border-red-500/50">
         <CardHeader>
@@ -102,11 +108,31 @@ export default function TransactionHistory({
     }
   };
 
-  const getTxTypeIcon = (txType: string, senderAddr: string) => {
-    if (senderAddr.toLowerCase() === address?.toLowerCase()) {
+  const getTxTypeIcon = (txType: string, senderAddr?: string) => {
+    if (senderAddr && address && senderAddr.toLowerCase() === address?.toLowerCase()) {
       return <ArrowUpRight className="w-4 h-4 text-red-400" />;
     }
     return <ArrowDownLeft className="w-4 h-4 text-green-400" />;
+  };
+
+  const getTimestamp = (tx: Transaction): string => {
+    // Try burn_block_time_iso first (Hiro API format)
+    if (tx.burn_block_time_iso) {
+      return new Date(tx.burn_block_time_iso).toLocaleString();
+    }
+    // Try block_time (MCP server format)
+    if (tx.block_time) {
+      return new Date(tx.block_time).toLocaleString();
+    }
+    // Fallback to burn_block_time as Unix timestamp
+    if (tx.burn_block_time) {
+      return new Date(tx.burn_block_time * 1000).toLocaleString();
+    }
+    return 'Unknown';
+  };
+
+  const getSenderAddress = (tx: Transaction): string => {
+    return tx.sender_address || tx.sender || 'Unknown';
   };
 
   return (
@@ -114,7 +140,7 @@ export default function TransactionHistory({
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span>Transaction History</span>
-          {data.data.total && (
+          {data.data?.total && (
             <span className="text-sm font-normal text-zinc-400">
               {data.data.total} total
             </span>
@@ -123,14 +149,16 @@ export default function TransactionHistory({
       </CardHeader>
       <CardContent>
         <div className="space-y-3 max-h-96 overflow-y-auto">
-          {transactions.map((tx) => (
+          {transactions.map((tx) => {
+            const senderAddr = getSenderAddress(tx);
+            return (
             <div
               key={tx.tx_id}
               className="bg-zinc-800 p-4 rounded-lg hover:bg-zinc-750 transition-colors"
             >
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  {getTxTypeIcon(tx.tx_type, tx.sender_address)}
+                  {getTxTypeIcon(tx.tx_type, senderAddr)}
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-medium text-white capitalize">
@@ -167,9 +195,25 @@ export default function TransactionHistory({
                 <div className="flex items-center justify-between">
                   <span className="text-zinc-400">From:</span>
                   <code className="text-xs font-mono text-white">
-                    {shortenAddress(tx.sender_address)}
+                    {shortenAddress(senderAddr)}
                   </code>
                 </div>
+
+                {tx.recipient && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-zinc-400">To:</span>
+                    <code className="text-xs font-mono text-white">
+                      {shortenAddress(tx.recipient)}
+                    </code>
+                  </div>
+                )}
+
+                {tx.amount && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-zinc-400">Amount:</span>
+                    <span className="text-white">{tx.amount}</span>
+                  </div>
+                )}
 
                 <div className="flex items-center justify-between">
                   <span className="text-zinc-400">Fee:</span>
@@ -179,7 +223,7 @@ export default function TransactionHistory({
                 <div className="flex items-center justify-between">
                   <span className="text-zinc-400">Time:</span>
                   <span className="text-white text-xs">
-                    {new Date(tx.burn_block_time_iso).toLocaleString()}
+                    {getTimestamp(tx)}
                   </span>
                 </div>
 
@@ -197,10 +241,11 @@ export default function TransactionHistory({
                 )}
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
 
-        {data.data.total && data.data.total > transactions.length && (
+        {data.data?.total && data.data.total > transactions.length && (
           <div className="mt-4 pt-4 border-t border-zinc-700 text-center">
             <p className="text-xs text-zinc-400">
               Showing {transactions.length} of {data.data.total} transactions
