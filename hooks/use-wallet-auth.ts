@@ -11,60 +11,71 @@ import type { User } from "@/lib/db/schema";
 export function useWalletAuth() {
   const [address, setAddress] = useState<string | null>(null);
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true); // Start as loading
-  const [connected, setConnected] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const handleUserAuth = async () => {
+    const checkConnection = () => {
       const connectionStatus = isConnected();
-      setConnected(connectionStatus);
 
       if (connectionStatus) {
         const userData = getLocalStorage();
         const stxAddress = userData?.addresses?.stx?.[0]?.address;
 
-        if (stxAddress) {
+        if (stxAddress && stxAddress !== address) {
           setAddress(stxAddress);
-          setIsLoading(true);
-
-          try {
-            // Register/authenticate user with backend
-            const response = await fetch('/api/users/register', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ address: stxAddress })
-            });
-
-            if (response.ok) {
-              const userData = await response.json();
-              setUser(userData);
-            }
-          } catch (error) {
-            console.error("Failed to authenticate user:", error);
-            setUser(null);
-          } finally {
-            setIsLoading(false);
-          }
-        } else {
-          setIsLoading(false);
         }
       } else {
-        setAddress(null);
-        setUser(null);
+        if (address !== null) {
+          setAddress(null);
+          setUser(null);
+        }
         setIsLoading(false);
       }
     };
 
-    handleUserAuth();
+    // Check on mount
+    checkConnection();
 
-    // Poll for connection changes every 500ms to detect wallet connection
-    const interval = setInterval(handleUserAuth, 500);
+    // Poll for connection changes to detect wallet connection
+    const interval = setInterval(checkConnection, 500);
     return () => clearInterval(interval);
-  }, []);
+  }, [address]);
+
+  // Separate effect to handle user authentication when address changes
+  useEffect(() => {
+    if (!address) {
+      setIsLoading(false);
+      return;
+    }
+
+    const authenticateUser = async () => {
+      setIsLoading(true);
+      try {
+        // Register/authenticate user with backend
+        const response = await fetch('/api/users/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ address })
+        });
+
+        if (response.ok) {
+          const userData = await response.json();
+          setUser(userData);
+        }
+      } catch (error) {
+        console.error("Failed to authenticate user:", error);
+        setUser(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    authenticateUser();
+  }, [address]);
 
   return {
     user,
-    isConnected: connected,
+    isConnected: !!address,
     isLoading,
     address,
   };

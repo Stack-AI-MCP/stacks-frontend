@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { formatPrice, formatVolume, formatChange } from "@/lib/utils/format";
 
 export interface TokenPricesProps {
   data: {
@@ -97,30 +98,6 @@ export default function TokenPrices({ data, isLoading }: TokenPricesProps) {
   }
 
   const protocol = (data.data as any)?.protocol;
-
-  const formatPrice = (price: string | number): string => {
-    const value = typeof price === "string" ? parseFloat(price) : price;
-    if (value >= 1) return `$${value.toFixed(2)}`;
-    if (value >= 0.01) return `$${value.toFixed(4)}`;
-    return `$${value.toFixed(8)}`;
-  };
-
-  const formatVolume = (volume: string | number | undefined): string => {
-    if (!volume) return "$0";
-    const value = typeof volume === "string" ? parseFloat(volume) : volume;
-    if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(2)}M`;
-    if (value >= 1_000) return `$${(value / 1_000).toFixed(2)}K`;
-    return `$${value.toFixed(2)}`;
-  };
-
-  const formatChange = (change: string | number | undefined) => {
-    if (!change) return { value: "0.00%", trend: "neutral" as const };
-    const value = typeof change === "string" ? parseFloat(change) : change;
-    return {
-      value: `${value >= 0 ? "+" : ""}${value.toFixed(2)}%`,
-      trend: value > 0 ? "up" : value < 0 ? "down" : "neutral" as const
-    };
-  };
 
   return (
     <Card className="w-full">
