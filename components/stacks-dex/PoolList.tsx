@@ -15,6 +15,9 @@ export interface PoolListProps {
         token1?: string;
         tokenX?: string;
         tokenY?: string;
+        base?: string;
+        target?: string;
+        ticker?: string;
         reserve0?: string | number;
         reserve1?: string | number;
         reserveX?: string | number;
@@ -26,7 +29,11 @@ export interface PoolListProps {
       }>;
       protocol?: string;
       totalPools?: number;
-    };
+    } | Array<{
+      ticker: string;
+      base: string;
+      target: string;
+    }>;
     error?: string;
   };
   isLoading: boolean;
@@ -62,11 +69,26 @@ export default function PoolList({ data, isLoading }: PoolListProps) {
     );
   }
 
-  // Handle both formats: direct array or object with pools property
-  const poolsData = Array.isArray(data.data) ? data.data : data.data.pools || [];
-  const pools = poolsData;
-  const protocol = data.data.protocol;
-  const totalPools = data.data.totalPools || pools.length;
+  // Handle multiple formats:
+  // 1. Direct array (tickers): [{ticker, base, target}, ...]
+  // 2. Object with pools: {pools: [...], protocol, totalPools}
+  let pools: Array<any> = [];
+  let protocol: string | undefined;
+  let totalPools: number;
+
+  if (Array.isArray(data.data)) {
+    // Direct array format (tickers)
+    pools = data.data;
+    totalPools = pools.length;
+  } else if (data.data?.pools) {
+    // Object with pools property
+    pools = data.data.pools;
+    protocol = data.data.protocol;
+    totalPools = data.data.totalPools || pools.length;
+  } else {
+    pools = [];
+    totalPools = 0;
+  }
 
   return (
     <Card className="w-full">
@@ -103,33 +125,34 @@ export default function PoolList({ data, isLoading }: PoolListProps) {
                 </TableRow>
               ) : (
                 pools.map((pool, index) => {
-                  const token0 = pool.token0 || pool.tokenX || "Token0";
-                  const token1 = pool.token1 || pool.tokenY || "Token1";
+                  // Handle both pool format and ticker format
+                  const token0 = pool.base || pool.token0 || pool.tokenX || "Token0";
+                  const token1 = pool.target || pool.token1 || pool.tokenY || "Token1";
                   const tvl = pool.tvl || 0;
                   const volume = pool.volume24h || 0;
                   const apy = pool.apy || 0;
                   const fee = pool.fee || 0;
 
                   return (
-                    <TableRow key={pool.id || index}>
+                    <TableRow key={pool.ticker || pool.id || index}>
                       <TableCell className="font-medium">
                         <div className="flex items-center gap-2">
-                          <span>{token0}</span>
+                          <span className="uppercase">{token0}</span>
                           <span className="text-muted-foreground">/</span>
-                          <span>{token1}</span>
+                          <span className="uppercase">{token1}</span>
                         </div>
                       </TableCell>
                       <TableCell className="text-right font-mono">
-                        {formatVolume(tvl)}
+                        {tvl > 0 ? formatVolume(tvl) : "-"}
                       </TableCell>
                       <TableCell className="text-right font-mono">
-                        {formatVolume(volume)}
+                        {volume > 0 ? formatVolume(volume) : "-"}
                       </TableCell>
                       <TableCell className="text-right font-mono text-green-600">
-                        {safeToFixed(apy, 2)}%
+                        {apy > 0 ? `${safeToFixed(apy, 2)}%` : "-"}
                       </TableCell>
                       <TableCell className="text-right font-mono text-muted-foreground">
-                        {safeToFixed(fee, 2)}%
+                        {fee > 0 ? `${safeToFixed(fee, 2)}%` : "-"}
                       </TableCell>
                     </TableRow>
                   );
