@@ -143,7 +143,7 @@ export default function TokenPrices({ data, isLoading }: TokenPricesProps) {
       </CardHeader>
 
       <CardContent>
-        <div className="space-y-3">
+        <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2">
           {prices.length === 0 ? (
             <div className="text-center text-muted-foreground py-8">
               No token prices available

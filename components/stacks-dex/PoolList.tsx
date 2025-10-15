@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { formatVolume, safeToFixed } from "@/lib/utils/format";
 
 export interface PoolListProps {
   data: {
@@ -67,14 +68,6 @@ export default function PoolList({ data, isLoading }: PoolListProps) {
   const protocol = data.data.protocol;
   const totalPools = data.data.totalPools || pools.length;
 
-  const formatNumber = (num: string | number | undefined): string => {
-    if (!num) return "0";
-    const value = typeof num === "string" ? parseFloat(num) : num;
-    if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(2)}M`;
-    if (value >= 1_000) return `$${(value / 1_000).toFixed(2)}K`;
-    return `$${value.toFixed(2)}`;
-  };
-
   return (
     <Card className="w-full">
       <CardHeader>
@@ -90,7 +83,7 @@ export default function PoolList({ data, isLoading }: PoolListProps) {
       </CardHeader>
 
       <CardContent>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto max-h-[400px] overflow-y-auto">
           <Table>
             <TableHeader>
               <TableRow>
@@ -127,16 +120,16 @@ export default function PoolList({ data, isLoading }: PoolListProps) {
                         </div>
                       </TableCell>
                       <TableCell className="text-right font-mono">
-                        {formatNumber(tvl)}
+                        {formatVolume(tvl)}
                       </TableCell>
                       <TableCell className="text-right font-mono">
-                        {formatNumber(volume)}
+                        {formatVolume(volume)}
                       </TableCell>
                       <TableCell className="text-right font-mono text-green-600">
-                        {typeof apy === "number" ? `${apy.toFixed(2)}%` : apy}
+                        {safeToFixed(apy, 2)}%
                       </TableCell>
                       <TableCell className="text-right font-mono text-muted-foreground">
-                        {typeof fee === "number" ? `${fee}%` : fee}
+                        {safeToFixed(fee, 2)}%
                       </TableCell>
                     </TableRow>
                   );
