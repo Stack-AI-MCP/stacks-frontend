@@ -718,7 +718,7 @@ export default function LandingPage() {
           </div>
 
           <div className="border-t border-primary/10 mt-12 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 StacksAI. All rights reserved. Built with Bitcoin security.</p>
+            <p>&copy; 2025 StacksAI. All rights reserved. Built with Bitcoin security.</p>
           </div>
         </div>
       </footer>

@@ -27,12 +27,11 @@ export default function AboutPage() {
             </Badge>
             
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
-              The Interface for the <br /> Post-Website Era
+              The Voice of <br /> Bitcoin DeFi
             </h1>
-            
+
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-              Remember when we used to open apps for everything? Now we just talk to AI. 
-              We're bringing this same revolution to blockchain - making Stacks operations as simple as conversation.
+              Bitcoin DeFi shouldn&apos;t require navigating dozens of interfaces. StacksAI brings natural language to the entire Bitcoin Layer 2 ecosystem - making DeFi operations as simple as sending a text message.
             </p>
 
             <Button size="lg" asChild className="text-lg px-8 py-6">
@@ -55,11 +54,12 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">The Problem We're Solving</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">The Problem We&apos;re Solving</h2>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Stacks's ecosystem is exploding with incredible innovation - but users are drowning in interfaces. 
-              New protocols every week. Complex procedures to remember. Technical UIs to navigate. 
-              We solved it by making blockchain operations as simple as sending a text message.
+              Bitcoin&apos;s Layer 2 ecosystem is exploding with DeFi innovation - but users are drowning in complexity.
+              8+ major protocols (ALEX, Velar, BitFlow, Arkadiko, Charisma, Zest, Granite, STX Core).
+              Each with their own interface, terminology, and workflows.
+              StacksAI solves this by translating natural language into Bitcoin DeFi actions across all protocols.
             </p>
           </motion.div>
 
@@ -72,10 +72,10 @@ export default function AboutPage() {
               className="p-8 border rounded-xl bg-card/50 backdrop-blur-sm text-center"
             >
               <Brain className="h-12 w-12 text-primary mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold mb-3">64+ Live Operations</h3>
+              <h3 className="text-xl font-semibold mb-3">144+ Live Tools</h3>
               <p className="text-muted-foreground">
-                Not promises - working tools. Bridge to 25+ chains, stake StarGate nodes, track carbon footprint, 
-                manage NFTs. We've built what everyone else is promising.
+                Not promises - working integrations. Swap on ALEX/Velar/BitFlow, lend on Arkadiko/Granite,
+                stack STX for BTC yields, bridge sBTC, manage NFTs, check mempool fees. Every major Stacks protocol, one interface.
               </p>
             </motion.div>
 
@@ -87,10 +87,10 @@ export default function AboutPage() {
               className="p-8 border rounded-xl bg-card/50 backdrop-blur-sm text-center"
             >
               <Users className="h-12 w-12 text-primary mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold mb-3">The Ecosystem Play</h3>
+              <h3 className="text-xl font-semibold mb-3">MCP-Powered Architecture</h3>
               <p className="text-muted-foreground">
-                We're not just serving users - we're building the rails. Like ChatGPT plugins, 
-                every Stacks project can integrate their tools into our AI platform.
+                Built on Model Context Protocol - the emerging standard for AI-tool integration.
+                Like ChatGPT plugins for Bitcoin DeFi. Any Stacks protocol can plug in, giving them instant access to conversational users.
               </p>
             </motion.div>
 
@@ -102,10 +102,10 @@ export default function AboutPage() {
               className="p-8 border rounded-xl bg-card/50 backdrop-blur-sm text-center"
             >
               <Globe className="h-12 w-12 text-primary mb-4 mx-auto" />
-              <h3 className="text-xl font-semibold mb-3">Coming Soon</h3>
+              <h3 className="text-xl font-semibold mb-3">Bitcoin-Native DeFi</h3>
               <p className="text-muted-foreground">
-                Desktop app with local AI operation. No OpenAI required. User rewards for engagement. 
-                The future where blockchain is as easy as talking.
+                Built on Stacks, the Bitcoin Layer 2 with Proof-of-Transfer consensus.
+                Every transaction settles with Bitcoin&apos;s security. Access sBTC bridge, stack STX for BTC yields, and more.
               </p>
             </motion.div>
           </div>
@@ -124,7 +124,7 @@ export default function AboutPage() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Vision</h2>
             <p className="text-xl text-muted-foreground">
-              Making Stacks so easy that anyone can become a power user
+              Making Bitcoin DeFi so easy that anyone can become a power user
             </p>
           </motion.div>
 
@@ -139,10 +139,10 @@ export default function AboutPage() {
               <div className="flex items-start gap-4">
                 <Shield className="h-8 w-8 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Plugin Ecosystem</h3>
+                  <h3 className="text-xl font-semibold mb-2">Composable Protocol Ecosystem</h3>
                   <p className="text-muted-foreground">
-                    Like ChatGPT's plugin ecosystem, we're building the platform where every Stacks project 
-                    can plug in. Users get one interface. Developers get instant distribution.
+                    Like ChatGPT&apos;s plugin ecosystem for Bitcoin. Every Stacks protocol can integrate their tools through MCP.
+                    Users get one unified interface. Protocols get instant distribution to conversational users.
                   </p>
                 </div>
               </div>
@@ -150,10 +150,10 @@ export default function AboutPage() {
               <div className="flex items-start gap-4">
                 <Zap className="h-8 w-8 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Local Operation</h3>
+                  <h3 className="text-xl font-semibold mb-2">Privacy-First Architecture</h3>
                   <p className="text-muted-foreground">
-                    Coming soon: Desktop app with local AI operation using Ollama. No OpenAI required. 
-                    Complete privacy and control over your blockchain operations.
+                    Non-custodial by design. We never hold your keys, tokens, or private data.
+                    Connect Leather or Xverse wallets, approve transactions yourself, and maintain complete sovereignty over your Bitcoin assets.
                   </p>
                 </div>
               </div>
@@ -169,10 +169,10 @@ export default function AboutPage() {
               <div className="flex items-start gap-4">
                 <Brain className="h-8 w-8 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">User Rewards</h3>
+                  <h3 className="text-xl font-semibold mb-2">Intelligent Protocol Selection</h3>
                   <p className="text-muted-foreground">
-                    Coming soon: Get rewarded for using Stacks. Earn tokens for platform engagement. 
-                    Make blockchain interaction profitable, not just functional.
+                    Not just keyword matching - real intelligence. StacksAI compares rates across DEXs,
+                    calculates optimal swap routes, analyzes lending APYs, and explains complex DeFi concepts in plain English.
                   </p>
                 </div>
               </div>
@@ -180,10 +180,10 @@ export default function AboutPage() {
               <div className="flex items-start gap-4">
                 <Users className="h-8 w-8 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Accessibility Revolution</h3>
+                  <h3 className="text-xl font-semibold mb-2">Democratizing Bitcoin DeFi</h3>
                   <p className="text-muted-foreground">
-                    Making blockchain operations as easy as sending a text. Grandmother-friendly DeFi. 
-                    College student-accessible cross-chain bridges. Anyone can become a Stacks power user.
+                    Making Bitcoin DeFi accessible to everyone. No need to learn Clarity smart contracts,
+                    understand protocol mechanics, or navigate complex UIs. Just describe what you want in plain English.
                   </p>
                 </div>
               </div>
@@ -204,8 +204,8 @@ export default function AboutPage() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Powered by Innovation</h2>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              StacksAI combines cutting-edge AI technology with deep blockchain expertise 
-              to deliver unparalleled insights and functionality.
+              StacksAI combines cutting-edge AI models with comprehensive Bitcoin L2 integrations
+              to deliver the most advanced conversational DeFi interface on Bitcoin.
             </p>
           </motion.div>
 
@@ -220,22 +220,22 @@ export default function AboutPage() {
               <div>
                 <h3 className="text-2xl font-bold mb-4">Advanced AI Models</h3>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Our AI understands Stacks's unique features including dual-token economics, 
-                  proof-of-authority consensus, and smart contract patterns. It can analyze 
-                  complex transactions, identify patterns, and provide actionable insights.
+                  Our AI understands Bitcoin L2 DeFi including Stacks&apos; Proof-of-Transfer consensus,
+                  Clarity smart contracts, sBTC bridge mechanics, and stacking rewards.
+                  It analyzes transactions across 8+ protocols and provides intelligent routing recommendations.
                 </p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    Natural language processing for blockchain queries
+                    Natural language to Bitcoin DeFi operations
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    Smart contract analysis and verification
+                    Multi-protocol rate comparison and routing
                   </li>
                   <li className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    Real-time data processing and insights
+                    Real-time mempool and transaction analysis
                   </li>
                 </ul>
               </div>
@@ -264,11 +264,11 @@ export default function AboutPage() {
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to stop visiting websites?
+              Ready to Experience Bitcoin DeFi?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Experience the post-website era today. 64+ blockchain operations through simple conversation. 
-              We've built what everyone else is promising.
+              Stop navigating complex interfaces. 144+ tools across 8+ protocols through simple conversation.
+              The most comprehensive Bitcoin L2 DeFi interface ever built.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild className="text-lg px-8 py-6">
