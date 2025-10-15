@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { TrendingUp, TrendingDown, Minus, ExternalLink } from "lucide-react";
 import { formatPrice, formatVolume, formatChange } from "@/lib/utils/format";
 
 export interface TokenPricesProps {
@@ -130,26 +130,33 @@ export default function TokenPrices({ data, isLoading }: TokenPricesProps) {
 
   const protocol = (data.data as any)?.protocol;
 
+  // Sort by price (highest to lowest)
+  const sortedPrices = [...prices].sort((a, b) => {
+    const priceA = typeof a.priceUSD === 'string' ? parseFloat(a.priceUSD) : (a.priceUSD || 0);
+    const priceB = typeof b.priceUSD === 'string' ? parseFloat(b.priceUSD) : (b.priceUSD || 0);
+    return priceB - priceA;
+  });
+
   return (
     <Card className="w-full">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg">Token Prices</CardTitle>
-          <Badge variant="secondary">{prices.length} tokens</Badge>
+          <Badge variant="secondary">{sortedPrices.length} tokens</Badge>
         </div>
         {protocol && (
-          <CardDescription>Current prices on {protocol}</CardDescription>
+          <CardDescription>Current prices on {protocol} (sorted by price)</CardDescription>
         )}
       </CardHeader>
 
       <CardContent>
         <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2">
-          {prices.length === 0 ? (
+          {sortedPrices.length === 0 ? (
             <div className="text-center text-muted-foreground py-8">
               No token prices available
             </div>
           ) : (
-            prices.map((token, index) => {
+            sortedPrices.map((token, index) => {
               const price = formatPrice(token.priceUSD || token.price);
               const change = formatChange(token.change24h);
               const volume = formatVolume(token.volume24h);
@@ -159,12 +166,23 @@ export default function TokenPrices({ data, isLoading }: TokenPricesProps) {
                   key={`${token.symbol}-${index}`}
                   className="flex items-center justify-between p-4 bg-muted rounded-lg hover:bg-muted/80 transition-colors"
                 >
-                  <div className="flex flex-col">
+                  <div className="flex flex-col gap-1">
                     <span className="font-semibold text-lg">{token.symbol}</span>
                     {token.token && (
-                      <span className="text-xs text-muted-foreground font-mono truncate max-w-[200px]">
-                        {token.token}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-muted-foreground font-mono truncate max-w-[200px]">
+                          {token.token}
+                        </span>
+                        <a
+                          href={`https://explorer.hiro.so/address/${token.token}?chain=mainnet`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:text-primary/80 transition-colors"
+                          title="View contract in explorer"
+                        >
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      </div>
                     )}
                   </div>
 
