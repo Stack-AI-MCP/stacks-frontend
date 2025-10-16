@@ -70,12 +70,12 @@ import CharismaOrderDetails from "@/components/stacks-dex/charisma/CharismaOrder
 import CharismaApiKeys from "@/components/stacks-dex/charisma/CharismaApiKeys";
 
 // Granite Lending Components
-import GraniteBorrow from "@/components/stacks-lending/granite/GraniteBorrow";
-import GraniteRepay from "@/components/stacks-lending/granite/GraniteRepay";
-import GraniteAddCollateral from "@/components/stacks-lending/granite/GraniteAddCollateral";
-import GraniteDeposit from "@/components/stacks-lending/granite/GraniteDeposit";
-import GraniteWithdraw from "@/components/stacks-lending/granite/GraniteWithdraw";
-import GraniteStake from "@/components/stacks-lending/granite/GraniteStake";
+import GraniteBorrow from "@/components/stacks-dex/granite/GraniteBorrow";
+import GraniteRepay from "@/components/stacks-dex/granite/GraniteRepay";
+import GraniteAddCollateral from "@/components/stacks-dex/granite/GraniteAddCollateral";
+import GraniteDeposit from "@/components/stacks-dex/granite/GraniteDeposit";
+import GraniteWithdraw from "@/components/stacks-dex/granite/GraniteWithdraw";
+import GraniteStake from "@/components/stacks-dex/granite/GraniteStake";
 
 // Stacks Lending Components
 import LendingInfo from "@/components/stacks-lending/LendingInfo";
