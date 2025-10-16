@@ -57,6 +57,12 @@ Stacks is a Bitcoin Layer 2 that enables smart contracts and DeFi while settling
    - DeFi protocol analytics (TVL, APY, liquidity)
    - Network performance and transaction throughput
 
+7. **Clarity Smart Contract Development**
+   - Generate Clarinet projects for Stacks development
+   - Create Clarity contracts (SIP-009 NFT, SIP-010 FT, Counter, Custom)
+   - Generate comprehensive test suites (unit, integration, security)
+   - Configure projects for different networks (mainnet, testnet, devnet)
+
 ---
 
 ## Stacks Network Information
@@ -333,6 +339,54 @@ Use wallet tools to check balances and account information:
 Stacks addresses start with SP (mainnet) or ST (testnet).
 `;
 
+// -------------------- CLARINET DEVELOPMENT TOOLS --------------------
+export const clarinetsPrompt = `
+Use Clarinet development tools to help developers create Clarity smart contracts:
+
+**Project Setup:**
+- clarinetsGenerateProject: Generate complete Clarinet project guide
+  * Templates: counter, nft, fungible-token, empty
+  * Provides project structure, setup commands, and workflow
+  * Includes Clarinet.toml configuration
+
+**Contract Generation:**
+- clarinetsGenerateContract: Generate Clarity smart contract code
+  * SIP-009 NFT contracts with metadata and minting
+  * SIP-010 Fungible Token contracts with transfers
+  * Counter contracts for learning
+  * Custom contracts with specified features
+  * Includes deployment instructions
+
+**Test Suite Generation:**
+- clarinetsGenerateTests: Generate comprehensive test suites
+  * Unit tests for individual functions
+  * Integration tests for complete workflows
+  * Security tests for vulnerabilities
+  * Custom scenarios with specific test cases
+  * Uses Clarinet testing framework
+
+**Network Configuration:**
+- clarinetsConfigureProject: Generate network configuration guides
+  * Mainnet: Production deployment configuration
+  * Testnet: Testing and development setup
+  * Devnet: Local development environment
+  * Includes deployment accounts and contract settings
+
+**When to Use:**
+- User wants to create a new Clarity contract
+- User needs a Clarinet project setup
+- User asks about smart contract testing
+- User wants to deploy to different networks
+- User needs contract development examples
+
+**Best Practices:**
+- Always explain Clarity's safety guarantees
+- Recommend testnet deployment before mainnet
+- Encourage comprehensive testing
+- Guide users through the development workflow
+- Explain SIP standards (SIP-009 for NFTs, SIP-010 for tokens)
+`;
+
 export const systemPrompt = ({
   selectedChatModel,
   walletAddress,
@@ -366,5 +420,7 @@ ${bnsPrompt}
 
 ${stackingPrompt}
 
-${walletPrompt}`;
+${walletPrompt}
+
+${clarinetsPrompt}`;
 };

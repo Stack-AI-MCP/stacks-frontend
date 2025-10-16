@@ -237,6 +237,12 @@ sequenceDiagram
 - Contract interaction and event tracking
 - Address balance history
 
+#### Clarity Smart Contract Development
+- Generate complete Clarinet project setups with templates
+- Create SIP-009 NFT and SIP-010 FT contracts
+- Generate comprehensive test suites (unit, integration, security)
+- Configure projects for different networks (mainnet, testnet, devnet)
+
 ## Protocol Integrations
 
 ### **ALEX Protocol** (11 tools)
@@ -259,6 +265,9 @@ Multi-collateral lending market with isolated risk pools. Supports various Stack
 
 ### **Bitcoin Name Service** (BNS)
 Decentralized naming system for Stacks addresses using .btc domains. Fully integrated for human-readable addresses.
+
+### **Clarinet Development Tools** (4 tools)
+Smart contract development toolkit for Clarity developers. Generate projects, contracts, tests, and network configurations for Stacks blockchain development.
 
 ## Technology Stack
 
@@ -363,6 +372,14 @@ Decentralized naming system for Stacks addresses using .btc domains. Fully integ
 "What SIP-010 tokens do I hold?"
 ```
 
+### Smart Contract Development
+```
+"Create a new Clarinet project for an NFT marketplace"
+"Generate a SIP-010 fungible token contract called MyToken"
+"Generate unit tests for my counter contract"
+"Show me how to configure for testnet deployment"
+```
+
 ## Component Architecture
 
 ### UI Component Structure
@@ -381,9 +398,10 @@ graph TB
         D5[📜 Contract Components<br/>ContractInfo, EventList]
         D6[🏦 Stacking Components<br/>StackingInfo, CycleInfo]
         D7[⛓️ Core Components<br/>BlockchainInfo, FeeEstimate]
+        D8[🛠️ Development Components<br/>ClarinetsGuide, ClarityContract, ContractTests]
     end
 
-    M --> D1 & D2 & D3 & D4 & D5 & D6 & D7
+    M --> D1 & D2 & D3 & D4 & D5 & D6 & D7 & D8
 
     style M fill:#fc8d36
 ```
@@ -432,7 +450,7 @@ MIT License - see LICENSE file for complete terms and conditions.
 
 ## Summary
 
-**Stacks AI Frontend** is the user-facing component of the Stacks AI project, providing a natural language chat interface to interact with Bitcoin DeFi on Stacks Layer 2. Built with Next.js 15, React 19, and the Vercel AI SDK, it integrates with the Stacks AI MCP Server to expose 144+ DeFi operations through conversational AI.
+**Stacks AI Frontend** is the user-facing component of the Stacks AI project, providing a natural language chat interface to interact with Bitcoin DeFi on Stacks Layer 2. Built with Next.js 15, React 19, and the Vercel AI SDK, it integrates with the Stacks AI MCP Server to expose 148+ DeFi operations through conversational AI.
 
 The frontend implements real-time AI streaming, Stacks wallet integration (Leather/Xverse), and a comprehensive component library for displaying DeFi data. It follows modern React patterns with TypeScript type safety and responsive design.
 
