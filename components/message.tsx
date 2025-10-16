@@ -119,6 +119,12 @@ import ContractDeployment from "@/components/stacks-contracts/ContractDeployment
 import MessageSignature from "@/components/stacks-contracts/MessageSignature";
 import StructuredMessageSignature from "@/components/stacks-contracts/StructuredMessageSignature";
 
+// Clarinet Development Components
+import ClarinetsGuide from "@/components/stacks-contracts/ClarinetsGuide";
+import ClarityContract from "@/components/stacks-contracts/ClarityContract";
+import ContractTests from "@/components/stacks-contracts/ContractTests";
+import ProjectConfig from "@/components/stacks-contracts/ProjectConfig";
+
 // Stacks Event Components
 import EventList from "@/components/stacks-events/EventList";
 
@@ -1995,6 +2001,100 @@ const PurePreviewMessage = ({
                     const { output } = part;
                     return (
                       <StructuredMessageSignature
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= CLARINET DEVELOPMENT TOOLS =========================
+
+              if (type === "tool-clarinetsGenerateProject") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Generating Clarinet project guide..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ClarinetsGuide
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-clarinetsGenerateContract") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Generating Clarity contract..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ClarityContract
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-clarinetsGenerateTests") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Generating contract tests..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ContractTests
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-clarinetsConfigureProject") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Generating project configuration..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ProjectConfig
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
