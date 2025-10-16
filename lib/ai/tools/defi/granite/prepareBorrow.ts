@@ -26,7 +26,6 @@ export const granitePrepareBorrow = tool({
           ],
           network,
         },
-        message: "Transaction prepared. Please confirm in your wallet.",
       };
     } catch (error: any) {
       console.error("Error preparing Granite borrow:", error);

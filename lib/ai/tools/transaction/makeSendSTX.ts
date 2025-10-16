@@ -41,7 +41,6 @@ export const makeSendSTX = tool({
       return {
         success: true,
         transaction,
-        message: `Transaction prepared: Send ${amountFloat} STX from ${from} to ${recipient}. Please confirm in your wallet.`,
       };
     } catch (error: any) {
       console.error("Error building STX transfer:", error);
