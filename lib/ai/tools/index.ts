@@ -105,3 +105,9 @@ export { getStxTransferEvents } from './events/getStxTransferEvents';
 export { getPoolDelegations } from './stackpool/getPoolDelegations';
 export { getBurnchainRewardSlots } from './stackpool/getBurnchainRewardSlots';
 export { getBurnchainRewards } from './stackpool/getBurnchainRewards';
+
+// ==================== CLARINET DEVELOPMENT TOOLS ====================
+export { clarinetsGenerateProject } from './development/clarinet';
+export { clarinetsGenerateContract } from './development/clarinet';
+export { clarinetsGenerateTests } from './development/clarinet';
+export { clarinetsConfigureProject } from './development/clarinet';
