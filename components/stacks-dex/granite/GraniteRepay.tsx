@@ -36,12 +36,26 @@ export interface GraniteRepayProps {
 
 export default function GraniteRepay({ data, isLoading }: GraniteRepayProps) {
   if (isLoading) {
-    return <Card className="w-full animate-pulse"><CardHeader><div className="h-6 bg-gray-200 rounded w-1/4"></div></CardHeader><CardContent><div className="h-32 bg-gray-200 rounded"></div></CardContent></Card>
+    return (
+      <Card className="w-full animate-pulse">
+        <CardHeader>
+          <div className="h-6 bg-gray-200 rounded w-1/4"></div>
+        </CardHeader>
+        <CardContent>
+          <div className="h-32 bg-gray-200 rounded"></div>
+        </CardContent>
+      </Card>
     );
   }
 
   if (!data.success) {
-    return <Card className="w-full border-destructive"><CardHeader><CardTitle className="text-destructive">Repay Failed</CardTitle><CardDescription>{data.error || "Unable to prepare repayment"}</CardDescription></CardHeader></Card>
+    return (
+      <Card className="w-full border-destructive">
+        <CardHeader>
+          <CardTitle className="text-destructive">Repay Failed</CardTitle>
+          <CardDescription>{data.error || "Unable to prepare repayment"}</CardDescription>
+        </CardHeader>
+      </Card>
     );
   }
 
@@ -49,7 +63,13 @@ export default function GraniteRepay({ data, isLoading }: GraniteRepayProps) {
   const details = data.details;
 
   if (!transaction || !details) {
-    return <Card className="w-full border-destructive"><CardHeader><CardTitle className="text-destructive">Invalid Response</CardTitle><CardDescription>Transaction data is missing</CardDescription></CardHeader></Card>
+    return (
+      <Card className="w-full border-destructive">
+        <CardHeader>
+          <CardTitle className="text-destructive">Invalid Response</CardTitle>
+          <CardDescription>Transaction data is missing</CardDescription>
+        </CardHeader>
+      </Card>
     );
   }
 
