@@ -50,16 +50,17 @@ export { velarGetPoolByTokenPair } from './defi/velar/getPoolByTokenPair';
 export { velarSwapTokens } from './defi/velar/swapTokens';
 
 // ==================== BITFLOW DEX TOOLS ====================
-export { bitflowGetAvailableTokens } from './defi/bitflow/getAvailableTokens';
-export { bitflowGetPossibleSwaps } from './defi/bitflow/getPossibleSwaps';
-export { bitflowGetQuoteForRoute } from './defi/bitflow/getQuoteForRoute';
-export { bitflowGetKeeperTokens } from './defi/bitflow/getKeeperTokens';
-export { bitflowSwapTokens } from './defi/bitflow/swapTokens';
+//NEED API KEY FOR CONFIGURATION OF BITFLOW SDK ->>> API KEY IN PROGRESS
+// export { bitflowGetAvailableTokens } from './defi/bitflow/getAvailableTokens';
+// export { bitflowGetPossibleSwaps } from './defi/bitflow/getPossibleSwaps';
+// export { bitflowGetQuoteForRoute } from './defi/bitflow/getQuoteForRoute';
+// export { bitflowGetKeeperTokens } from './defi/bitflow/getKeeperTokens';
+// export { bitflowSwapTokens } from './defi/bitflow/swapTokens';
 
 // ==================== ARKADIKO DEFI TOOLS ====================
 export { arkadikoGetVaultInfo } from './defi/arkadiko/getVaultInfo';
 export { arkadikoGetSwapPair } from './defi/arkadiko/getSwapPair';
-// export { arkadikoGetAllSwapPairs } from './defi/arkadiko/getAllSwapPairs';
+// export { arkadikoGetAllSwapPairs } from './defi/arkadiko/getAllSwapPairs'; FaceTime
 export { arkadikoGetStakeInfo } from './defi/arkadiko/getStakeInfo';
 export { arkadikoGetProposal } from './defi/arkadiko/getProposal';
 export { arkadikoGetTokenPrice } from './defi/arkadiko/getTokenPrice';
@@ -105,9 +106,3 @@ export { getStxTransferEvents } from './events/getStxTransferEvents';
 export { getPoolDelegations } from './stackpool/getPoolDelegations';
 export { getBurnchainRewardSlots } from './stackpool/getBurnchainRewardSlots';
 export { getBurnchainRewards } from './stackpool/getBurnchainRewards';
-
-// ==================== CLARINET DEVELOPMENT TOOLS ====================
-export { clarinetsGenerateProject } from './development/clarinet';
-export { clarinetsGenerateContract } from './development/clarinet';
-export { clarinetsGenerateTests } from './development/clarinet';
-export { clarinetsConfigureProject } from './development/clarinet';

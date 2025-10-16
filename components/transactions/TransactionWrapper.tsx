@@ -104,7 +104,7 @@ export default function TransactionWrapper({
       setTxState("signing");
       setError(null);
 
-      let result: { txid: string };
+      let result: { txid?: string };
 
       // Route to appropriate handler based on transaction type
       switch (transactionData.type) {
@@ -147,6 +147,11 @@ export default function TransactionWrapper({
 
         default:
           throw new Error("Unknown transaction type");
+      }
+
+      // Check if transaction was successful and has a txid
+      if (!result.txid) {
+        throw new Error("Transaction failed: No transaction ID returned");
       }
 
       setTxState("broadcasting");

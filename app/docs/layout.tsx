@@ -11,7 +11,8 @@ import {
   Building2,
   Trophy,
   Sparkles,
-  Rocket
+  Rocket,
+  Terminal
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -34,6 +35,12 @@ const docsNavigation = [
     href: "/docs/protocols",
     icon: Code,
     description: "8 integrated Stacks DeFi protocols"
+  },
+  {
+    name: "Examples",
+    href: "/docs/examples",
+    icon: Terminal,
+    description: "All 148+ tools and example queries"
   },
   {
     name: "MCP Server",
