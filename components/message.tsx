@@ -21,19 +21,73 @@ import ToolCallLoader from "@/components/tool-call-loader";
 import { SuggestionAwareMarkdown } from "@/components/SuggestionAwareMarkdown";
 import { InfoIcon } from "lucide-react";
 
-// Stacks DEX Components
+// Stacks DEX Components (Generic - being phased out)
 import SwapInfo from "@/components/stacks-dex/SwapInfo";
 import PoolList from "@/components/stacks-dex/PoolList";
 import TokenPrices from "@/components/stacks-dex/TokenPrices";
+
+// ALEX Protocol Components
+import AlexPoolList from "@/components/stacks-dex/alex/AlexPoolList";
+import AlexTokenPrices from "@/components/stacks-dex/alex/AlexTokenPrices";
+import AlexTradingPairs from "@/components/stacks-dex/alex/AlexTradingPairs";
+import AlexTokenMappings from "@/components/stacks-dex/alex/AlexTokenMappings";
+import AlexSwapHistory from "@/components/stacks-dex/alex/AlexSwapHistory";
+import AlexPoolStats from "@/components/stacks-dex/alex/AlexPoolStats";
+import AlexTotalTVL from "@/components/stacks-dex/alex/AlexTotalTVL";
+
+// Velar Protocol Components
+import VelarPoolList from "@/components/stacks-dex/velar/VelarPoolList";
+import VelarTickers from "@/components/stacks-dex/velar/VelarTickers";
+import VelarTokenPrices from "@/components/stacks-dex/velar/VelarTokenPrices";
+import VelarTokenDetails from "@/components/stacks-dex/velar/VelarTokenDetails";
+import VelarPriceByContract from "@/components/stacks-dex/velar/VelarPriceByContract";
+import VelarHistoricalPrices from "@/components/stacks-dex/velar/VelarHistoricalPrices";
+import VelarCirculatingSupply from "@/components/stacks-dex/velar/VelarCirculatingSupply";
+import VelarSwapTransaction from "@/components/stacks-dex/velar/VelarSwapTransaction";
+
+// Arkadiko Protocol Components
+import ArkadikoSwapPairs from "@/components/stacks-dex/arkadiko/ArkadikoSwapPairs";
+import ArkadikoSwapPairDetails from "@/components/stacks-dex/arkadiko/ArkadikoSwapPairDetails";
+import ArkadikoVaultInfo from "@/components/stacks-dex/arkadiko/ArkadikoVaultInfo";
+import ArkadikoStakeInfo from "@/components/stacks-dex/arkadiko/ArkadikoStakeInfo";
+import ArkadikoProposal from "@/components/stacks-dex/arkadiko/ArkadikoProposal";
+import ArkadikoTokenPrice from "@/components/stacks-dex/arkadiko/ArkadikoTokenPrice";
+import ArkadikoSwapTransaction from "@/components/stacks-dex/arkadiko/ArkadikoSwapTransaction";
+import ArkadikoCreateVault from "@/components/stacks-dex/arkadiko/ArkadikoCreateVault";
+
+// BitFlow Protocol Components
+import BitflowTokenList from "@/components/stacks-dex/bitflow/BitflowTokenList";
+import BitflowKeeperTokens from "@/components/stacks-dex/bitflow/BitflowKeeperTokens";
+import BitflowPossibleSwaps from "@/components/stacks-dex/bitflow/BitflowPossibleSwaps";
+import BitflowQuote from "@/components/stacks-dex/bitflow/BitflowQuote";
+import BitflowSwapTransaction from "@/components/stacks-dex/bitflow/BitflowSwapTransaction";
+
+// Charisma Protocol Components
+import CharismaQuote from "@/components/stacks-dex/charisma/CharismaQuote";
+import CharismaSwapTransaction from "@/components/stacks-dex/charisma/CharismaSwapTransaction";
+import CharismaOrders from "@/components/stacks-dex/charisma/CharismaOrders";
+import CharismaOrderDetails from "@/components/stacks-dex/charisma/CharismaOrderDetails";
+import CharismaApiKeys from "@/components/stacks-dex/charisma/CharismaApiKeys";
+
+// Granite Lending Components
+import GraniteBorrow from "@/components/stacks-lending/granite/GraniteBorrow";
+import GraniteRepay from "@/components/stacks-lending/granite/GraniteRepay";
+import GraniteAddCollateral from "@/components/stacks-lending/granite/GraniteAddCollateral";
+import GraniteDeposit from "@/components/stacks-lending/granite/GraniteDeposit";
+import GraniteWithdraw from "@/components/stacks-lending/granite/GraniteWithdraw";
+import GraniteStake from "@/components/stacks-lending/granite/GraniteStake";
 
 // Stacks Lending Components
 import LendingInfo from "@/components/stacks-lending/LendingInfo";
 
 // Stacks Stacking Components
 import StackingInfo from "@/components/stacks-stacking/StackingInfo";
+import StackingStatus from "@/components/stacks-stacking/StackingStatus";
 
 // Stacks Token Components
 import TokenBalances from "@/components/stacks-tokens/TokenBalances";
+import TokenInfo from "@/components/stacks-tokens/TokenInfo";
+import TokenTransfer from "@/components/stacks-tokens/TokenTransfer";
 
 // Stacks Core Components
 import BlockchainInfo from "@/components/stacks-core/BlockchainInfo";
@@ -41,12 +95,29 @@ import BlockchainInfo from "@/components/stacks-core/BlockchainInfo";
 // Stacks Account Components
 import AccountInfo from "@/components/stacks-account/AccountInfo";
 import TransactionHistory from "@/components/stacks-account/TransactionHistory";
+import AccountNonces from "@/components/stacks-account/AccountNonces";
+import SearchResults from "@/components/stacks-account/SearchResults";
+
+// Stacks Transaction Components
+import SendSTXTransaction from "@/components/stacks-transaction/SendSTXTransaction";
+import TransactionDetails from "@/components/stacks-transaction/TransactionDetails";
+
+// Stacks Block Components
+import CurrentBlockHeight from "@/components/stacks-block/CurrentBlockHeight";
+import BlockDetails from "@/components/stacks-block/BlockDetails";
 
 // Stacks NFT Components
 import NFTGallery from "@/components/stacks-nfts/NFTGallery";
+import NFTHistory from "@/components/stacks-nfts/NFTHistory";
+import NFTTransfer from "@/components/stacks-nfts/NFTTransfer";
 
 // Stacks Contract Components
 import ContractInfo from "@/components/stacks-contracts/ContractInfo";
+import ContractInterface from "@/components/stacks-contracts/ContractInterface";
+import ContractCall from "@/components/stacks-contracts/ContractCall";
+import ContractDeployment from "@/components/stacks-contracts/ContractDeployment";
+import MessageSignature from "@/components/stacks-contracts/MessageSignature";
+import StructuredMessageSignature from "@/components/stacks-contracts/StructuredMessageSignature";
 
 // Stacks Event Components
 import EventList from "@/components/stacks-events/EventList";
@@ -56,6 +127,11 @@ import FeeEstimate from "@/components/stacks-mempool/FeeEstimate";
 
 // Stacks PoX Components
 import CycleInfo from "@/components/stacks-pox/CycleInfo";
+
+// Stacks Stackpool Components
+import PoolDelegations from "@/components/stacks-stackpool/PoolDelegations";
+import BurnchainRewardSlots from "@/components/stacks-stackpool/BurnchainRewardSlots";
+import BurnchainRewards from "@/components/stacks-stackpool/BurnchainRewards";
 
 // Import PoolStats for detailed pool statistics
 import PoolStats from "@/components/stacks-dex/PoolStats";
@@ -385,21 +461,22 @@ const PurePreviewMessage = ({
                 }
               }
 
-              // Charisma Tools
-              if (type === "tool-charisma_execute_swap") {
+              // ========================= CHARISMA DEX DETAILED TOOLS =========================
+
+              if (type === "tool-charismaGetQuote") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Executing Charisma swap..." />
+                        <ToolCallLoader loadingMessage="Getting Charisma quote..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <SwapInfo
+                      <CharismaQuote
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -409,20 +486,229 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-charisma_get_pools") {
+              if (type === "tool-charismaExecuteSwap") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Getting Charisma pools..." />
+                        <ToolCallLoader loadingMessage="Preparing Charisma swap..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <PoolList
+                      <CharismaSwapTransaction
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-charismaListOrders") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Charisma orders..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <CharismaOrders
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-charismaGetOrder") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Charisma order details..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <CharismaOrderDetails
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-charismaListApiKeys") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Charisma API keys..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <CharismaApiKeys
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= GRANITE LENDING DETAILED TOOLS =========================
+
+              if (type === "tool-granitePrepareBorrow") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing Granite borrow..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <GraniteBorrow
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-granitePrepareRepay") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing Granite repay..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <GraniteRepay
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-granitePrepareAddCollateral") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing collateral deposit..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <GraniteAddCollateral
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-granitePrepareDeposit") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing Granite deposit..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <GraniteDeposit
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-granitePrepareWithdraw") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing Granite withdraw..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <GraniteWithdraw
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-granitePrepareStake") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing LP token stake..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <GraniteStake
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -433,32 +719,6 @@ const PurePreviewMessage = ({
               }
 
               // ========================= STACKS LENDING TOOLS =========================
-
-              // Granite Lending Tools
-              if (type === "tool-granite_borrow" || type === "tool-granite_repay" ||
-                  type === "tool-granite_deposit" || type === "tool-granite_withdraw" ||
-                  type === "tool-granite_stake") {
-                if ("toolCallId" in part && "state" in part) {
-                  const { toolCallId, state } = part;
-                  if (state === "input-available") {
-                    return (
-                      <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Processing Granite operation..." />
-                      </div>
-                    );
-                  }
-                  if (state === "output-available" && "output" in part) {
-                    const { output } = part;
-                    return (
-                      <LendingInfo
-                        key={toolCallId}
-                        data={output as any}
-                        isLoading={false}
-                      />
-                    );
-                  }
-                }
-              }
 
               // Arkadiko Lending Tools
               if (type === "tool-arkadiko_open_vault" || type === "tool-arkadiko_deposit" ||
@@ -588,7 +848,7 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-getTransactionHistory" || type === "tool-searchById") {
+              if (type === "tool-getTransactionHistory") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
@@ -627,7 +887,30 @@ const PurePreviewMessage = ({
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <AccountInfo
+                      <AccountNonces
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-searchById") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Searching blockchain..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <SearchResults
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -639,22 +922,46 @@ const PurePreviewMessage = ({
 
               // ========================= STACKS TRANSACTION TOOLS =========================
 
-              if (type === "tool-makeSendSTX" || type === "tool-getTransactionInfo") {
+              if (type === "tool-makeSendSTX") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Processing transaction..." />
+                        <ToolCallLoader loadingMessage="Building STX transfer..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <StacksTransactionComponent
+                      <SendSTXTransaction
                         key={toolCallId}
-                        {...(output as any)}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-getTransactionInfo") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting transaction details..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TransactionDetails
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
                       />
                     );
                   }
@@ -686,22 +993,46 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-getNFTHistory" || type === "tool-transferNFT") {
+              if (type === "tool-getNFTHistory") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Processing NFT operation..." />
+                        <ToolCallLoader loadingMessage="Getting NFT transfer history..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <StacksTransactionComponent
+                      <NFTHistory
                         key={toolCallId}
-                        {...(output as any)}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-transferNFT") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing NFT transfer..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <NFTTransfer
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
                       />
                     );
                   }
@@ -710,20 +1041,43 @@ const PurePreviewMessage = ({
 
               // ========================= STACKS TOKEN INFO TOOLS =========================
 
-              if (type === "tool-getTokenInfo" || type === "tool-transferFungibleToken") {
+              if (type === "tool-getTokenInfo") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Processing token operation..." />
+                        <ToolCallLoader loadingMessage="Getting token information..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <TokenBalances
+                      <TokenInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-transferFungibleToken") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing token transfer..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TokenTransfer
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -735,21 +1089,43 @@ const PurePreviewMessage = ({
 
               // ========================= STACKS BLOCK TOOLS =========================
 
-              if (type === "tool-getCurrentBlockHeight" || type === "tool-getBlockByHeight" ||
-                  type === "tool-getBlockByHash") {
+              if (type === "tool-getCurrentBlockHeight") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Getting block information..." />
+                        <ToolCallLoader loadingMessage="Getting current block height..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <BlockchainInfo
+                      <CurrentBlockHeight
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-getBlockByHeight" || type === "tool-getBlockByHash") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting block details..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <BlockDetails
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -761,7 +1137,7 @@ const PurePreviewMessage = ({
 
               // ========================= ALEX DEX POOL/PRICE TOOLS =========================
 
-              if (type === "tool-alexGetAllPools" || type === "tool-alexGetTradingPairs") {
+              if (type === "tool-alexGetAllPools") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
@@ -774,7 +1150,30 @@ const PurePreviewMessage = ({
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <PoolList
+                      <AlexPoolList
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-alexGetTradingPairs") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting ALEX trading pairs..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <AlexTradingPairs
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -798,7 +1197,7 @@ const PurePreviewMessage = ({
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <TokenPrices
+                      <AlexTokenPrices
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -821,7 +1220,7 @@ const PurePreviewMessage = ({
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <PoolStats
+                      <AlexPoolStats
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -831,21 +1230,66 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-alexGetTotalTVL" || type === "tool-alexGetAllSwaps" ||
-                  type === "tool-alexGetTokenMappings") {
+              if (type === "tool-alexGetTokenMappings") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Getting ALEX DeFi data..." />
+                        <ToolCallLoader loadingMessage="Getting ALEX token mappings..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <SwapInfo
+                      <AlexTokenMappings
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-alexGetTotalTVL") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting ALEX total TVL..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <AlexTotalTVL
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-alexGetAllSwaps") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting ALEX swap pairs..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <AlexSwapHistory
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -893,7 +1337,7 @@ const PurePreviewMessage = ({
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <PoolList
+                      <VelarPoolList
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -903,22 +1347,135 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-velarGetAllTickers" || type === "tool-velarGetCurrentPrices" ||
-                  type === "tool-velarGetTokenDetails" || type === "tool-velarGetPriceByContract" ||
-                  type === "tool-velarGetHistoricalPrices" || type === "tool-velarGetCirculatingSupply") {
+              if (type === "tool-velarGetAllTickers") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Getting Velar token data..." />
+                        <ToolCallLoader loadingMessage="Getting Velar tickers..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <TokenPrices
+                      <VelarTickers
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-velarGetCurrentPrices") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Velar current prices..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <VelarTokenPrices
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-velarGetTokenDetails") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Velar token details..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <VelarTokenDetails
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-velarGetPriceByContract") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Velar token price..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <VelarPriceByContract
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-velarGetHistoricalPrices") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Velar historical prices..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <VelarHistoricalPrices
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-velarGetCirculatingSupply") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Velar circulating supply..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <VelarCirculatingSupply
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -934,14 +1491,14 @@ const PurePreviewMessage = ({
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Executing Velar swap..." />
+                        <ToolCallLoader loadingMessage="Preparing Velar swap..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <SwapInfo
+                      <VelarSwapTransaction
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -953,21 +1510,66 @@ const PurePreviewMessage = ({
 
               // ========================= BITFLOW DEX DETAILED TOOLS =========================
 
-              if (type === "tool-bitflowGetAvailableTokens" || type === "tool-bitflowGetPossibleSwaps" ||
-                  type === "tool-bitflowGetKeeperTokens") {
+              if (type === "tool-bitflowGetAvailableTokens") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Getting BitFlow token data..." />
+                        <ToolCallLoader loadingMessage="Getting BitFlow available tokens..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <TokenPrices
+                      <BitflowTokenList
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-bitflowGetKeeperTokens") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting BitFlow Keeper tokens..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <BitflowKeeperTokens
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-bitflowGetPossibleSwaps") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting BitFlow possible swaps..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <BitflowPossibleSwaps
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -990,7 +1592,7 @@ const PurePreviewMessage = ({
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <SwapInfo
+                      <BitflowQuote
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -1006,14 +1608,14 @@ const PurePreviewMessage = ({
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Executing BitFlow swap..." />
+                        <ToolCallLoader loadingMessage="Preparing BitFlow swap..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <SwapInfo
+                      <BitflowSwapTransaction
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -1025,21 +1627,112 @@ const PurePreviewMessage = ({
 
               // ========================= ARKADIKO DEFI TOOLS =========================
 
-              if (type === "tool-arkadikoGetVaultInfo" || type === "tool-arkadikoGetSwapPair" ||
-                  type === "tool-arkadikoGetStakeInfo" || type === "tool-arkadikoGetProposal") {
+              if (type === "tool-arkadikoGetAllSwapPairs") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Getting Arkadiko data..." />
+                        <ToolCallLoader loadingMessage="Getting Arkadiko swap pairs..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <LendingInfo
+                      <ArkadikoSwapPairs
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-arkadikoGetSwapPair") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Arkadiko swap pair details..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ArkadikoSwapPairDetails
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-arkadikoGetVaultInfo") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Arkadiko vault info..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ArkadikoVaultInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-arkadikoGetStakeInfo") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Arkadiko stake info..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ArkadikoStakeInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-arkadikoGetProposal") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting Arkadiko proposal..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ArkadikoProposal
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -1055,14 +1748,14 @@ const PurePreviewMessage = ({
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Getting Arkadiko token prices..." />
+                        <ToolCallLoader loadingMessage="Getting Arkadiko token price..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <TokenPrices
+                      <ArkadikoTokenPrice
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -1072,20 +1765,43 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-arkadikoSwapTokens" || type === "tool-arkadikoCreateVault") {
+              if (type === "tool-arkadikoSwapTokens") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Processing Arkadiko operation..." />
+                        <ToolCallLoader loadingMessage="Preparing Arkadiko swap..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <SwapInfo
+                      <ArkadikoSwapTransaction
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-arkadikoCreateVault") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing Arkadiko vault creation..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ArkadikoCreateVault
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -1173,21 +1889,20 @@ const PurePreviewMessage = ({
 
               // ========================= CONTRACT TOOLS =========================
 
-              if (type === "tool-getContractInfo" || type === "tool-makeContractCall" ||
-                  type === "tool-deployContract") {
+              if (type === "tool-getContractInfo") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Processing contract operation..." />
+                        <ToolCallLoader loadingMessage="Getting contract interface..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <ContractInfo
+                      <ContractInterface
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -1197,22 +1912,92 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-signMessage" || type === "tool-signStructuredMessage") {
+              if (type === "tool-makeContractCall") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Signing message..." />
+                        <ToolCallLoader loadingMessage="Preparing contract call..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <StacksTransactionComponent
+                      <ContractCall
                         key={toolCallId}
-                        {...(output as any)}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-deployContract") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing contract deployment..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <ContractDeployment
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-signMessage") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing message signature..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <MessageSignature
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-signStructuredMessage") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Preparing structured message signature..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <StructuredMessageSignature
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
                       />
                     );
                   }
@@ -1298,21 +2083,66 @@ const PurePreviewMessage = ({
 
               // ========================= STACKPOOL TOOLS =========================
 
-              if (type === "tool-getPoolDelegations" || type === "tool-getBurnchainRewardSlots" ||
-                  type === "tool-getBurnchainRewards") {
+              if (type === "tool-getPoolDelegations") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Getting stacking pool data..." />
+                        <ToolCallLoader loadingMessage="Getting pool delegations..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <StackingInfo
+                      <PoolDelegations
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-getBurnchainRewardSlots") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting burnchain reward slots..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <BurnchainRewardSlots
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-getBurnchainRewards") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting burnchain rewards..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <BurnchainRewards
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
@@ -1330,14 +2160,14 @@ const PurePreviewMessage = ({
                   if (state === "input-available") {
                     return (
                       <div key={toolCallId}>
-                        <ToolCallLoader loadingMessage="Getting stacking information..." />
+                        <ToolCallLoader loadingMessage="Getting stacking status..." />
                       </div>
                     );
                   }
                   if (state === "output-available" && "output" in part) {
                     const { output } = part;
                     return (
-                      <StackingInfo
+                      <StackingStatus
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}
