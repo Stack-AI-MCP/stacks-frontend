@@ -142,52 +142,12 @@ export default function SendSTXTransaction({ data, isLoading }: SendSTXTransacti
             </div>
           )}
 
-          {/* Instructions */}
-          <Alert className="border-cyan-500/50 bg-cyan-500/10">
-            <Info className="h-4 w-4 text-cyan-400" />
-            <AlertDescription className="text-cyan-300 text-sm">
-              This transaction is ready to be signed. Please confirm the details above before proceeding.
-            </AlertDescription>
-          </Alert>
-
-          {/* Tips */}
-          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
-            <div className="space-y-1">
-              <p className="text-xs text-blue-300">
-                💡 Transaction fees will be calculated by your wallet
-              </p>
-              <p className="text-xs text-blue-300">
-                💡 Double-check the recipient address before confirming
-              </p>
-              {transaction.memo && (
-                <p className="text-xs text-blue-300">
-                  💡 Memo is limited to 34 bytes and will be publicly visible
-                </p>
-              )}
-            </div>
-          </div>
-
           {/* Success Message */}
           {data.message && (
             <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
               <p className="text-sm text-cyan-300">{data.message}</p>
             </div>
           )}
-
-          {/* Transaction Ready Badge */}
-          <div className="flex justify-center">
-            <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400 px-6 py-2">
-              Transaction ready for signing
-            </Badge>
-          </div>
-
-          {/* Warnings */}
-          <Alert variant="default" className="border-sky-500/50 bg-sky-500/10">
-            <AlertCircle className="h-4 w-4 text-sky-400" />
-            <AlertDescription className="text-sky-300 text-xs">
-              Always verify you are sending to the correct address. STX transactions are irreversible.
-            </AlertDescription>
-          </Alert>
         </CardContent>
       </Card>
     </TransactionWrapper>
