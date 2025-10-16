@@ -1,8 +1,14 @@
 import { tool } from "ai";
 import z from "zod";
+import {
+  fetchCallReadOnlyFunction,
+  standardPrincipalCV,
+  cvToJSON,
+} from '@stacks/transactions';
+import { STACKS_MAINNET, STACKS_TESTNET } from '@stacks/network';
 
 export const arkadikoGetStakeInfo = tool({
-  description: `Get DIKO staking information for an address including staked amount and rewards.`,
+  description: `Get staking information for an address on Arkadiko protocol.`,
 
   inputSchema: z.object({
     staker: z.string().describe("Staker Stacks address"),
@@ -11,30 +17,30 @@ export const arkadikoGetStakeInfo = tool({
 
   execute: async ({ staker, network }) => {
     try {
-      // Use the MCP server backend service instead of direct API calls
-      const response = await fetch('/api/mcp/arkadiko_get_stake_info', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          staker,
-          network
-        })
+      const contractAddress = 'SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR';
+      const contractName = 'arkadiko-stake-pool-diko-v1-1';
+      const stacksNetwork = network === 'mainnet' ? STACKS_MAINNET : STACKS_TESTNET;
+
+      const result = await fetchCallReadOnlyFunction({
+        contractAddress,
+        contractName,
+        functionName: 'get-stake-of',
+        functionArgs: [standardPrincipalCV(staker)],
+        senderAddress: contractAddress,
+        network: stacksNetwork,
       });
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Backend API Error:", errorText);
-        throw new Error(`Failed to get stake info: ${response.statusText} - ${errorText}`);
-      }
-
-      const data = await response.json();
+      const stakeData = cvToJSON(result).value || {};
 
       return {
         success: true,
-        data,
-        message: `Retrieved staking info for ${staker}`,
+        data: {
+          staker,
+          amount: stakeData.amount?.value || '0',
+          reward: stakeData.reward?.value || '0',
+          cooldownPeriod: parseInt(stakeData.cooldown?.value || '0'),
+        },
+        message: `Retrieved stake info for ${staker}`,
       };
     } catch (error: any) {
       console.error("Error getting Arkadiko stake info:", error);

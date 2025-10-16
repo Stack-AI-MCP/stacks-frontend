@@ -60,7 +60,7 @@ export { velarSwapTokens } from './defi/velar/swapTokens';
 // ==================== ARKADIKO DEFI TOOLS ====================
 export { arkadikoGetVaultInfo } from './defi/arkadiko/getVaultInfo';
 export { arkadikoGetSwapPair } from './defi/arkadiko/getSwapPair';
-// export { arkadikoGetAllSwapPairs } from './defi/arkadiko/getAllSwapPairs'; FaceTime
+export { arkadikoGetAllSwapPairs } from './defi/arkadiko/getAllSwapPairs';
 export { arkadikoGetStakeInfo } from './defi/arkadiko/getStakeInfo';
 export { arkadikoGetProposal } from './defi/arkadiko/getProposal';
 export { arkadikoGetTokenPrice } from './defi/arkadiko/getTokenPrice';
