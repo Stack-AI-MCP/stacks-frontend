@@ -32,7 +32,7 @@ Building the future of Bitcoin DeFi accessibility through AI.
 
 ---
 
-## Phase 3: Reputation & Rewards (Q2 2025)
+## Phase 3: Reputation & Rewards (Q1 2026)
 
 **Vision:** Recognize and reward active community members.
 
@@ -51,7 +51,7 @@ Building the future of Bitcoin DeFi accessibility through AI.
 
 ---
 
-## Phase 4: Voice Interface (Q2 2025)
+## Phase 4: Voice Interface (Q2 2026)
 
 **Vision:** Talk to Bitcoin DeFi.
 
@@ -68,7 +68,7 @@ Building the future of Bitcoin DeFi accessibility through AI.
 
 ---
 
-## Phase 5: Mobile Experience (Q3 2025)
+## Phase 5: Mobile Experience (Q3 2026)
 
 **Vision:** Bitcoin DeFi in your pocket.
 
@@ -83,7 +83,7 @@ Building the future of Bitcoin DeFi accessibility through AI.
 
 ---
 
-## Phase 6: Advanced Analytics (Q3 2025)
+## Phase 6: Advanced Analytics (Q4 2026)
 
 **Vision:** Understand your Bitcoin DeFi portfolio at a glance.
 
@@ -101,25 +101,7 @@ Building the future of Bitcoin DeFi accessibility through AI.
 
 ---
 
-## Phase 7: Community & Ecosystem (Q4 2025)
-
-**Vision:** Build the largest Bitcoin DeFi community.
-
-**Community Features:**
-- Share and discover DeFi strategies
-- Template marketplace for smart contracts
-- Educational content and tutorials
-- Referral rewards program
-
-**Ecosystem Growth:**
-- Partner with more Stacks protocols
-- Integration with Bitcoin L2 ecosystems
-- Developer grants program
-- Community governance
-
----
-
-## Phase 8: Premium Tiers (Coming Soon)
+## Phase 7: Premium Tiers (Coming Soon)
 
 We're building sustainable features that reward our most engaged users.
 
@@ -165,19 +147,17 @@ Always free, always powerful. Access to core DeFi operations.
 |-------|----------|-------|
 | Phase 1: Foundation | Done | Core platform |
 | Phase 2: Desktop App | Q1 2025 | Local-first experience |
-| Phase 3: Reputation | Q2 2025 | Community engagement |
-| Phase 4: Voice Interface | Q2 2025 | Accessibility |
-| Phase 5: Mobile | Q3 2025 | Mobile-first |
-| Phase 6: Analytics | Q3 2025 | Insights & data |
-| Phase 7: Community | Q4 2025 | Ecosystem growth |
-| Phase 8: Premium | TBA | Sustainability |
+| Phase 3: Reputation | Q1 2026 | Community engagement |
+| Phase 4: Voice Interface | Q2 2026 | Accessibility |
+| Phase 5: Mobile | Q3 2026 | Mobile-first |
+| Phase 6: Analytics | Q4 2026 | Insights & data |
+| Phase 7: Premium | TBA | Sustainability |
 
 ---
 
 ## Get Involved
 
 **Want to shape the roadmap?**
-- Join our Discord community
 - Follow us on Twitter
 - Submit feature requests on GitHub
 - Contribute to open-source development
