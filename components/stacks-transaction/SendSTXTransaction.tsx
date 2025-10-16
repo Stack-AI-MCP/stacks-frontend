@@ -141,13 +141,6 @@ export default function SendSTXTransaction({ data, isLoading }: SendSTXTransacti
               <p className="text-sm text-white">{transaction.memo}</p>
             </div>
           )}
-
-          {/* Success Message */}
-          {data.message && (
-            <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
-              <p className="text-sm text-cyan-300">{data.message}</p>
-            </div>
-          )}
         </CardContent>
       </Card>
     </TransactionWrapper>
