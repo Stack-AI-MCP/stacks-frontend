@@ -261,8 +261,10 @@ Stable-focused DEX with concentrated liquidity. Optimized for stablecoin swaps a
 ### **Charisma** (5 tools)
 Composable DeFi protocol with customizable vaults. Includes the Blaze intent protocol for advanced trading strategies.
 
-### **Arkadiko Protocol** (7 tools)
+### **Arkadiko Protocol** (8 tools) ⚠️ Mainnet Only
 Decentralized stablecoin protocol issuing USDA. Enables collateralized borrowing and yield farming with STX.
+
+**Note**: Arkadiko is only deployed on **mainnet**. Testnet operations will return an error. For local development and testing, deploy Arkadiko contracts to a local mocknet environment.
 
 ### **Granite Finance** (6 tools)
 Multi-collateral lending market with isolated risk pools. Supports various Stacks tokens as collateral.
@@ -354,11 +356,13 @@ Smart contract development toolkit for Clarity developers. Generate projects, co
 
 ### Lending Operations
 ```
-"Borrow 1000 USDA from Arkadiko using STX as collateral"
+"Borrow 1000 USDA from Arkadiko using STX as collateral"  # Mainnet only
 "Check my health factor on Granite"
-"Deposit 500 STX into Arkadiko vault"
+"Deposit 500 STX into Arkadiko vault"  # Mainnet only
 "What's the current APY for lending sBTC on Granite?"
 ```
+
+**Note**: Arkadiko operations require **mainnet** connection. For testing lending protocols on testnet, use Granite Finance instead.
 
 ### Stacking (PoX)
 ```

@@ -16,9 +16,18 @@ export const arkadikoGetAllSwapPairs = tool({
 
   execute: async ({ network }) => {
     try {
+      // Arkadiko is only deployed on mainnet
+      if (network === 'testnet') {
+        return {
+          success: false,
+          error: 'Arkadiko is only available on mainnet',
+          message: 'Arkadiko protocol is not deployed on public testnet. Please use mainnet or deploy to a local mocknet for testing.',
+        };
+      }
+
       const contractAddress = 'SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR';
       const contractName = 'arkadiko-swap-v2-1';
-      const stacksNetwork = network === 'mainnet' ? STACKS_MAINNET : STACKS_TESTNET;
+      const stacksNetwork = STACKS_MAINNET;
 
       // Common Arkadiko trading pairs
       const knownPairs = [

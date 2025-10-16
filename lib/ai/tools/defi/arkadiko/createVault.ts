@@ -27,6 +27,15 @@ export const arkadikoCreateVault = tool({
     network,
   }) => {
     try {
+      // Arkadiko is only deployed on mainnet
+      if (network === 'testnet') {
+        return {
+          success: false,
+          error: 'Arkadiko is only available on mainnet',
+          message: 'Arkadiko protocol is not deployed on public testnet. Please use mainnet or deploy to a local mocknet for testing.',
+        };
+      }
+
       const ARKADIKO_CONTRACT_ADDRESS = "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR";
       const ARKADIKO_VAULTS_OPERATIONS = "arkadiko-vaults-operations-v1-3";
 
