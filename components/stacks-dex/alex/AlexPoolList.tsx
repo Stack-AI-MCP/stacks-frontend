@@ -83,7 +83,7 @@ export default function AlexPoolList({ data, isLoading }: AlexPoolListProps) {
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg">ALEX Liquidity Pools</CardTitle>
-          <Badge variant="secondary" className="bg-orange-500/20 text-orange-400">
+          <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400">
             {pools.length} pools
           </Badge>
         </div>
@@ -119,7 +119,7 @@ export default function AlexPoolList({ data, isLoading }: AlexPoolListProps) {
                     <TableRow key={`alex-pool-${pool.pool_id}`}>
                       <TableCell className="font-medium">
                         <div className="flex items-center gap-2">
-                          <span className="text-orange-400">{tokenX}</span>
+                          <span className="text-cyan-400">{tokenX}</span>
                           <span className="text-muted-foreground">/</span>
                           <span className="text-blue-400">{tokenY}</span>
                           <Badge variant="outline" className="ml-2 text-xs">

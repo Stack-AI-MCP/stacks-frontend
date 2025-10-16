@@ -72,10 +72,10 @@ export default function AlexTokenPrices({ data, isLoading }: AlexTokenPricesProp
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-orange-400" />
+            <TrendingUp className="w-5 h-5 text-cyan-400" />
             <CardTitle className="text-lg">ALEX Token Prices</CardTitle>
           </div>
-          <Badge variant="secondary" className="bg-orange-500/20 text-orange-400">
+          <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400">
             {activePrices.length} tokens
           </Badge>
         </div>
@@ -106,7 +106,7 @@ export default function AlexTokenPrices({ data, isLoading }: AlexTokenPricesProp
                   return (
                     <TableRow key={`alex-price-${token.contract_id}`}>
                       <TableCell className="font-medium">
-                        <span className="text-orange-400">{tokenName}</span>
+                        <span className="text-cyan-400">{tokenName}</span>
                       </TableCell>
                       <TableCell className="text-right font-mono text-green-600">
                         ${token.last_price_usd.toLocaleString(undefined, {

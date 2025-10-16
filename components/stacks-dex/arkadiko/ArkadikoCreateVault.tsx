@@ -94,7 +94,7 @@ export default function ArkadikoCreateVault({ data, isLoading }: ArkadikoCreateV
       case "Safe":
         return { color: "text-green-400", bgColor: "bg-green-500/20", borderColor: "border-green-500/20" };
       case "Moderate":
-        return { color: "text-yellow-400", bgColor: "bg-yellow-500/20", borderColor: "border-yellow-500/20" };
+        return { color: "text-sky-400", bgColor: "bg-sky-500/20", borderColor: "border-sky-500/20" };
       case "At Risk":
         return { color: "text-red-400", bgColor: "bg-red-500/20", borderColor: "border-red-500/20" };
       default:
@@ -172,12 +172,12 @@ export default function ArkadikoCreateVault({ data, isLoading }: ArkadikoCreateV
 
           {/* Warnings */}
           {data.warnings && data.warnings.length > 0 && (
-            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3">
+            <div className="bg-sky-500/10 border border-sky-500/20 rounded-lg p-3">
               <div className="flex items-start gap-2">
-                <AlertTriangle className="w-4 h-4 text-yellow-400 mt-0.5" />
+                <AlertTriangle className="w-4 h-4 text-sky-400 mt-0.5" />
                 <div className="space-y-1">
                   {data.warnings.map((warning, idx) => (
-                    <p key={idx} className="text-xs text-yellow-300">{warning}</p>
+                    <p key={idx} className="text-xs text-sky-300">{warning}</p>
                   ))}
                 </div>
               </div>

@@ -132,7 +132,7 @@ export default function VelarPoolList({ data, isLoading }: VelarPoolListProps) {
                           ? formatVolume(pool.stats.volume_usd.value)
                           : "-"}
                       </TableCell>
-                      <TableCell className="text-right font-mono text-yellow-600">
+                      <TableCell className="text-right font-mono text-sky-600">
                         {pool.stats.fees_usd.value > 0
                           ? formatVolume(pool.stats.fees_usd.value)
                           : "-"}

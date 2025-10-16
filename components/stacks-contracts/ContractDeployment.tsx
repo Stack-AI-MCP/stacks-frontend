@@ -90,12 +90,12 @@ export default function ContractDeployment({ data, isLoading }: ContractDeployme
       transactionData={transactionData}
       network={transaction.network === "mainnet" ? "mainnet" : "testnet"}
       buttonText="Sign & Deploy Contract"
-      buttonGradient="from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700"
+      buttonGradient="from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700"
     >
-      <Card className="w-full bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20">
+      <Card className="w-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border-cyan-500/20">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <Upload className="w-6 h-6 text-orange-400" />
+            <Upload className="w-6 h-6 text-cyan-400" />
             <CardTitle className="text-xl">Deploy Contract</CardTitle>
           </div>
           <CardDescription className="text-zinc-300">
@@ -105,17 +105,17 @@ export default function ContractDeployment({ data, isLoading }: ContractDeployme
 
         <CardContent className="space-y-6">
           {/* Contract Name & ID */}
-          <div className="bg-zinc-900/50 p-6 rounded-lg border border-orange-500/20">
+          <div className="bg-zinc-900/50 p-6 rounded-lg border border-cyan-500/20">
             <span className="text-sm text-zinc-400 mb-3 block">Contract Name</span>
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <Badge variant="outline" className="text-orange-400 border-orange-500/30 text-lg px-4 py-1">
+                <Badge variant="outline" className="text-cyan-400 border-cyan-500/30 text-lg px-4 py-1">
                   {transaction.contractName}
                 </Badge>
               </div>
               <div className="mt-3">
                 <span className="text-xs text-zinc-500 block mb-1">Will be deployed at:</span>
-                <code className="text-sm text-orange-400 font-mono break-all">
+                <code className="text-sm text-cyan-400 font-mono break-all">
                   {transaction.deployedContractId}
                 </code>
               </div>
@@ -125,15 +125,15 @@ export default function ContractDeployment({ data, isLoading }: ContractDeployme
           {/* Code Stats */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20 text-center">
-              <div className="text-2xl font-bold text-orange-400">{codeLines}</div>
+              <div className="text-2xl font-bold text-cyan-400">{codeLines}</div>
               <div className="text-xs text-zinc-400 mt-1">Lines of Code</div>
             </div>
             <div className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20 text-center">
-              <div className="text-2xl font-bold text-orange-400">{Math.round(codeSize / 1024)}KB</div>
+              <div className="text-2xl font-bold text-cyan-400">{Math.round(codeSize / 1024)}KB</div>
               <div className="text-xs text-zinc-400 mt-1">Contract Size</div>
             </div>
             <div className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20 text-center">
-              <div className="text-2xl font-bold text-orange-400">v{transaction.clarityVersion}</div>
+              <div className="text-2xl font-bold text-cyan-400">v{transaction.clarityVersion}</div>
               <div className="text-xs text-zinc-400 mt-1">Clarity Version</div>
             </div>
           </div>
@@ -183,9 +183,9 @@ export default function ContractDeployment({ data, isLoading }: ContractDeployme
 
           {/* Warnings */}
           {data.warnings && data.warnings.length > 0 && (
-            <Alert variant="default" className="border-yellow-500/50 bg-yellow-500/10">
-              <AlertTriangle className="h-4 w-4 text-yellow-400" />
-              <AlertDescription className="text-yellow-300 text-xs">
+            <Alert variant="default" className="border-sky-500/50 bg-sky-500/10">
+              <AlertTriangle className="h-4 w-4 text-sky-400" />
+              <AlertDescription className="text-sky-300 text-xs">
                 <div className="space-y-1 mt-2">
                   {data.warnings.map((warning, idx) => (
                     <p key={idx}>{warning}</p>
@@ -236,14 +236,14 @@ export default function ContractDeployment({ data, isLoading }: ContractDeployme
 
           {/* Success Message */}
           {data.message && (
-            <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
-              <p className="text-sm text-orange-300">{data.message}</p>
+            <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
+              <p className="text-sm text-cyan-300">{data.message}</p>
             </div>
           )}
 
           {/* Deployment Ready Badge */}
           <div className="flex justify-center">
-            <Badge variant="secondary" className="bg-orange-500/20 text-orange-400 px-6 py-2">
+            <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400 px-6 py-2">
               Deployment ready for signing
             </Badge>
           </div>

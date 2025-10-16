@@ -105,10 +105,10 @@ export default function AlexPoolStats({ data, isLoading }: AlexPoolStatsProps) {
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-orange-400" />
+            <BarChart3 className="w-5 h-5 text-cyan-400" />
             <CardTitle className="text-lg">ALEX Pool Statistics</CardTitle>
           </div>
-          <Badge variant="secondary" className="bg-orange-500/20 text-orange-400">
+          <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400">
             Pool #{poolId}
           </Badge>
         </div>
@@ -120,7 +120,7 @@ export default function AlexPoolStats({ data, isLoading }: AlexPoolStatsProps) {
       <CardContent className="space-y-6">
         {/* Token Pair */}
         <div className="flex items-center gap-2 justify-center">
-          <Badge className="bg-orange-500/20 text-orange-400 text-sm px-3 py-1">
+          <Badge className="bg-cyan-500/20 text-cyan-400 text-sm px-3 py-1">
             {tokenX}
           </Badge>
           <span className="text-zinc-500">/</span>
@@ -170,13 +170,13 @@ export default function AlexPoolStats({ data, isLoading }: AlexPoolStatsProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="bg-zinc-800 p-3 rounded-lg">
               <span className="text-xs text-zinc-500">24h Rebates</span>
-              <p className="text-lg font-semibold text-yellow-400 mt-1">
+              <p className="text-lg font-semibold text-sky-400 mt-1">
                 {latestStats.fee_rebate_24h > 0 ? formatVolume(latestStats.fee_rebate_24h) : "$0"}
               </p>
             </div>
             <div className="bg-zinc-800 p-3 rounded-lg">
               <span className="text-xs text-zinc-500">7d Rebates</span>
-              <p className="text-lg font-semibold text-yellow-400 mt-1">
+              <p className="text-lg font-semibold text-sky-400 mt-1">
                 {latestStats.fee_rebate_7d > 0 ? formatVolume(latestStats.fee_rebate_7d) : "$0"}
               </p>
             </div>

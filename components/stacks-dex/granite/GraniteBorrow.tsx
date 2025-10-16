@@ -122,7 +122,7 @@ export default function GraniteBorrow({ data, isLoading }: GraniteBorrowProps) {
               {details.borrowAPR && (
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-zinc-400">Borrow APR:</span>
-                  <span className="text-orange-400 font-mono">{details.borrowAPR}</span>
+                  <span className="text-cyan-400 font-mono">{details.borrowAPR}</span>
                 </div>
               )}
               {details.collateralRatio && (
@@ -141,9 +141,9 @@ export default function GraniteBorrow({ data, isLoading }: GraniteBorrowProps) {
           </div>
 
           {data.warnings && data.warnings.length > 0 && (
-            <Alert className="border-yellow-500/50 bg-yellow-500/10">
-              <AlertTriangle className="h-4 w-4 text-yellow-400" />
-              <AlertDescription className="text-yellow-300 text-sm">
+            <Alert className="border-sky-500/50 bg-sky-500/10">
+              <AlertTriangle className="h-4 w-4 text-sky-400" />
+              <AlertDescription className="text-sky-300 text-sm">
                 <div className="space-y-1 mt-2">
                   {data.warnings.map((warning, idx) => (
                     <p key={idx}>{warning}</p>

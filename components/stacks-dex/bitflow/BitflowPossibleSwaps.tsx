@@ -61,10 +61,10 @@ export default function BitflowPossibleSwaps({ data, isLoading }: BitflowPossibl
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <ArrowRightLeft className="w-5 h-5 text-orange-400" />
+            <ArrowRightLeft className="w-5 h-5 text-cyan-400" />
             <CardTitle className="text-lg">BitFlow Swap Options</CardTitle>
           </div>
-          <Badge variant="secondary" className="bg-orange-500/20 text-orange-400">
+          <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400">
             {swapOptions.length} options
           </Badge>
         </div>
@@ -94,7 +94,7 @@ export default function BitflowPossibleSwaps({ data, isLoading }: BitflowPossibl
                   <TableRow key={option.tokenId || idx}>
                     <TableCell className="font-medium">
                       <div className="flex items-center gap-2">
-                        <ArrowRightLeft className="w-3 h-3 text-orange-400" />
+                        <ArrowRightLeft className="w-3 h-3 text-cyan-400" />
                         <span className="text-white">
                           {option.symbol || option.tokenId}
                         </span>
@@ -111,8 +111,8 @@ export default function BitflowPossibleSwaps({ data, isLoading }: BitflowPossibl
         </div>
 
         {data.message && (
-          <div className="mt-4 bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
-            <p className="text-xs text-orange-300">{data.message}</p>
+          <div className="mt-4 bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
+            <p className="text-xs text-cyan-300">{data.message}</p>
           </div>
         )}
       </CardContent>

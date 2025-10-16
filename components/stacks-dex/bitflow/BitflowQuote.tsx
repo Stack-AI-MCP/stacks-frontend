@@ -65,10 +65,10 @@ export default function BitflowQuote({ data, isLoading }: BitflowQuoteProps) {
   const routePath = bestRoute?.dexPath || bestRoute?.route || quote.route;
 
   return (
-    <Card className="w-full bg-gradient-to-br from-orange-500/10 to-yellow-500/10 border-orange-500/20">
+    <Card className="w-full bg-gradient-to-br from-cyan-500/10 to-sky-500/10 border-cyan-500/20">
       <CardHeader>
         <div className="flex items-center gap-2">
-          <DollarSign className="w-6 h-6 text-orange-400" />
+          <DollarSign className="w-6 h-6 text-cyan-400" />
           <CardTitle className="text-xl">BitFlow Swap Quote</CardTitle>
         </div>
         <CardDescription className="text-zinc-300">
@@ -79,9 +79,9 @@ export default function BitflowQuote({ data, isLoading }: BitflowQuoteProps) {
       <CardContent className="space-y-6">
         {/* Estimated Output */}
         {estimatedOutput !== undefined && (
-          <div className="bg-zinc-900/50 p-6 rounded-lg border border-orange-500/20">
+          <div className="bg-zinc-900/50 p-6 rounded-lg border border-cyan-500/20">
             <span className="text-sm text-zinc-400 mb-2 block">Estimated Output</span>
-            <p className="text-5xl font-bold text-orange-400">
+            <p className="text-5xl font-bold text-cyan-400">
               {estimatedOutput.toLocaleString(undefined, {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 8
@@ -95,10 +95,10 @@ export default function BitflowQuote({ data, isLoading }: BitflowQuoteProps) {
           {priceImpact !== undefined && (
             <div className="bg-zinc-800 p-4 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <TrendingDown className="w-4 h-4 text-yellow-400" />
+                <TrendingDown className="w-4 h-4 text-sky-400" />
                 <span className="text-sm text-zinc-400">Price Impact</span>
               </div>
-              <p className={`text-2xl font-bold ${priceImpact > 5 ? 'text-red-400' : priceImpact > 1 ? 'text-yellow-400' : 'text-green-400'}`}>
+              <p className={`text-2xl font-bold ${priceImpact > 5 ? 'text-red-400' : priceImpact > 1 ? 'text-sky-400' : 'text-green-400'}`}>
                 {priceImpact.toFixed(2)}%
               </p>
             </div>
@@ -136,10 +136,10 @@ export default function BitflowQuote({ data, isLoading }: BitflowQuoteProps) {
         </div>
 
         {/* Tips */}
-        <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
+        <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
           <div className="space-y-1">
-            <p className="text-xs text-orange-300">💡 BitFlow automatically finds the best route for your swap</p>
-            <p className="text-xs text-orange-300">💡 Lower price impact means better execution</p>
+            <p className="text-xs text-cyan-300">💡 BitFlow automatically finds the best route for your swap</p>
+            <p className="text-xs text-cyan-300">💡 Lower price impact means better execution</p>
             {priceImpact && priceImpact > 5 && (
               <p className="text-xs text-red-300">⚠️ High price impact - consider splitting into smaller trades</p>
             )}
@@ -148,8 +148,8 @@ export default function BitflowQuote({ data, isLoading }: BitflowQuoteProps) {
 
         {/* Success Message */}
         {data.message && (
-          <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
-            <p className="text-xs text-orange-300">{data.message}</p>
+          <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
+            <p className="text-xs text-cyan-300">{data.message}</p>
           </div>
         )}
       </CardContent>

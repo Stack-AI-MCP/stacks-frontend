@@ -134,7 +134,7 @@ export default function VelarTokenDetails({ data, isLoading }: VelarTokenDetails
             </div>
             <div className="bg-zinc-800 p-4 rounded-lg">
               <span className="text-sm text-zinc-400">24h Fees</span>
-              <p className="text-xl font-bold text-yellow-400 mt-1">
+              <p className="text-xl font-bold text-sky-400 mt-1">
                 ${token.stats.fees.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
             </div>

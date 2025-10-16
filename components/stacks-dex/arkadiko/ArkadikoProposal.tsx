@@ -76,7 +76,7 @@ export default function ArkadikoProposal({ data, isLoading }: ArkadikoProposalPr
       case "active":
         return { color: "text-blue-400", bgColor: "bg-blue-500/20" };
       default:
-        return { color: "text-yellow-400", bgColor: "bg-yellow-500/20" };
+        return { color: "text-sky-400", bgColor: "bg-sky-500/20" };
     }
   };
 
@@ -177,7 +177,7 @@ export default function ArkadikoProposal({ data, isLoading }: ArkadikoProposalPr
           </div>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-orange-400" />
+              <Clock className="w-4 h-4 text-cyan-400" />
               <span className="text-sm text-zinc-400">End Block:</span>
             </div>
             <code className="text-xs text-white font-mono">{proposal.end_block.toLocaleString()}</code>

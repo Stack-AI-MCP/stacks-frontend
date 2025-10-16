@@ -198,9 +198,9 @@ export default function TransactionWrapper({
 
       {/* Wallet Connection Warning */}
       {!isConnected && (
-        <Alert className="border-yellow-500/50 bg-yellow-500/10">
-          <AlertCircle className="h-4 w-4 text-yellow-400" />
-          <AlertDescription className="text-yellow-300">
+        <Alert className="border-sky-500/50 bg-sky-500/10">
+          <AlertCircle className="h-4 w-4 text-sky-400" />
+          <AlertDescription className="text-sky-300">
             Connect your Stacks wallet to execute this transaction
           </AlertDescription>
         </Alert>

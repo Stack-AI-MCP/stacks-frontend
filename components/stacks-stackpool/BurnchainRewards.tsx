@@ -84,10 +84,10 @@ export default function BurnchainRewards({ data, isLoading }: BurnchainRewardsPr
   const totalRewards = results.reduce((sum, reward) => sum + parseInt(reward.reward_amount), 0);
 
   return (
-    <Card className="w-full bg-gradient-to-br from-amber-500/10 to-yellow-500/10 border-amber-500/20">
+    <Card className="w-full bg-gradient-to-br from-blue-500/10 to-sky-500/10 border-blue-500/20">
       <CardHeader>
         <div className="flex items-center gap-2">
-          <Coins className="w-6 h-6 text-amber-400" />
+          <Coins className="w-6 h-6 text-blue-400" />
           <CardTitle className="text-xl">Burnchain Rewards</CardTitle>
         </div>
         <CardDescription className="text-zinc-300">
@@ -98,16 +98,16 @@ export default function BurnchainRewards({ data, isLoading }: BurnchainRewardsPr
       <CardContent className="space-y-6">
         {/* Summary Stats */}
         <div className="grid grid-cols-3 gap-4">
-          <div className="bg-zinc-900/50 p-4 rounded-lg border border-amber-500/20 text-center">
-            <div className="text-2xl font-bold text-amber-400">{results.length}</div>
+          <div className="bg-zinc-900/50 p-4 rounded-lg border border-blue-500/20 text-center">
+            <div className="text-2xl font-bold text-blue-400">{results.length}</div>
             <div className="text-xs text-zinc-400 mt-1">Rewards</div>
           </div>
-          <div className="bg-zinc-900/50 p-4 rounded-lg border border-amber-500/20 text-center">
-            <div className="text-lg font-bold text-amber-400">{formatBTC(totalRewards.toString())}</div>
+          <div className="bg-zinc-900/50 p-4 rounded-lg border border-blue-500/20 text-center">
+            <div className="text-lg font-bold text-blue-400">{formatBTC(totalRewards.toString())}</div>
             <div className="text-xs text-zinc-400 mt-1">Total BTC</div>
           </div>
-          <div className="bg-zinc-900/50 p-4 rounded-lg border border-amber-500/20 text-center">
-            <div className="text-2xl font-bold text-amber-400">{offset}</div>
+          <div className="bg-zinc-900/50 p-4 rounded-lg border border-blue-500/20 text-center">
+            <div className="text-2xl font-bold text-blue-400">{offset}</div>
             <div className="text-xs text-zinc-400 mt-1">Offset</div>
           </div>
         </div>
@@ -118,12 +118,12 @@ export default function BurnchainRewards({ data, isLoading }: BurnchainRewardsPr
             {results.map((reward, idx) => (
               <div
                 key={idx}
-                className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20 hover:border-amber-500/30 transition-colors"
+                className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20 hover:border-blue-500/30 transition-colors"
               >
                 {/* Header with Index and Canonical Badge */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="text-amber-400 border-amber-500/30">
+                    <Badge variant="outline" className="text-blue-400 border-blue-500/30">
                       Reward #{reward.reward_index}
                     </Badge>
                     {reward.canonical && (
@@ -135,15 +135,15 @@ export default function BurnchainRewards({ data, isLoading }: BurnchainRewardsPr
                 </div>
 
                 {/* Reward Amount */}
-                <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20 mb-3">
+                <div className="p-3 bg-blue-500/10 rounded-lg border border-blue-500/20 mb-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-amber-400" />
+                      <TrendingUp className="w-4 h-4 text-blue-400" />
                       <span className="text-xs text-zinc-400">Reward Amount</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Bitcoin className="w-4 h-4 text-amber-400" />
-                      <span className="text-lg font-bold text-amber-400 font-mono">
+                      <Bitcoin className="w-4 h-4 text-blue-400" />
+                      <span className="text-lg font-bold text-blue-400 font-mono">
                         {formatBTC(reward.reward_amount)}
                       </span>
                       <span className="text-xs text-zinc-400">BTC</span>
@@ -209,8 +209,8 @@ export default function BurnchainRewards({ data, isLoading }: BurnchainRewardsPr
 
         {/* Success Message */}
         {data.message && (
-          <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
-            <p className="text-sm text-amber-300">{data.message}</p>
+          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
+            <p className="text-sm text-blue-300">{data.message}</p>
           </div>
         )}
       </CardContent>

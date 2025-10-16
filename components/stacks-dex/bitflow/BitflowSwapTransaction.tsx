@@ -153,10 +153,10 @@ export default function BitflowSwapTransaction({ data, isLoading }: BitflowSwapT
               {details.slippage && (
                 <div className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20">
                   <div className="flex items-center gap-2 mb-2">
-                    <TrendingDown className="w-4 h-4 text-yellow-400" />
+                    <TrendingDown className="w-4 h-4 text-sky-400" />
                     <span className="text-sm text-zinc-400">Slippage Tolerance</span>
                   </div>
-                  <p className="text-lg font-bold text-yellow-400">{details.slippage}</p>
+                  <p className="text-lg font-bold text-sky-400">{details.slippage}</p>
                 </div>
               )}
               {details.priceImpact && (
@@ -191,9 +191,9 @@ export default function BitflowSwapTransaction({ data, isLoading }: BitflowSwapT
 
           {/* Warnings */}
           {data.warnings && data.warnings.length > 0 && (
-            <Alert className="border-yellow-500/50 bg-yellow-500/10">
-              <AlertTriangle className="h-4 w-4 text-yellow-400" />
-              <AlertDescription className="text-yellow-300">
+            <Alert className="border-sky-500/50 bg-sky-500/10">
+              <AlertTriangle className="h-4 w-4 text-sky-400" />
+              <AlertDescription className="text-sky-300">
                 <div className="space-y-1">
                   {data.warnings.map((warning, idx) => (
                     <p key={idx} className="text-sm">{warning}</p>

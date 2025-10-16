@@ -64,10 +64,10 @@ export default function BitflowTokenList({ data, isLoading }: BitflowTokenListPr
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Coins className="w-5 h-5 text-orange-400" />
+            <Coins className="w-5 h-5 text-cyan-400" />
             <CardTitle className="text-lg">BitFlow Available Tokens</CardTitle>
           </div>
-          <Badge variant="secondary" className="bg-orange-500/20 text-orange-400">
+          <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400">
             {tokens.length} tokens
           </Badge>
         </div>
@@ -128,8 +128,8 @@ export default function BitflowTokenList({ data, isLoading }: BitflowTokenListPr
         </div>
 
         {data.message && (
-          <div className="mt-4 bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
-            <p className="text-xs text-orange-300">{data.message}</p>
+          <div className="mt-4 bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
+            <p className="text-xs text-cyan-300">{data.message}</p>
           </div>
         )}
       </CardContent>

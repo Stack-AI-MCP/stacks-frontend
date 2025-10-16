@@ -94,12 +94,12 @@ export default function AccountNonces({ data, isLoading }: AccountNoncesProps) {
             </span>
           </div>
 
-          <div className="bg-zinc-900/50 p-4 rounded-lg border border-yellow-500/20">
+          <div className="bg-zinc-900/50 p-4 rounded-lg border border-sky-500/20">
             <div className="flex items-center gap-2 mb-2">
-              <Clock className="w-4 h-4 text-yellow-400" />
+              <Clock className="w-4 h-4 text-sky-400" />
               <span className="text-sm text-zinc-400">In Mempool</span>
             </div>
-            <p className="text-3xl font-bold text-yellow-400">
+            <p className="text-3xl font-bold text-sky-400">
               {nonces.last_mempool_tx_nonce}
             </p>
             <span className="text-xs text-zinc-500 mt-1 block">

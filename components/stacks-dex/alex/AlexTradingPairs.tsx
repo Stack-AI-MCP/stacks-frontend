@@ -60,10 +60,10 @@ export default function AlexTradingPairs({ data, isLoading }: AlexTradingPairsPr
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <ArrowRightLeft className="w-5 h-5 text-orange-400" />
+            <ArrowRightLeft className="w-5 h-5 text-cyan-400" />
             <CardTitle className="text-lg">ALEX Trading Pairs</CardTitle>
           </div>
-          <Badge variant="secondary" className="bg-orange-500/20 text-orange-400">
+          <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400">
             {pairs.length} pairs
           </Badge>
         </div>
@@ -92,7 +92,7 @@ export default function AlexTradingPairs({ data, isLoading }: AlexTradingPairsPr
                     <TableRow key={`alex-pair-${pair.ticker}-${index}`}>
                       <TableCell className="font-medium">
                         <div className="flex items-center gap-2">
-                          <span className="text-orange-400">{pair.base.toUpperCase()}</span>
+                          <span className="text-cyan-400">{pair.base.toUpperCase()}</span>
                           <ArrowRightLeft className="w-3 h-3 text-muted-foreground" />
                           <span className="text-blue-400">{pair.target.toUpperCase()}</span>
                         </div>

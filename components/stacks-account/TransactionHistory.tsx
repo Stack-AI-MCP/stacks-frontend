@@ -99,7 +99,7 @@ export default function TransactionHistory({
       case 'success':
         return 'bg-green-500/20 text-green-400';
       case 'pending':
-        return 'bg-yellow-500/20 text-yellow-400';
+        return 'bg-sky-500/20 text-sky-400';
       case 'abort_by_response':
       case 'abort_by_post_condition':
         return 'bg-red-500/20 text-red-400';

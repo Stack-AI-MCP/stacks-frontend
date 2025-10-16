@@ -93,10 +93,10 @@ export default function CharismaQuote({ data, isLoading }: CharismaQuoteProps) {
           {quote.priceImpact !== undefined && (
             <div className="bg-zinc-800 p-4 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <TrendingDown className="w-4 h-4 text-yellow-400" />
+                <TrendingDown className="w-4 h-4 text-sky-400" />
                 <span className="text-sm text-zinc-400">Price Impact</span>
               </div>
-              <p className={`text-2xl font-bold ${quote.priceImpact > 5 ? 'text-red-400' : quote.priceImpact > 1 ? 'text-yellow-400' : 'text-green-400'}`}>
+              <p className={`text-2xl font-bold ${quote.priceImpact > 5 ? 'text-red-400' : quote.priceImpact > 1 ? 'text-sky-400' : 'text-green-400'}`}>
                 {quote.priceImpact.toFixed(2)}%
               </p>
             </div>

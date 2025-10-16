@@ -50,7 +50,7 @@ export default function ProjectConfig({ data, isLoading }: ProjectConfigProps) {
       case 'mainnet':
         return 'text-green-400 border-green-500/30 bg-green-500/10';
       case 'testnet':
-        return 'text-yellow-400 border-yellow-500/30 bg-yellow-500/10';
+        return 'text-sky-400 border-sky-500/30 bg-sky-500/10';
       case 'devnet':
         return 'text-blue-400 border-blue-500/30 bg-blue-500/10';
       default:

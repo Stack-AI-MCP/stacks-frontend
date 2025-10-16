@@ -205,9 +205,9 @@ export default function NFTTransfer({ data, isLoading }: NFTTransferProps) {
 
           {/* Warnings */}
           {data.warnings && data.warnings.length > 0 && (
-            <Alert variant="default" className="border-yellow-500/50 bg-yellow-500/10">
-              <AlertCircle className="h-4 w-4 text-yellow-400" />
-              <AlertDescription className="text-yellow-300 text-xs">
+            <Alert variant="default" className="border-sky-500/50 bg-sky-500/10">
+              <AlertCircle className="h-4 w-4 text-sky-400" />
+              <AlertDescription className="text-sky-300 text-xs">
                 <div className="space-y-1 mt-2">
                   {data.warnings.map((warning, idx) => (
                     <p key={idx}>{warning}</p>

@@ -93,10 +93,10 @@ export default function TokenBalances({ data, isLoading }: TokenBalancesProps) {
       <CardContent className="space-y-4">
         {/* STX Balance */}
         {stx && (
-          <div className="p-4 bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg border border-orange-200">
+          <div className="p-4 bg-gradient-to-r from-cyan-50 to-cyan-100 rounded-lg border border-cyan-200">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-orange-600 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-full bg-cyan-600 flex items-center justify-center">
                   <span className="text-white font-bold text-sm">STX</span>
                 </div>
                 <div className="flex flex-col">
@@ -109,7 +109,7 @@ export default function TokenBalances({ data, isLoading }: TokenBalancesProps) {
                   {formatBalance(stx.balance, 6)}
                 </span>
                 {stx.locked && parseFloat(stx.locked.toString()) > 0 && (
-                  <div className="flex items-center gap-1 text-xs text-orange-600">
+                  <div className="flex items-center gap-1 text-xs text-cyan-600">
                     <TrendingUp className="h-3 w-3" />
                     <span>{formatBalance(stx.locked, 6)} locked</span>
                   </div>

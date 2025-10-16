@@ -101,7 +101,7 @@ export default function TransactionReceipt({
           {contractId && (
             <div className="bg-zinc-900/50 rounded-lg p-4 border border-green-500/20">
               <span className="text-xs text-zinc-400 mb-2 block">Contract ID</span>
-              <code className="text-sm text-orange-400 font-mono break-all block bg-black/30 p-3 rounded">
+              <code className="text-sm text-cyan-400 font-mono break-all block bg-black/30 p-3 rounded">
                 {contractId}
               </code>
             </div>

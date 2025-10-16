@@ -101,10 +101,10 @@ export default function ArkadikoStakeInfo({ data, isLoading }: ArkadikoStakeInfo
           {stake.pending_rewards !== undefined && (
             <div className="bg-zinc-800 p-4 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <Gift className="w-4 h-4 text-yellow-400" />
+                <Gift className="w-4 h-4 text-sky-400" />
                 <span className="text-sm text-zinc-400">Pending Rewards</span>
               </div>
-              <p className="text-2xl font-bold text-yellow-400">
+              <p className="text-2xl font-bold text-sky-400">
                 {formatVolume(stake.pending_rewards / 1e8)}
               </p>
               <span className="text-xs text-zinc-500">DIKO</span>

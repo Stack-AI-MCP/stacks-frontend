@@ -58,14 +58,14 @@ export default function BitflowKeeperTokens({ data, isLoading }: BitflowKeeperTo
   const tokens = data.data;
 
   return (
-    <Card className="w-full bg-gradient-to-br from-orange-500/5 to-yellow-500/5">
+    <Card className="w-full bg-gradient-to-br from-cyan-500/5 to-sky-500/5">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Clock className="w-5 h-5 text-orange-400" />
+            <Clock className="w-5 h-5 text-cyan-400" />
             <CardTitle className="text-lg">BitFlow Keeper Tokens</CardTitle>
           </div>
-          <Badge variant="secondary" className="bg-orange-500/20 text-orange-400">
+          <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400">
             {tokens.length} tokens
           </Badge>
         </div>
@@ -75,8 +75,8 @@ export default function BitflowKeeperTokens({ data, isLoading }: BitflowKeeperTo
       </CardHeader>
 
       <CardContent className="space-y-4">
-        <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
-          <p className="text-xs text-orange-300">
+        <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
+          <p className="text-xs text-cyan-300">
             💡 Keeper system allows you to set up automated Dollar-Cost Averaging (DCA) and scheduled swaps for these tokens
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function BitflowKeeperTokens({ data, isLoading }: BitflowKeeperTo
                   <TableRow key={token.id}>
                     <TableCell className="font-medium">
                       <div className="flex items-center gap-2">
-                        <Coins className="w-4 h-4 text-orange-400" />
+                        <Coins className="w-4 h-4 text-cyan-400" />
                         <div>
                           <span className="text-white font-semibold">{token.symbol}</span>
                           {token.name && <div className="text-xs text-zinc-500">{token.name}</div>}
@@ -119,8 +119,8 @@ export default function BitflowKeeperTokens({ data, isLoading }: BitflowKeeperTo
         </div>
 
         {data.message && (
-          <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
-            <p className="text-xs text-orange-300">{data.message}</p>
+          <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
+            <p className="text-xs text-cyan-300">{data.message}</p>
           </div>
         )}
       </CardContent>

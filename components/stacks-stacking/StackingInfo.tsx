@@ -81,7 +81,7 @@ export default function StackingInfo({ data, isLoading }: StackingInfoProps) {
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg flex items-center gap-2">
-            <Coins className="h-5 w-5 text-orange-600" />
+            <Coins className="h-5 w-5 text-cyan-600" />
             Stacking Operation
           </CardTitle>
           <Badge variant="default" className="bg-green-600">Success</Badge>
@@ -93,12 +93,12 @@ export default function StackingInfo({ data, isLoading }: StackingInfoProps) {
         {/* Stacking Details */}
         {stackingDetails && (
           <div className="space-y-3">
-            <div className="flex justify-between items-center py-3 px-4 bg-orange-50 rounded-lg border border-orange-200">
+            <div className="flex justify-between items-center py-3 px-4 bg-cyan-50 rounded-lg border border-cyan-200">
               <span className="text-muted-foreground flex items-center gap-2">
                 <Lock className="h-4 w-4" />
                 Stacked Amount:
               </span>
-              <span className="font-mono font-bold text-orange-600 text-lg">
+              <span className="font-mono font-bold text-cyan-600 text-lg">
                 {formatSTX(stackingDetails.amount)} STX
               </span>
             </div>

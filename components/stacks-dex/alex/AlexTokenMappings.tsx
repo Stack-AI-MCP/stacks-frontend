@@ -65,10 +65,10 @@ export default function AlexTokenMappings({ data, isLoading }: AlexTokenMappings
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Link2 className="w-5 h-5 text-orange-400" />
+            <Link2 className="w-5 h-5 text-cyan-400" />
             <CardTitle className="text-lg">ALEX Token Mappings</CardTitle>
           </div>
-          <Badge variant="secondary" className="bg-orange-500/20 text-orange-400">
+          <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400">
             {mappings.length} mappings
           </Badge>
         </div>
@@ -101,7 +101,7 @@ export default function AlexTokenMappings({ data, isLoading }: AlexTokenMappings
                     <TableRow key={`alex-mapping-${mapping.token}-${index}`}>
                       <TableCell>
                         <div className="flex flex-col gap-1">
-                          <span className="font-medium text-orange-400">
+                          <span className="font-medium text-cyan-400">
                             {mapping.token_asset.toUpperCase()}
                           </span>
                           <span className="text-xs text-muted-foreground font-mono truncate max-w-xs">

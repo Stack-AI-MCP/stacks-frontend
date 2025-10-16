@@ -68,7 +68,7 @@ export default function ArkadikoVaultInfo({ data, isLoading }: ArkadikoVaultInfo
   // Determine health status
   const getHealthStatus = (ratio: number) => {
     if (ratio >= 200) return { label: "Safe", color: "text-green-400", bgColor: "bg-green-500/20" };
-    if (ratio >= 150) return { label: "Moderate", color: "text-yellow-400", bgColor: "bg-yellow-500/20" };
+    if (ratio >= 150) return { label: "Moderate", color: "text-sky-400", bgColor: "bg-sky-500/20" };
     return { label: "At Risk", color: "text-red-400", bgColor: "bg-red-500/20" };
   };
 
@@ -118,7 +118,7 @@ export default function ArkadikoVaultInfo({ data, isLoading }: ArkadikoVaultInfo
           </div>
           <div className="bg-zinc-800 p-4 rounded-lg">
             <span className="text-sm text-zinc-400">Debt (USDA)</span>
-            <p className="text-2xl font-bold text-orange-400 mt-1">
+            <p className="text-2xl font-bold text-cyan-400 mt-1">
               {formatVolume(vault.debt_amount / 1e8)}
             </p>
             <span className="text-xs text-zinc-500">USDA minted</span>
@@ -173,8 +173,8 @@ export default function ArkadikoVaultInfo({ data, isLoading }: ArkadikoVaultInfo
 
         {/* Warning if at risk */}
         {ratio < 200 && ratio >= 150 && (
-          <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3">
-            <p className="text-xs text-yellow-300">
+          <div className="bg-sky-500/10 border border-sky-500/20 rounded-lg p-3">
+            <p className="text-xs text-sky-300">
               ⚠️ Collateralization ratio below 200%. Consider adding more collateral to maintain a safe buffer.
             </p>
           </div>

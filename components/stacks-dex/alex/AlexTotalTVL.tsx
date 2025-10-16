@@ -56,10 +56,10 @@ export default function AlexTotalTVL({ data, isLoading }: AlexTotalTVLProps) {
   const tvlData = data.data;
 
   return (
-    <Card className="w-full bg-gradient-to-br from-orange-500/10 to-purple-500/10 border-orange-500/20">
+    <Card className="w-full bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border-cyan-500/20">
       <CardHeader>
         <div className="flex items-center gap-2">
-          <DollarSign className="w-6 h-6 text-orange-400" />
+          <DollarSign className="w-6 h-6 text-cyan-400" />
           <CardTitle className="text-xl">ALEX Protocol TVL</CardTitle>
         </div>
         <CardDescription className="text-zinc-300">
@@ -69,7 +69,7 @@ export default function AlexTotalTVL({ data, isLoading }: AlexTotalTVLProps) {
 
       <CardContent className="space-y-6">
         {/* Main TVL Display */}
-        <div className="bg-zinc-900/50 p-6 rounded-lg border border-orange-500/20">
+        <div className="bg-zinc-900/50 p-6 rounded-lg border border-cyan-500/20">
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp className="w-5 h-5 text-green-400" />
             <span className="text-sm text-zinc-400">Total Value Locked</span>
@@ -83,7 +83,7 @@ export default function AlexTotalTVL({ data, isLoading }: AlexTotalTVLProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-zinc-900/50 p-4 rounded-lg">
             <span className="text-sm text-zinc-400">LP Token Supply</span>
-            <p className="text-2xl font-bold text-orange-400 mt-1">
+            <p className="text-2xl font-bold text-cyan-400 mt-1">
               {formatVolume(tvlData.lp_token_supply)}
             </p>
           </div>

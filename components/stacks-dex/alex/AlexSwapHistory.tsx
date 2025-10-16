@@ -71,10 +71,10 @@ export default function AlexSwapHistory({ data, isLoading }: AlexSwapHistoryProp
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <ArrowRightLeft className="w-5 h-5 text-orange-400" />
+            <ArrowRightLeft className="w-5 h-5 text-cyan-400" />
             <CardTitle className="text-lg">ALEX Swap Pairs</CardTitle>
           </div>
-          <Badge variant="secondary" className="bg-orange-500/20 text-orange-400">
+          <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400">
             {swaps.length} pairs ({activeSwaps.length} active)
           </Badge>
         </div>
@@ -106,7 +106,7 @@ export default function AlexSwapHistory({ data, isLoading }: AlexSwapHistoryProp
                     <TableRow key={`alex-swap-${swap.id}`}>
                       <TableCell className="font-medium">
                         <div className="flex items-center gap-2">
-                          <span className="text-orange-400">{swap.baseSymbol.toUpperCase()}</span>
+                          <span className="text-cyan-400">{swap.baseSymbol.toUpperCase()}</span>
                           <ArrowRightLeft className="w-3 h-3 text-muted-foreground" />
                           <span className="text-blue-400">{swap.quoteSymbol.toUpperCase()}</span>
                           <Badge variant="outline" className="ml-2 text-xs">#{swap.id}</Badge>

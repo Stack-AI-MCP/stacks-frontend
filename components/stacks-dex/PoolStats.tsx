@@ -145,7 +145,7 @@ export default function PoolStats({
       <CardContent className="space-y-6">
         {/* Token Pair */}
         <div className="flex items-center gap-2 justify-center">
-          <Badge className="bg-orange-500/20 text-orange-400 text-sm px-3 py-1">
+          <Badge className="bg-cyan-500/20 text-cyan-400 text-sm px-3 py-1">
             {token0Name}
           </Badge>
           <span className="text-zinc-500">/</span>
@@ -199,10 +199,10 @@ export default function PoolStats({
           {fees24h !== undefined && (
             <div className="bg-zinc-800 p-4 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <DollarSign className="w-4 h-4 text-yellow-400" />
+                <DollarSign className="w-4 h-4 text-sky-400" />
                 <span className="text-sm text-zinc-400">24h Fees</span>
               </div>
-              <p className="text-2xl font-bold text-yellow-400">
+              <p className="text-2xl font-bold text-sky-400">
                 {formatCurrency(fees24h)}
               </p>
             </div>

@@ -95,7 +95,7 @@ export default function CycleInfo({
       <Card className="bg-zinc-900 border-zinc-700">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Clock className="w-5 h-5 text-orange-400" />
+            <Clock className="w-5 h-5 text-cyan-400" />
             PoX Cycle #{cycleData.cycle_number}
           </CardTitle>
         </CardHeader>
@@ -221,7 +221,7 @@ export default function CycleInfo({
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-orange-400" />
+              <Clock className="w-5 h-5 text-cyan-400" />
               PoX Cycles
             </div>
             {cycleData.total && (
@@ -247,7 +247,7 @@ export default function CycleInfo({
                       Block #{cycle.block_height.toLocaleString()}
                     </p>
                   </div>
-                  <Badge className="bg-orange-500/20 text-orange-400">
+                  <Badge className="bg-cyan-500/20 text-cyan-400">
                     Active
                   </Badge>
                 </div>

@@ -75,7 +75,7 @@ export default function TransactionDetails({ data, isLoading }: TransactionDetai
       case "success":
         return "bg-green-500/20 text-green-400 border-green-500/20";
       case "pending":
-        return "bg-yellow-500/20 text-yellow-400 border-yellow-500/20";
+        return "bg-sky-500/20 text-sky-400 border-sky-500/20";
       case "failed":
       case "abort_by_response":
       case "abort_by_post_condition":
@@ -90,7 +90,7 @@ export default function TransactionDetails({ data, isLoading }: TransactionDetai
       case "success":
         return <CheckCircle2 className="w-5 h-5 text-green-400" />;
       case "pending":
-        return <Clock className="w-5 h-5 text-yellow-400" />;
+        return <Clock className="w-5 h-5 text-sky-400" />;
       case "failed":
       case "abort_by_response":
       case "abort_by_post_condition":

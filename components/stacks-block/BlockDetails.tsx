@@ -100,7 +100,7 @@ export default function BlockDetails({ data, isLoading }: BlockDetailsProps) {
         <div className="flex items-center justify-center gap-3">
           <Badge
             variant={block.canonical ? "default" : "secondary"}
-            className={block.canonical ? "bg-green-500/20 text-green-400" : "bg-yellow-500/20 text-yellow-400"}
+            className={block.canonical ? "bg-green-500/20 text-green-400" : "bg-sky-500/20 text-sky-400"}
           >
             {block.canonical ? "CANONICAL" : "NON-CANONICAL"}
           </Badge>
@@ -167,8 +167,8 @@ export default function BlockDetails({ data, isLoading }: BlockDetailsProps) {
         </div>
 
         {/* Bitcoin Anchor Details */}
-        <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-4">
-          <span className="text-sm text-orange-300 block mb-3 font-semibold">Bitcoin Anchor Details</span>
+        <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4">
+          <span className="text-sm text-cyan-300 block mb-3 font-semibold">Bitcoin Anchor Details</span>
           <div className="space-y-2">
             <div className="flex justify-between items-start">
               <span className="text-xs text-zinc-400">Bitcoin Block Height:</span>

@@ -68,11 +68,11 @@ export default function StackingStatus({ data, isLoading }: StackingStatusProps)
   };
 
   return (
-    <Card className="w-full bg-gradient-to-br from-orange-500/10 to-amber-500/10 border-orange-500/20">
+    <Card className="w-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border-cyan-500/20">
       <CardHeader>
         <div className="flex items-center gap-2">
           {isStacking ? (
-            <Lock className="w-6 h-6 text-orange-400" />
+            <Lock className="w-6 h-6 text-cyan-400" />
           ) : (
             <Unlock className="w-6 h-6 text-zinc-400" />
           )}
@@ -100,10 +100,10 @@ export default function StackingStatus({ data, isLoading }: StackingStatusProps)
         </div>
 
         {/* Stacking State */}
-        <div className={`border rounded-lg p-4 ${isStacking ? 'bg-orange-500/10 border-orange-500/20' : 'bg-zinc-900/50 border-slate-500/20'}`}>
+        <div className={`border rounded-lg p-4 ${isStacking ? 'bg-cyan-500/10 border-cyan-500/20' : 'bg-zinc-900/50 border-slate-500/20'}`}>
           <div className="flex items-center gap-2 mb-3">
-            <Activity className={`w-5 h-5 ${isStacking ? 'text-orange-400' : 'text-zinc-400'}`} />
-            <span className={`text-sm font-semibold ${isStacking ? 'text-orange-300' : 'text-zinc-400'}`}>
+            <Activity className={`w-5 h-5 ${isStacking ? 'text-cyan-400' : 'text-zinc-400'}`} />
+            <span className={`text-sm font-semibold ${isStacking ? 'text-cyan-300' : 'text-zinc-400'}`}>
               {isStacking ? "Currently Stacking" : "Not Stacking"}
             </span>
           </div>
@@ -114,7 +114,7 @@ export default function StackingStatus({ data, isLoading }: StackingStatusProps)
               <div className="bg-black/30 p-4 rounded-lg">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-zinc-400">Locked Amount</span>
-                  <span className="text-xl font-bold text-orange-400 font-mono">
+                  <span className="text-xl font-bold text-cyan-400 font-mono">
                     {locked.amount}
                   </span>
                 </div>
@@ -138,15 +138,15 @@ export default function StackingStatus({ data, isLoading }: StackingStatusProps)
 
               {/* PoX Information */}
               {pox && (
-                <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4 mt-4">
+                <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4 mt-4">
                   <div className="flex items-center gap-2 mb-3">
-                    <TrendingUp className="w-5 h-5 text-amber-400" />
-                    <span className="text-sm text-amber-300 font-semibold">PoX Network Info</span>
+                    <TrendingUp className="w-5 h-5 text-blue-400" />
+                    <span className="text-sm text-blue-300 font-semibold">PoX Network Info</span>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-zinc-400">Current Cycle</span>
-                      <Badge variant="outline" className="text-amber-400 border-amber-500/30">
+                      <Badge variant="outline" className="text-blue-400 border-blue-500/30">
                         Cycle #{pox.current_cycle}
                       </Badge>
                     </div>
@@ -187,8 +187,8 @@ export default function StackingStatus({ data, isLoading }: StackingStatusProps)
 
         {/* Success Message */}
         {data.message && (
-          <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
-            <p className="text-sm text-orange-300">{data.message}</p>
+          <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
+            <p className="text-sm text-cyan-300">{data.message}</p>
           </div>
         )}
       </CardContent>

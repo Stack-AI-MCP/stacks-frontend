@@ -85,12 +85,12 @@ export default function SendSTXTransaction({ data, isLoading }: SendSTXTransacti
       transactionData={transactionData}
       network={transaction.network === "mainnet" ? "mainnet" : "testnet"}
       buttonText="Sign & Send STX"
-      buttonGradient="from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700"
+      buttonGradient="from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700"
     >
-      <Card className="w-full bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20">
+      <Card className="w-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border-cyan-500/20">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <Send className="w-6 h-6 text-orange-400" />
+            <Send className="w-6 h-6 text-cyan-400" />
             <CardTitle className="text-xl">Send STX Transaction</CardTitle>
           </div>
           <CardDescription className="text-zinc-300">
@@ -100,9 +100,9 @@ export default function SendSTXTransaction({ data, isLoading }: SendSTXTransacti
 
         <CardContent className="space-y-6">
           {/* Transaction Amount */}
-          <div className="bg-zinc-900/50 p-6 rounded-lg border border-orange-500/20">
+          <div className="bg-zinc-900/50 p-6 rounded-lg border border-cyan-500/20">
             <span className="text-sm text-zinc-400 mb-2 block">Amount</span>
-            <p className="text-5xl font-bold text-orange-400">
+            <p className="text-5xl font-bold text-cyan-400">
               {transaction.amountSTX}
             </p>
             <span className="text-xs text-zinc-500 mt-2 block">
@@ -143,9 +143,9 @@ export default function SendSTXTransaction({ data, isLoading }: SendSTXTransacti
           )}
 
           {/* Instructions */}
-          <Alert className="border-orange-500/50 bg-orange-500/10">
-            <Info className="h-4 w-4 text-orange-400" />
-            <AlertDescription className="text-orange-300 text-sm">
+          <Alert className="border-cyan-500/50 bg-cyan-500/10">
+            <Info className="h-4 w-4 text-cyan-400" />
+            <AlertDescription className="text-cyan-300 text-sm">
               This transaction is ready to be signed. Please confirm the details above before proceeding.
             </AlertDescription>
           </Alert>
@@ -169,22 +169,22 @@ export default function SendSTXTransaction({ data, isLoading }: SendSTXTransacti
 
           {/* Success Message */}
           {data.message && (
-            <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
-              <p className="text-sm text-orange-300">{data.message}</p>
+            <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
+              <p className="text-sm text-cyan-300">{data.message}</p>
             </div>
           )}
 
           {/* Transaction Ready Badge */}
           <div className="flex justify-center">
-            <Badge variant="secondary" className="bg-orange-500/20 text-orange-400 px-6 py-2">
+            <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400 px-6 py-2">
               Transaction ready for signing
             </Badge>
           </div>
 
           {/* Warnings */}
-          <Alert variant="default" className="border-yellow-500/50 bg-yellow-500/10">
-            <AlertCircle className="h-4 w-4 text-yellow-400" />
-            <AlertDescription className="text-yellow-300 text-xs">
+          <Alert variant="default" className="border-sky-500/50 bg-sky-500/10">
+            <AlertCircle className="h-4 w-4 text-sky-400" />
+            <AlertDescription className="text-sky-300 text-xs">
               Always verify you are sending to the correct address. STX transactions are irreversible.
             </AlertDescription>
           </Alert>

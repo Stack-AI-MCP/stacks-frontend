@@ -106,7 +106,7 @@ export default function AccountInfo({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-zinc-800 p-4 rounded-lg">
                 <span className="text-sm text-zinc-400">Available Balance</span>
-                <p className="text-2xl font-bold text-orange-400 mt-1">
+                <p className="text-2xl font-bold text-cyan-400 mt-1">
                   {account.stx.balance || formatSTX(balanceSTX)}
                 </p>
               </div>
@@ -114,7 +114,7 @@ export default function AccountInfo({
               {lockedSTX !== '0' && (
                 <div className="bg-zinc-800 p-4 rounded-lg">
                   <span className="text-sm text-zinc-400">Locked STX</span>
-                  <p className="text-2xl font-bold text-yellow-400 mt-1">
+                  <p className="text-2xl font-bold text-sky-400 mt-1">
                     {account.stx.locked || formatSTX(lockedSTX)}
                   </p>
                 </div>
@@ -162,7 +162,7 @@ export default function AccountInfo({
     <Card className="bg-zinc-900 border-zinc-700">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Wallet className="w-5 h-5 text-orange-400" />
+          <Wallet className="w-5 h-5 text-cyan-400" />
           Account Information
         </CardTitle>
       </CardHeader>
@@ -177,7 +177,7 @@ export default function AccountInfo({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-zinc-800 p-4 rounded-lg">
               <span className="text-sm text-zinc-400">Available Balance</span>
-              <p className="text-2xl font-bold text-orange-400 mt-1">
+              <p className="text-2xl font-bold text-cyan-400 mt-1">
                 {formatSTX(balanceSTX)}
               </p>
             </div>
@@ -185,7 +185,7 @@ export default function AccountInfo({
             {lockedSTX !== '0' && (
               <div className="bg-zinc-800 p-4 rounded-lg">
                 <span className="text-sm text-zinc-400">Locked STX</span>
-                <p className="text-2xl font-bold text-yellow-400 mt-1">
+                <p className="text-2xl font-bold text-sky-400 mt-1">
                   {formatSTX(lockedSTX)}
                 </p>
                 {unlockHeight && (

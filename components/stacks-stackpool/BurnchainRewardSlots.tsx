@@ -76,10 +76,10 @@ export default function BurnchainRewardSlots({ data, isLoading }: BurnchainRewar
   };
 
   return (
-    <Card className="w-full bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20">
+    <Card className="w-full bg-gradient-to-br from-cyan-500/10 to-red-500/10 border-cyan-500/20">
       <CardHeader>
         <div className="flex items-center gap-2">
-          <Flame className="w-6 h-6 text-orange-400" />
+          <Flame className="w-6 h-6 text-cyan-400" />
           <CardTitle className="text-xl">Burnchain Reward Slots</CardTitle>
         </div>
         <CardDescription className="text-zinc-300">
@@ -90,16 +90,16 @@ export default function BurnchainRewardSlots({ data, isLoading }: BurnchainRewar
       <CardContent className="space-y-6">
         {/* Summary Stats */}
         <div className="grid grid-cols-3 gap-4">
-          <div className="bg-zinc-900/50 p-4 rounded-lg border border-orange-500/20 text-center">
-            <div className="text-2xl font-bold text-orange-400">{results.length}</div>
+          <div className="bg-zinc-900/50 p-4 rounded-lg border border-cyan-500/20 text-center">
+            <div className="text-2xl font-bold text-cyan-400">{results.length}</div>
             <div className="text-xs text-zinc-400 mt-1">Shown</div>
           </div>
-          <div className="bg-zinc-900/50 p-4 rounded-lg border border-orange-500/20 text-center">
-            <div className="text-2xl font-bold text-orange-400">{total || results.length}</div>
+          <div className="bg-zinc-900/50 p-4 rounded-lg border border-cyan-500/20 text-center">
+            <div className="text-2xl font-bold text-cyan-400">{total || results.length}</div>
             <div className="text-xs text-zinc-400 mt-1">Total Slots</div>
           </div>
-          <div className="bg-zinc-900/50 p-4 rounded-lg border border-orange-500/20 text-center">
-            <div className="text-2xl font-bold text-orange-400">{offset}</div>
+          <div className="bg-zinc-900/50 p-4 rounded-lg border border-cyan-500/20 text-center">
+            <div className="text-2xl font-bold text-cyan-400">{offset}</div>
             <div className="text-xs text-zinc-400 mt-1">Offset</div>
           </div>
         </div>
@@ -110,12 +110,12 @@ export default function BurnchainRewardSlots({ data, isLoading }: BurnchainRewar
             {results.map((slot, idx) => (
               <div
                 key={idx}
-                className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20 hover:border-orange-500/30 transition-colors"
+                className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20 hover:border-cyan-500/30 transition-colors"
               >
                 {/* Header with Slot Index and Canonical Badge */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="text-orange-400 border-orange-500/30">
+                    <Badge variant="outline" className="text-cyan-400 border-cyan-500/30">
                       Slot #{slot.slot_index}
                     </Badge>
                     {slot.canonical && (
@@ -127,12 +127,12 @@ export default function BurnchainRewardSlots({ data, isLoading }: BurnchainRewar
                 </div>
 
                 {/* Bitcoin Address */}
-                <div className="space-y-1 mb-3 p-3 bg-orange-500/10 rounded-lg border border-orange-500/20">
+                <div className="space-y-1 mb-3 p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
                   <div className="flex items-center gap-2">
-                    <Bitcoin className="w-4 h-4 text-orange-400" />
+                    <Bitcoin className="w-4 h-4 text-cyan-400" />
                     <span className="text-xs text-zinc-400">BTC Reward Address</span>
                   </div>
-                  <code className="text-sm text-orange-400 font-mono block break-all">
+                  <code className="text-sm text-cyan-400 font-mono block break-all">
                     {slot.address}
                   </code>
                 </div>
@@ -178,8 +178,8 @@ export default function BurnchainRewardSlots({ data, isLoading }: BurnchainRewar
 
         {/* Success Message */}
         {data.message && (
-          <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
-            <p className="text-sm text-orange-300">{data.message}</p>
+          <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
+            <p className="text-sm text-cyan-300">{data.message}</p>
           </div>
         )}
       </CardContent>

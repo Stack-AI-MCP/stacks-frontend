@@ -75,7 +75,7 @@ export default function SearchResults({ data, isLoading }: SearchResultsProps) {
       case 'contract_address':
         return <User className="w-6 h-6 text-purple-400" />;
       case 'contract_id':
-        return <Code className="w-6 h-6 text-orange-400" />;
+        return <Code className="w-6 h-6 text-cyan-400" />;
       default:
         return <Search className="w-6 h-6 text-zinc-400" />;
     }
@@ -92,7 +92,7 @@ export default function SearchResults({ data, isLoading }: SearchResultsProps) {
       case 'contract_address':
         return 'bg-purple-500/20 text-purple-400';
       case 'contract_id':
-        return 'bg-orange-500/20 text-orange-400';
+        return 'bg-cyan-500/20 text-cyan-400';
       default:
         return 'bg-zinc-500/20 text-zinc-400';
     }

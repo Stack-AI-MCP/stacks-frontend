@@ -88,10 +88,10 @@ export default function TokenInfo({ data, isLoading }: TokenInfoProps) {
   const hasMetadata = !metadata.note;
 
   return (
-    <Card className="w-full bg-gradient-to-br from-amber-500/10 to-yellow-500/10 border-amber-500/20">
+    <Card className="w-full bg-gradient-to-br from-blue-500/10 to-sky-500/10 border-blue-500/20">
       <CardHeader>
         <div className="flex items-center gap-2">
-          <Coins className="w-6 h-6 text-amber-400" />
+          <Coins className="w-6 h-6 text-blue-400" />
           <CardTitle className="text-xl">SIP-010 Token Info</CardTitle>
         </div>
         <CardDescription className="text-zinc-300">
@@ -102,16 +102,16 @@ export default function TokenInfo({ data, isLoading }: TokenInfoProps) {
       <CardContent className="space-y-6">
         {/* Token Metadata */}
         {hasMetadata ? (
-          <div className="bg-zinc-900/50 p-6 rounded-lg border border-amber-500/20">
+          <div className="bg-zinc-900/50 p-6 rounded-lg border border-blue-500/20">
             <span className="text-sm text-zinc-400 mb-3 block">Token Details</span>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-zinc-500">Name:</span>
-                <span className="text-lg font-bold text-amber-400">{metadata.name}</span>
+                <span className="text-lg font-bold text-blue-400">{metadata.name}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-zinc-500">Symbol:</span>
-                <Badge variant="outline" className="text-amber-400 border-amber-500/30 text-lg">
+                <Badge variant="outline" className="text-blue-400 border-blue-500/30 text-lg">
                   {metadata.symbol}
                 </Badge>
               </div>
@@ -134,9 +134,9 @@ export default function TokenInfo({ data, isLoading }: TokenInfoProps) {
             </div>
           </div>
         ) : (
-          <Alert variant="default" className="border-yellow-500/50 bg-yellow-500/10">
-            <AlertCircle className="h-4 w-4 text-yellow-400" />
-            <AlertDescription className="text-yellow-300 text-sm">
+          <Alert variant="default" className="border-sky-500/50 bg-sky-500/10">
+            <AlertCircle className="h-4 w-4 text-sky-400" />
+            <AlertDescription className="text-sky-300 text-sm">
               {metadata.note}
             </AlertDescription>
           </Alert>
@@ -160,9 +160,9 @@ export default function TokenInfo({ data, isLoading }: TokenInfoProps) {
         </div>
 
         {/* Full Contract ID */}
-        <div className="bg-zinc-900/50 p-4 rounded-lg border border-amber-500/20">
+        <div className="bg-zinc-900/50 p-4 rounded-lg border border-blue-500/20">
           <span className="text-sm text-zinc-400 mb-2 block">Full Contract ID</span>
-          <code className="text-sm text-amber-400 font-mono break-all">
+          <code className="text-sm text-blue-400 font-mono break-all">
             {token.contractId}
           </code>
         </div>
@@ -232,8 +232,8 @@ export default function TokenInfo({ data, isLoading }: TokenInfoProps) {
 
         {/* Success Message */}
         {data.message && (
-          <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
-            <p className="text-sm text-amber-300">{data.message}</p>
+          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
+            <p className="text-sm text-blue-300">{data.message}</p>
           </div>
         )}
       </CardContent>
