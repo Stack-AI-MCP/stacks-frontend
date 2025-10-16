@@ -2,19 +2,21 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { 
-  CheckCircle, 
-  Clock, 
-  Calendar, 
+import {
+  CheckCircle,
+  Clock,
+  Calendar,
   ArrowRight,
-  Brain,
-  Shield,
-  Zap,
+  Rocket,
+  Monitor,
+  Trophy,
+  Mic,
+  Smartphone,
+  TrendingUp,
+  Sparkles,
   Code,
-  Globe,
-  Users,
-  Target,
-  Rocket
+  Wallet,
+  Blocks
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -24,133 +26,235 @@ import { PageHeader } from "@/components/ui/page-header";
 const roadmapPhases = [
   {
     phase: "Phase 1",
-    title: "Foundation ✅ COMPLETED",
+    title: "Foundation",
     status: "completed",
-    timeframe: "SHIPPED",
-    description: "64+ AI tools for Stacks operations - we've built what everyone else is promising",
+    timeframe: "COMPLETED",
+    description: "148+ AI-powered tools for Bitcoin DeFi on Stacks - production-ready, no mock data",
     milestones: [
       {
-        title: "64+ Live Operations",
-        description: "VET transfers, StarGate staking, cross-chain bridges, NFT management",
+        title: "148+ Live Operations",
+        description: "Natural language interface for 8 major Stacks protocols",
         status: "completed",
-        icon: Brain
+        icon: Rocket
       },
       {
-        title: "25+ Bridge Destinations", 
-        description: "Connect Stacks to entire crypto ecosystem via WanBridge & XFlows",
+        title: "Full Wallet Integration",
+        description: "Leather & Xverse wallet support for seamless transactions",
         status: "completed",
-        icon: Globe
+        icon: Wallet
       },
       {
-        title: "Real-time AI Streaming",
-        description: "Live blockchain data with progressive AI responses",
-        status: "completed", 
-        icon: Zap
-      },
-      {
-        title: "Web Interface",
-        description: "Full-featured web app with wallet connectivity",
+        title: "Clarity Development Tools",
+        description: "Smart contract generation, testing, and deployment",
         status: "completed",
         icon: Code
+      },
+      {
+        title: "8 Protocol Integrations",
+        description: "ALEX, Velar, BitFlow, Charisma, Arkadiko, Granite, BNS, Clarinet",
+        status: "completed",
+        icon: Blocks
       }
     ]
   },
   {
-    phase: "Phase 2", 
-    title: "Plugin Ecosystem 🚧 IN PROGRESS",
-    status: "in-progress",
+    phase: "Phase 2",
+    title: "Desktop Application",
+    status: "planned",
     timeframe: "Q1 2025",
-    description: "Building the ChatGPT plugin moment for blockchain - any Stacks project can integrate",
+    description: "Give users full control with a local-first desktop experience",
     milestones: [
       {
-        title: "MCP Integration",
-        description: "Model Context Protocol for seamless AI tool integration", 
-        status: "in-progress",
-        icon: Shield
+        title: "Native Desktop Apps",
+        description: "Mac, Windows, and Linux applications for enhanced performance",
+        status: "planned",
+        icon: Monitor
       },
       {
-        title: "Open Plugin Registry",
-        description: "Any Stacks project can add their tools to our AI",
-        status: "in-progress",
-        icon: Target
+        title: "Local-First Architecture",
+        description: "Run everything locally for privacy and security",
+        status: "planned",
+        icon: CheckCircle
       },
       {
-        title: "Plugin Marketplace",
-        description: "Discover and install new protocol integrations",
+        title: "Clarinet Devnet Integration",
+        description: "Connect to local development environment for testing",
         status: "planned",
         icon: Code
       },
       {
-        title: "VeBetter DAO Integration",
-        description: "Sustainability rewards through simple conversation",
+        title: "No API Rate Limits",
+        description: "Unlimited operations without cloud infrastructure dependencies",
         status: "planned",
-        icon: Zap
+        icon: Sparkles
       }
     ]
   },
   {
     phase: "Phase 3",
-    title: "Desktop & Local Operation 🎯 Q1 2025", 
+    title: "Reputation & Rewards",
     status: "planned",
-    timeframe: "Q1 2025",
-    description: "Breaking free from browsers and OpenAI dependency",
+    timeframe: "Q1 2026",
+    description: "Recognize and reward active community members with on-chain achievements",
     milestones: [
       {
-        title: "Native Desktop App",
-        description: "Windows, Mac, Linux apps with enhanced performance",
+        title: "Achievement System",
+        description: "Track your DeFi journey with badges and points",
         status: "planned",
-        icon: Brain
+        icon: Trophy
       },
       {
-        title: "Local AI with Ollama",
-        description: "No OpenAI API required - run everything locally",
-        status: "planned", 
-        icon: Users
+        title: "On-Chain NFT Badges",
+        description: "Exclusive NFT achievements on Stacks blockchain",
+        status: "planned",
+        icon: Sparkles
       },
       {
-        title: "Enhanced Security",
-        description: "Advanced security features for desktop operations",
+        title: "Leaderboard & Tiers",
+        description: "Climb the ranks with tiered achievements",
         status: "planned",
-        icon: Target
+        icon: TrendingUp
       },
       {
-        title: "Performance Optimization",
-        description: "Native performance benefits over web version",
+        title: "Early Adopter Perks",
+        description: "Special recognition for pioneers and power users",
         status: "planned",
-        icon: Globe
+        icon: Rocket
       }
     ]
   },
   {
     phase: "Phase 4",
-    title: "Reward Economy 🔮 Q2 2025",
-    status: "planned", 
-    timeframe: "Q2 2025",
-    description: "Making blockchain interaction profitable, not just functional",
+    title: "Voice Interface",
+    status: "planned",
+    timeframe: "Q2 2026",
+    description: "Talk to Bitcoin DeFi - hands-free access for everyone",
     milestones: [
       {
-        title: "User Rewards System",
-        description: "Earn tokens for platform engagement and usage",
+        title: "Voice Commands",
+        description: "Check balances, execute swaps, deploy contracts by voice",
         status: "planned",
-        icon: Rocket
+        icon: Mic
       },
       {
-        title: "Developer Incentives",
-        description: "Revenue sharing for plugin creators and contributors",
+        title: "Multi-Language Support",
+        description: "Global accessibility with multiple language support",
         status: "planned",
-        icon: Code
+        icon: Sparkles
       },
       {
-        title: "Ecosystem Acceleration",
-        description: "Making Stacks accessible through reward incentives",
+        title: "Cross-Platform Voice",
+        description: "Works on web and desktop applications",
         status: "planned",
-        icon: Users
+        icon: Monitor
       },
       {
-        title: "Cross-Protocol Rewards",
-        description: "Earn from multiple Stacks projects through one interface",
+        title: "Accessibility First",
+        description: "Hands-free DeFi for improved accessibility",
         status: "planned",
-        icon: Brain
+        icon: CheckCircle
+      }
+    ]
+  },
+  {
+    phase: "Phase 5",
+    title: "Mobile Experience",
+    status: "planned",
+    timeframe: "Q3 2026",
+    description: "Bitcoin DeFi in your pocket - anytime, anywhere",
+    milestones: [
+      {
+        title: "Progressive Web App",
+        description: "Works on all mobile devices seamlessly",
+        status: "planned",
+        icon: Smartphone
+      },
+      {
+        title: "Mobile Wallet Integration",
+        description: "Native integration with mobile Stacks wallets",
+        status: "planned",
+        icon: Wallet
+      },
+      {
+        title: "QR Code Support",
+        description: "Scan addresses and transaction data easily",
+        status: "planned",
+        icon: CheckCircle
+      },
+      {
+        title: "Biometric Security",
+        description: "Touch ID / Face ID for secure transactions",
+        status: "planned",
+        icon: Sparkles
+      }
+    ]
+  },
+  {
+    phase: "Phase 6",
+    title: "Advanced Analytics",
+    status: "planned",
+    timeframe: "Q4 2026",
+    description: "Understand your Bitcoin DeFi portfolio at a glance",
+    milestones: [
+      {
+        title: "Portfolio Dashboard",
+        description: "Total value tracking across all protocols",
+        status: "planned",
+        icon: TrendingUp
+      },
+      {
+        title: "P&L Tracking",
+        description: "Profit/loss analysis with historical insights",
+        status: "planned",
+        icon: Trophy
+      },
+      {
+        title: "Risk Monitoring",
+        description: "AI-powered risk warnings and alerts",
+        status: "planned",
+        icon: CheckCircle
+      },
+      {
+        title: "Tax Reporting",
+        description: "Export transaction history for tax purposes",
+        status: "planned",
+        icon: Blocks
+      }
+    ]
+  },
+  {
+    phase: "Phase 7",
+    title: "Premium Tiers",
+    status: "planned",
+    timeframe: "Coming Soon",
+    description: "Sustainable features that reward our most engaged users",
+    milestones: [
+      {
+        title: "Free Tier",
+        description: "Always free, always powerful - core DeFi operations",
+        status: "planned",
+        icon: CheckCircle
+      },
+      {
+        title: "Premium Plans",
+        description: "Pricing details coming soon - affordable for everyone",
+        status: "planned",
+        icon: Sparkles,
+        blurred: true
+      },
+      {
+        title: "Desktop App Access",
+        description: "Enhanced features for desktop users",
+        status: "planned",
+        icon: Monitor,
+        blurred: true
+      },
+      {
+        title: "API Access",
+        description: "Build on top of Stacks AI infrastructure",
+        status: "planned",
+        icon: Code,
+        blurred: true
       }
     ]
   }
@@ -158,8 +262,8 @@ const roadmapPhases = [
 
 const statusColors = {
   completed: "bg-green-500",
-  "in-progress": "bg-blue-500", 
-  planned: "bg-gray-400"
+  "in-progress": "bg-cyan-500",
+  planned: "bg-slate-500"
 };
 
 const statusIcons = {
@@ -173,7 +277,7 @@ export default function RoadmapPage() {
     <div className="min-h-screen bg-background">
       <PageHeader />
       {/* Hero Section */}
-      <section className="py-32 bg-gradient-to-r from-primary/10 to-primary/5">
+      <section className="py-32 bg-gradient-to-r from-cyan-500/10 to-blue-500/10">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -184,19 +288,19 @@ export default function RoadmapPage() {
             <Badge variant="outline" className="mb-6">
               <span className="text-muted-foreground">Product Roadmap</span>
             </Badge>
-            
+
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
-              Building the Stacks Operating System
+              Building the Future of Bitcoin DeFi
             </h1>
-            
+
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-              We've already shipped 64+ working tools. Now we're building the plugin ecosystem, 
-              desktop apps, and reward systems that will make Stacks accessible to everyone.
+              Making Bitcoin DeFi accessible through natural language. 148+ tools live.
+              Desktop apps, rewards, voice interface, and more coming soon.
             </p>
 
             <Button size="lg" asChild className="text-lg px-8 py-6">
               <Link href="/chat">
-                Try Current Features
+                Try Stacks AI
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -214,9 +318,10 @@ export default function RoadmapPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">From Working Tools to Operating System</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">From Foundation to Innovation</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Phase 1 is complete - we've shipped what others promise. Now we're building the infrastructure for the post-website era.
+              Phase 1 complete - we've shipped production-ready Bitcoin DeFi tools.
+              Now we're building the platform for the future.
             </p>
           </motion.div>
 
@@ -233,8 +338,8 @@ export default function RoadmapPage() {
                 {/* Phase Header */}
                 <div className="flex items-center gap-6 mb-8">
                   <div className={`w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-lg ${
-                    phase.status === 'completed' ? 'bg-green-500' : 
-                    phase.status === 'in-progress' ? 'bg-blue-500' : 'bg-gray-400'
+                    phase.status === 'completed' ? 'bg-green-500' :
+                    phase.status === 'in-progress' ? 'bg-cyan-500' : 'bg-slate-500'
                   }`}>
                     {phase.phase.split(' ')[1]}
                   </div>
@@ -242,14 +347,10 @@ export default function RoadmapPage() {
                     <div className="flex items-center gap-4 mb-2">
                       <h3 className="text-2xl font-bold">{phase.title}</h3>
                       <Badge variant={phase.status === 'completed' ? 'default' : 'secondary'}>
-                        {phase.status.charAt(0).toUpperCase() + phase.status.slice(1).replace('-', ' ')}
+                        {phase.timeframe}
                       </Badge>
                     </div>
-                    <div className="flex items-center gap-4 text-muted-foreground">
-                      <span className="text-sm font-medium">{phase.timeframe}</span>
-                      <span className="text-sm">•</span>
-                      <span className="text-sm">{phase.description}</span>
-                    </div>
+                    <p className="text-sm text-muted-foreground">{phase.description}</p>
                   </div>
                 </div>
 
@@ -258,7 +359,7 @@ export default function RoadmapPage() {
                   {phase.milestones.map((milestone, milestoneIndex) => {
                     const Icon = milestone.icon;
                     const StatusIcon = statusIcons[milestone.status as keyof typeof statusIcons];
-                    
+
                     return (
                       <motion.div
                         key={milestone.title}
@@ -266,18 +367,27 @@ export default function RoadmapPage() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.1 + milestoneIndex * 0.1 }}
                         viewport={{ once: true }}
-                        className="p-6 border rounded-xl bg-card/50 backdrop-blur-sm"
+                        className={`p-6 border rounded-xl bg-card/50 backdrop-blur-sm ${
+                          milestone.blurred ? 'relative overflow-hidden' : ''
+                        }`}
                       >
+                        {milestone.blurred && (
+                          <div className="absolute inset-0 backdrop-blur-sm bg-white/5 z-10 flex items-center justify-center">
+                            <span className="text-sm text-muted-foreground font-semibold">Coming Soon</span>
+                          </div>
+                        )}
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0">
-                            <Icon className="h-6 w-6 text-primary" />
+                            <Icon className={`h-6 w-6 ${
+                              milestone.status === 'completed' ? 'text-green-500' : 'text-cyan-400'
+                            }`} />
                           </div>
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">
                               <h4 className="font-semibold">{milestone.title}</h4>
                               <StatusIcon className={`h-4 w-4 ${
                                 milestone.status === 'completed' ? 'text-green-500' :
-                                milestone.status === 'in-progress' ? 'text-blue-500' : 'text-gray-400'
+                                milestone.status === 'in-progress' ? 'text-cyan-500' : 'text-slate-400'
                               }`} />
                             </div>
                             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -293,7 +403,7 @@ export default function RoadmapPage() {
                 {/* Phase Connector */}
                 {phaseIndex < roadmapPhases.length - 1 && (
                   <div className="flex justify-center mt-12">
-                    <div className="w-1 h-12 bg-gradient-to-b from-primary/50 to-muted"></div>
+                    <div className="w-1 h-12 bg-gradient-to-b from-cyan-500/50 to-muted"></div>
                   </div>
                 )}
               </motion.div>
@@ -312,25 +422,29 @@ export default function RoadmapPage() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Post-Website Era</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Bitcoin DeFi Revolution</h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              We're not waiting for the future - we're building it. 64+ tools already live. 
-              Plugin ecosystem in development. Desktop apps coming soon. The revolution is here.
+              148+ tools live and ready. Desktop apps in Q1 2025. Rewards, voice, mobile, and analytics coming.
+              Be part of making Bitcoin DeFi accessible to everyone.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild className="text-lg px-8 py-6">
                 <Link href="/chat">
-                  Try StacksAI
+                  Try Stacks AI
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild className="text-lg px-8 py-6">
-                <Link href="/docs">
-                  View Documentation
+                <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  Contribute on GitHub
                 </Link>
               </Button>
             </div>
+
+            <p className="text-sm text-muted-foreground mt-8">
+              Built during the Stacks Vibe Coding Hackathon 2025
+            </p>
           </motion.div>
         </div>
       </section>
