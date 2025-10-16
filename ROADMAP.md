@@ -83,25 +83,7 @@ Building the future of Bitcoin DeFi accessibility through AI.
 
 ---
 
-## Phase 6: Advanced Analytics (Q4 2026)
-
-**Vision:** Understand your Bitcoin DeFi portfolio at a glance.
-
-**Analytics Dashboard:**
-- Total portfolio value across all protocols
-- Profit/loss tracking
-- Risk monitoring and alerts
-- Historical performance insights
-- Tax reporting exports
-
-**Smart Insights:**
-- AI-powered recommendations based on your activity
-- Risk warnings before transactions
-- Opportunity alerts for high-yield pools
-
----
-
-## Phase 7: Premium Tiers (Coming Soon)
+## Phase 6: Premium Tiers (Coming Soon)
 
 We're building sustainable features that reward our most engaged users.
 
@@ -150,8 +132,7 @@ Always free, always powerful. Access to core DeFi operations.
 | Phase 3: Reputation | Q1 2026 | Community engagement |
 | Phase 4: Voice Interface | Q2 2026 | Accessibility |
 | Phase 5: Mobile | Q3 2026 | Mobile-first |
-| Phase 6: Analytics | Q4 2026 | Insights & data |
-| Phase 7: Premium | TBA | Sustainability |
+| Phase 6: Premium | TBA | Sustainability |
 
 ---
 

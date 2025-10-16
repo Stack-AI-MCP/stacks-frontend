@@ -191,39 +191,6 @@ const roadmapPhases = [
   },
   {
     phase: "Phase 6",
-    title: "Advanced Analytics",
-    status: "planned",
-    timeframe: "Q4 2026",
-    description: "Understand your Bitcoin DeFi portfolio at a glance",
-    milestones: [
-      {
-        title: "Portfolio Dashboard",
-        description: "Total value tracking across all protocols",
-        status: "planned",
-        icon: TrendingUp
-      },
-      {
-        title: "P&L Tracking",
-        description: "Profit/loss analysis with historical insights",
-        status: "planned",
-        icon: Trophy
-      },
-      {
-        title: "Risk Monitoring",
-        description: "AI-powered risk warnings and alerts",
-        status: "planned",
-        icon: CheckCircle
-      },
-      {
-        title: "Tax Reporting",
-        description: "Export transaction history for tax purposes",
-        status: "planned",
-        icon: Blocks
-      }
-    ]
-  },
-  {
-    phase: "Phase 7",
     title: "Premium Tiers",
     status: "planned",
     timeframe: "Coming Soon",
@@ -424,7 +391,7 @@ export default function RoadmapPage() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Bitcoin DeFi Revolution</h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              148+ tools live and ready. Desktop apps in Q1 2025. Rewards, voice, mobile, and analytics coming.
+              148+ tools live and ready. Desktop apps in Q1 2025. Rewards, voice, mobile, and premium tiers coming.
               Be part of making Bitcoin DeFi accessible to everyone.
             </p>
 
