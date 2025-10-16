@@ -16,6 +16,7 @@ interface MessagesProps {
   sendMessage: UseChatHelpers<ChatMessage>["sendMessage"];
   regenerate: UseChatHelpers<ChatMessage>["regenerate"];
   isReadonly: boolean;
+  walletAddress?: string | null;
 }
 
 function PureMessages({
@@ -26,6 +27,7 @@ function PureMessages({
   regenerate,
   isReadonly,
   sendMessage,
+  walletAddress,
 }: MessagesProps) {
   const {
     containerRef: messagesContainerRef,

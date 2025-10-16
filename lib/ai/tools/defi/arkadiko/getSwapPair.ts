@@ -1,9 +1,6 @@
 import { tool } from "ai";
 import z from "zod";
 
-const STACKS_API_MAINNET = "https://api.mainnet.hiro.so";
-const STACKS_API_TESTNET = "https://api.testnet.hiro.so";
-
 export const arkadikoGetSwapPair = tool({
   description: `Get detailed information about an Arkadiko DEX swap pair including reserves, fees, and liquidity.`,
 
@@ -15,31 +12,23 @@ export const arkadikoGetSwapPair = tool({
 
   execute: async ({ token_x, token_y, network }) => {
     try {
-      const apiUrl = network === "mainnet" ? STACKS_API_MAINNET : STACKS_API_TESTNET;
-
-      const contractAddress = "SP2C2YFP12AJZB4MABJBAJ55XECVS7E4PMMZ89YZR";
-      const contractName = "arkadiko-swap-v2-1";
-
-      const response = await fetch(
-        `${apiUrl}/v2/contracts/call-read/${contractAddress}/${contractName}/get-pair-details`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            sender: contractAddress,
-            arguments: [
-              `0x${Buffer.from(token_x).toString('hex')}`,
-              `0x${Buffer.from(token_y).toString('hex')}`
-            ]
-          })
-        }
-      );
+      // Use the MCP server backend service instead of direct API calls
+      const response = await fetch('/api/mcp/arkadiko_get_swap_pair', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token_x,
+          token_y,
+          network
+        })
+      });
 
       if (!response.ok) {
-        throw new Error(`Failed to get swap pair: ${response.statusText}`);
+        const errorText = await response.text();
+        console.error("Backend API Error:", errorText);
+        throw new Error(`Failed to get swap pair: ${response.statusText} - ${errorText}`);
       }
 
       const data = await response.json();

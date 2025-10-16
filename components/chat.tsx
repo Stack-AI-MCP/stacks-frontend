@@ -150,6 +150,7 @@ export function Chat({
           regenerate={regenerate}
           isReadonly={isReadonly}
           sendMessage={sendMessage}
+          walletAddress={address}
         />
 
         <form className="flex mx-auto px-4 bg-background pb-4 md:pb-3 gap-2 w-full md:max-w-3xl">
