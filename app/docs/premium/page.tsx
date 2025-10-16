@@ -35,7 +35,7 @@ const premiumFeatures = [
       "Advanced natural language understanding",
       "Multi-step transaction planning",
       "Predictive DeFi analytics",
-      "Custom AI model fine-tuning"
+      "Voice interface for hands-free DeFi"
     ]
   },
   {
@@ -46,20 +46,8 @@ const premiumFeatures = [
       "Advanced charting and technical analysis",
       "Real-time price alerts across protocols",
       "Portfolio optimization suggestions",
-      "Risk management automation",
+      "Risk management tools",
       "Historical data and backtesting"
-    ]
-  },
-  {
-    category: "Enhanced Security",
-    icon: Shield,
-    color: "text-green-500",
-    features: [
-      "Transaction simulation before execution",
-      "Smart contract audit summaries",
-      "Slippage protection advanced controls",
-      "MEV protection strategies",
-      "Multi-signature wallet support"
     ]
   },
   {
@@ -72,30 +60,6 @@ const premiumFeatures = [
       "Lending rate predictions",
       "Yield optimization strategies",
       "Protocol comparison tools"
-    ]
-  },
-  {
-    category: "Automation & Bots",
-    icon: Bot,
-    color: "text-orange-500",
-    features: [
-      "Custom DeFi automation strategies",
-      "Yield farming auto-compound",
-      "Rebalancing bots",
-      "Stop-loss and take-profit orders",
-      "Webhook integrations"
-    ]
-  },
-  {
-    category: "Developer Access",
-    icon: Code,
-    color: "text-pink-500",
-    features: [
-      "API access with higher rate limits",
-      "Custom MCP tool development",
-      "Advanced debugging tools",
-      "Testnet priority support",
-      "SDK and documentation access"
     ]
   }
 ];
@@ -114,11 +78,12 @@ const pricingTiers = [
     ],
     buttonText: "Get Started",
     buttonVariant: "outline" as const,
-    popular: false
+    popular: false,
+    blurred: false
   },
   {
     name: "Premium",
-    price: "$29",
+    price: "$5",
     period: "/month",
     description: "For serious DeFi users and traders",
     features: [
@@ -132,11 +97,12 @@ const pricingTiers = [
     ],
     buttonText: "Coming Soon",
     buttonVariant: "default" as const,
-    popular: true
+    popular: true,
+    blurred: true
   },
   {
     name: "Enterprise",
-    price: "Custom",
+    price: "TBA",
     description: "For teams and institutions",
     features: [
       "All Premium features",
@@ -147,9 +113,10 @@ const pricingTiers = [
       "Dedicated account manager",
       "Custom training"
     ],
-    buttonText: "Contact Us",
+    buttonText: "Coming Soon",
     buttonVariant: "outline" as const,
-    popular: false
+    popular: false,
+    blurred: true
   }
 ];
 
@@ -193,15 +160,15 @@ export default function PremiumPage() {
       >
         <h2 className="text-3xl font-bold mb-8 text-center">Why Choose Premium?</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <Card className="p-6 text-center">
             <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
               <Zap className="w-6 h-6 text-cyan-500" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">10x Faster</h3>
+            <h3 className="text-xl font-semibold mb-3">Priority Processing</h3>
             <p className="text-muted-foreground">
               Priority processing for AI requests and blockchain operations. Your transactions
-              get handled first with optimized routing.
+              get handled first with optimized routing and faster responses.
             </p>
           </Card>
 
@@ -209,21 +176,10 @@ export default function PremiumPage() {
             <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
               <Brain className="w-6 h-6 text-blue-500" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Smarter AI</h3>
+            <h3 className="text-xl font-semibold mb-3">Advanced Features</h3>
             <p className="text-muted-foreground">
-              Advanced AI models with deeper understanding of complex DeFi strategies
-              and multi-protocol compositions.
-            </p>
-          </Card>
-
-          <Card className="p-6 text-center">
-            <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <Rocket className="w-6 h-6 text-purple-500" />
-            </div>
-            <h3 className="text-xl font-semibold mb-3">More Power</h3>
-            <p className="text-muted-foreground">
-              Automation, custom strategies, API access, and developer tools to build
-              your own Bitcoin DeFi applications.
+              Voice interface, advanced analytics, and deeper insights into your Bitcoin DeFi
+              operations across all protocols.
             </p>
           </Card>
         </div>
@@ -301,7 +257,7 @@ export default function PremiumPage() {
                   </Badge>
                 </div>
               )}
-              <Card className={`p-8 h-full flex flex-col ${tier.popular ? 'border-cyan-500 shadow-lg shadow-cyan-500/20' : ''}`}>
+              <Card className={`p-8 h-full flex flex-col relative ${tier.popular ? 'border-cyan-500 shadow-lg shadow-cyan-500/20' : ''}`}>
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
                   <div className="flex items-baseline gap-1 mb-3">
@@ -328,6 +284,15 @@ export default function PremiumPage() {
                   {tier.buttonText}
                   {tier.name === "Free" && <ArrowRight className="ml-2 h-4 w-4" />}
                 </Button>
+
+                {tier.blurred && (
+                  <div className="absolute inset-0 backdrop-blur-sm bg-white/5 z-10 flex items-center justify-center rounded-lg">
+                    <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 text-lg px-6 py-2">
+                      <Clock className="mr-2 h-4 w-4" />
+                      Coming Soon
+                    </Badge>
+                  </div>
+                )}
               </Card>
             </motion.div>
           ))}
@@ -344,57 +309,30 @@ export default function PremiumPage() {
       >
         <h2 className="text-3xl font-bold mb-8 text-center">Who Benefits from Premium?</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <Card className="p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 bg-blue-500/10 rounded-lg">
                 <TrendingUp className="w-6 h-6 text-blue-500" />
               </div>
-              <h3 className="text-xl font-semibold">Professional Traders</h3>
+              <h3 className="text-xl font-semibold">Active Traders</h3>
             </div>
             <p className="text-muted-foreground mb-4">
-              Execute complex trading strategies across multiple protocols with advanced analytics,
-              automation, and priority execution. Perfect for those managing significant portfolios.
+              Execute trading strategies across multiple protocols with advanced analytics
+              and priority execution. Perfect for those actively trading Bitcoin DeFi.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-2">
                 <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Multi-protocol arbitrage</span>
+                <span className="text-muted-foreground">Priority transaction processing</span>
               </li>
               <li className="flex items-center gap-2">
                 <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Automated risk management</span>
+                <span className="text-muted-foreground">Advanced price alerts</span>
               </li>
               <li className="flex items-center gap-2">
                 <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Advanced order types</span>
-              </li>
-            </ul>
-          </Card>
-
-          <Card className="p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-purple-500/10 rounded-lg">
-                <Code className="w-6 h-6 text-purple-500" />
-              </div>
-              <h3 className="text-xl font-semibold">Developers & Builders</h3>
-            </div>
-            <p className="text-muted-foreground mb-4">
-              Build custom DeFi applications, integrate with Stacks AI via API, and develop
-              custom MCP tools. Full access to our infrastructure and documentation.
-            </p>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-center gap-2">
-                <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">API access with high limits</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Custom MCP tool creation</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Developer documentation</span>
+                <span className="text-muted-foreground">Voice trading commands</span>
               </li>
             </ul>
           </Card>
@@ -404,51 +342,24 @@ export default function PremiumPage() {
               <div className="p-2 bg-green-500/10 rounded-lg">
                 <Database className="w-6 h-6 text-green-500" />
               </div>
-              <h3 className="text-xl font-semibold">Yield Farmers</h3>
+              <h3 className="text-xl font-semibold">DeFi Enthusiasts</h3>
             </div>
             <p className="text-muted-foreground mb-4">
-              Maximize returns with automated yield optimization, auto-compounding, and
-              real-time opportunity detection across all 8 integrated protocols.
+              Maximize your Bitcoin DeFi experience with advanced analytics, insights,
+              and optimization tools across all 8 integrated protocols.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-2">
                 <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Auto-compound strategies</span>
+                <span className="text-muted-foreground">Deep protocol analytics</span>
               </li>
               <li className="flex items-center gap-2">
                 <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Yield opportunity alerts</span>
+                <span className="text-muted-foreground">Yield opportunity detection</span>
               </li>
               <li className="flex items-center gap-2">
                 <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Portfolio rebalancing</span>
-              </li>
-            </ul>
-          </Card>
-
-          <Card className="p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-orange-500/10 rounded-lg">
-                <FileText className="w-6 h-6 text-orange-500" />
-              </div>
-              <h3 className="text-xl font-semibold">Institutions & DAOs</h3>
-            </div>
-            <p className="text-muted-foreground mb-4">
-              Enterprise-grade features for managing treasury operations, compliance reporting,
-              and multi-signature workflows across Bitcoin DeFi protocols.
-            </p>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-center gap-2">
-                <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Multi-sig support</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Compliance tools</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Check className="w-3 h-3 text-green-500" />
-                <span className="text-muted-foreground">Dedicated support</span>
+                <span className="text-muted-foreground">Portfolio insights</span>
               </li>
             </ul>
           </Card>

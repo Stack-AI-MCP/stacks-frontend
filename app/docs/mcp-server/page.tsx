@@ -101,15 +101,19 @@ export default function McpServerPage() {
   "mcpServers": {
     "stacks-mcp": {
       "command": "node",
-      "args": ["/absolute/path/to/stacks-mcp-server/dist/index.js"],
+      "args": ["/Users/apple/dev/hackathon/stacks/stacks-mcp-server/dist/index.js"],
       "env": {
-        "WALLET_MNEMONIC": "your twelve word mnemonic phrase here",
+        "WALLET_PRIVATE_KEY": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
         "STACKS_NETWORK": "testnet",
-        "ALEX_API_URL": "https://api.alexgo.io",
-        "VELAR_API_URL": "https://api.velar.co",
-        "CHARISMA_API_URL": "https://swap.charisma.rocks/api/v1/",
-        "BNS_CONTRACT_ADDRESS": "SP000000000000000000002Q6VF78.bns",
-        "ARKADIKO_PROTOCOL": "arkadiko-v2-1"
+        "STACKS_MAINNET_API_URL": "https://api.hiro.so",
+        "STACKS_TESTNET_API_URL": "https://api.testnet.hiro.so",
+        "BITFLOW_API_HOST": "https://api.bitflow.finance",
+        "BITFLOW_API_KEY": "placeholder_key_request_from_bitflow_team",
+        "BITFLOW_PROVIDER_ADDRESS": "placeholder_address",
+        "READONLY_CALL_API_HOST": "https://api.bitflow.finance",
+        "READONLY_CALL_API_KEY": "placeholder_key",
+        "KEEPER_API_HOST": "https://keeper.bitflow.finance",
+        "KEEPER_API_KEY": "placeholder_key"
       }
     }
   }
@@ -139,7 +143,7 @@ export default function McpServerPage() {
 
         <div className="flex flex-col sm:flex-row gap-4">
           <Button size="lg" asChild className="text-lg px-8 py-6">
-            <Link href="https://github.com/Stacks-Vibe-Hackathon/stacks-mcp-server" target="_blank">
+            <Link href="https://github.com/Stack-AI-MCP/stacks-mcp-server" target="_blank">
               <Download className="mr-2 h-5 w-5" />
               Get MCP Server
               <ExternalLink className="ml-2 h-4 w-4" />
@@ -336,7 +340,7 @@ export default function McpServerPage() {
               <div className="bg-muted/30 border rounded-lg p-4 overflow-x-auto">
                 <pre className="text-sm font-mono leading-relaxed">
                   <code className="text-foreground">
-{`git clone https://github.com/Stacks-Vibe-Hackathon/stacks-mcp-server
+{`git clone https://github.com/Stack-AI-MCP/stacks-mcp-server
 cd stacks-mcp-server
 pnpm install && pnpm build
 cp .env.example .env`}
@@ -491,7 +495,7 @@ pnpm setup`}
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild className="text-lg px-8 py-6">
-              <Link href="https://github.com/Stacks-Vibe-Hackathon/stacks-mcp-server" target="_blank">
+              <Link href="https://github.com/Stack-AI-MCP/stacks-mcp-server" target="_blank">
                 <Download className="mr-2 h-5 w-5" />
                 Download MCP Server
                 <ExternalLink className="ml-2 h-4 w-4" />
