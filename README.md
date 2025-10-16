@@ -2,6 +2,10 @@
 
 ![Stacks AI Banner](https://raw.githubusercontent.com/Stack-AI-MCP/stacks-mcp-server/main/docs/images/stacksAIBanner.png)
 
+## Roadmap
+
+![Stacks AI Roadmap](https://raw.githubusercontent.com/Stack-AI-MCP/stacks-mcp-server/main/docs/images/stacksAiRoadmap.png)
+
 **Talk to Bitcoin. Trade, lend, stack - through conversation.**
 
 Stacks AI makes the entire Bitcoin DeFi ecosystem accessible through natural language. Access ALEX, Velar, BitFlow, Arkadiko, Granite, and more - just by talking.
