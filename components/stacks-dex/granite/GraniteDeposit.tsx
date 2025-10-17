@@ -67,9 +67,8 @@ export default function GraniteDeposit({ data, isLoading }: GraniteDepositProps)
   }
 
   const transaction = data.transaction;
-  const details = data.details;
 
-  if (!transaction || !details) {
+  if (!transaction) {
     return (
       <Card className="w-full border-destructive">
         <CardHeader>
@@ -79,6 +78,15 @@ export default function GraniteDeposit({ data, isLoading }: GraniteDepositProps)
       </Card>
     );
   }
+
+  // Extract details from transaction data
+  const amount = transaction.functionArgs[0]?.value || "0";
+  const recipient = transaction.functionArgs[1]?.value || "";
+  const asset = "STX"; // Granite deposits are typically STX
+  const marketName = "Granite Vault";
+  
+  // Convert microSTX to STX for display
+  const displayAmount = (parseInt(amount) / 1000000).toFixed(6);
 
   // Prepare transaction data for wrapper
   const transactionData: TransactionData = {
@@ -103,7 +111,7 @@ export default function GraniteDeposit({ data, isLoading }: GraniteDepositProps)
             <CardTitle className="text-xl">Granite Deposit</CardTitle>
           </div>
           <CardDescription className="text-zinc-300">
-            Deposit {details.amount} {details.asset} to {details.marketName}
+            Deposit {displayAmount} {asset} to {marketName}
           </CardDescription>
         </CardHeader>
 
@@ -111,8 +119,8 @@ export default function GraniteDeposit({ data, isLoading }: GraniteDepositProps)
           {/* Amount Preview */}
           <div className="bg-slate-500/10 border border-slate-500/20 rounded-lg p-6 text-center">
             <span className="text-sm text-zinc-400 block mb-2">Deposit Amount</span>
-            <p className="text-4xl font-bold text-slate-400">{details.amount}</p>
-            <p className="text-xs text-zinc-500 mt-2">{details.asset}</p>
+            <p className="text-4xl font-bold text-slate-400">{displayAmount}</p>
+            <p className="text-xs text-zinc-500 mt-2">{asset}</p>
           </div>
 
           {/* Deposit Details */}
@@ -121,18 +129,9 @@ export default function GraniteDeposit({ data, isLoading }: GraniteDepositProps)
               <div className="flex items-center justify-between text-sm">
                 <span className="text-zinc-400">Market:</span>
                 <Badge variant="outline" className="text-slate-400 border-slate-500/30">
-                  {details.marketName}
+                  {marketName}
                 </Badge>
               </div>
-              {details.expectedAPY && (
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-zinc-400">Expected APY:</span>
-                  <div className="flex items-center gap-1">
-                    <TrendingUp className="w-3 h-3 text-green-400" />
-                    <span className="text-green-400 font-mono">{details.expectedAPY}</span>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
 

@@ -65,9 +65,7 @@ export default function GraniteBorrow({ data, isLoading }: GraniteBorrowProps) {
   }
 
   const transaction = data.transaction;
-  const details = data.details;
-
-  if (!transaction || !details) {
+  if (!transaction) {
     return (
       <Card className="w-full border-destructive">
         <CardHeader>
@@ -77,6 +75,12 @@ export default function GraniteBorrow({ data, isLoading }: GraniteBorrowProps) {
       </Card>
     );
   }
+
+  // Extract details from transaction data
+  const amount = transaction.functionArgs[0]?.value || "0";
+  const asset = "Stablecoins"; // Granite borrowing is typically stablecoins
+  const marketName = "Granite Core";
+  const displayAmount = (parseInt(amount) / 1000000).toFixed(6);
 
   const transactionData: TransactionData = {
     type: "contract_call",
@@ -100,15 +104,15 @@ export default function GraniteBorrow({ data, isLoading }: GraniteBorrowProps) {
             <CardTitle className="text-xl">Granite Borrow</CardTitle>
           </div>
           <CardDescription className="text-zinc-300">
-            Borrow {details.amount} {details.asset} from {details.marketName}
+            Borrow {displayAmount} {asset} from {marketName}
           </CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-6">
           <div className="bg-slate-500/10 border border-slate-500/20 rounded-lg p-6 text-center">
             <span className="text-sm text-zinc-400 block mb-2">Borrow Amount</span>
-            <p className="text-4xl font-bold text-slate-400">{details.amount}</p>
-            <p className="text-xs text-zinc-500 mt-2">{details.asset}</p>
+            <p className="text-4xl font-bold text-slate-400">{displayAmount}</p>
+            <p className="text-xs text-zinc-500 mt-2">{asset}</p>
           </div>
 
           <div className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20">
@@ -116,21 +120,9 @@ export default function GraniteBorrow({ data, isLoading }: GraniteBorrowProps) {
               <div className="flex items-center justify-between text-sm">
                 <span className="text-zinc-400">Market:</span>
                 <Badge variant="outline" className="text-slate-400 border-slate-500/30">
-                  {details.marketName}
+                  {marketName}
                 </Badge>
               </div>
-              {details.borrowAPR && (
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-zinc-400">Borrow APR:</span>
-                  <span className="text-cyan-400 font-mono">{details.borrowAPR}</span>
-                </div>
-              )}
-              {details.collateralRatio && (
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-zinc-400">Collateral Ratio:</span>
-                  <span className="text-white font-mono">{details.collateralRatio}</span>
-                </div>
-              )}
             </div>
           </div>
 

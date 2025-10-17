@@ -60,9 +60,7 @@ export default function GraniteRepay({ data, isLoading }: GraniteRepayProps) {
   }
 
   const transaction = data.transaction;
-  const details = data.details;
-
-  if (!transaction || !details) {
+  if (!transaction) {
     return (
       <Card className="w-full border-destructive">
         <CardHeader>
@@ -72,6 +70,12 @@ export default function GraniteRepay({ data, isLoading }: GraniteRepayProps) {
       </Card>
     );
   }
+
+  // Extract details from transaction data
+  const amount = transaction.functionArgs[0]?.value || "0";
+  const asset = "Stablecoins"; // Granite repayments are typically stablecoins
+  const marketName = "Granite Core";
+  const displayAmount = (parseInt(amount) / 1000000).toFixed(6);
 
   const transactionData: TransactionData = {
     type: "contract_call",
@@ -84,10 +88,10 @@ export default function GraniteRepay({ data, isLoading }: GraniteRepayProps) {
   return (
     <TransactionWrapper transactionData={transactionData} network={transaction.network === "mainnet" ? "mainnet" : "testnet"} buttonText="Sign & Repay Loan" buttonGradient="from-slate-600 to-gray-600 hover:from-slate-700 hover:to-gray-700">
       <Card className="w-full bg-gradient-to-br from-slate-500/10 to-gray-500/10 border-slate-500/20">
-        <CardHeader><div className="flex items-center gap-2"><Banknote className="w-6 h-6 text-slate-400" /><CardTitle className="text-xl">Granite Repay</CardTitle></div><CardDescription className="text-zinc-300">Repay {details.amount} {details.asset} to {details.marketName}</CardDescription></CardHeader>
+        <CardHeader><div className="flex items-center gap-2"><Banknote className="w-6 h-6 text-slate-400" /><CardTitle className="text-xl">Granite Repay</CardTitle></div><CardDescription className="text-zinc-300">Repay {displayAmount} {asset} to {marketName}</CardDescription></CardHeader>
         <CardContent className="space-y-6">
-          <div className="bg-slate-500/10 border border-slate-500/20 rounded-lg p-6 text-center"><span className="text-sm text-zinc-400 block mb-2">Repayment Amount</span><p className="text-4xl font-bold text-slate-400">{details.amount}</p><p className="text-xs text-zinc-500 mt-2">{details.asset}</p></div>
-          <div className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20"><div className="space-y-3"><div className="flex items-center justify-between text-sm"><span className="text-zinc-400">Market:</span><Badge variant="outline" className="text-slate-400 border-slate-500/30">{details.marketName}</Badge></div></div></div>
+          <div className="bg-slate-500/10 border border-slate-500/20 rounded-lg p-6 text-center"><span className="text-sm text-zinc-400 block mb-2">Repayment Amount</span><p className="text-4xl font-bold text-slate-400">{displayAmount}</p><p className="text-xs text-zinc-500 mt-2">{asset}</p></div>
+          <div className="bg-zinc-900/50 p-4 rounded-lg border border-slate-500/20"><div className="space-y-3"><div className="flex items-center justify-between text-sm"><span className="text-zinc-400">Market:</span><Badge variant="outline" className="text-slate-400 border-slate-500/30">{marketName}</Badge></div></div></div>
           <div className="flex justify-center"><Badge variant="outline" className="text-xs">{transaction.network}</Badge></div>
           {data.instructions && data.instructions.length > 0 && (<Alert className="border-blue-500/50 bg-blue-500/10"><Info className="h-4 w-4 text-blue-400" /><AlertDescription className="text-blue-300 text-sm"><div className="space-y-1 mt-2">{data.instructions.map((instruction, idx) => (<p key={idx}>{instruction}</p>))}</div></AlertDescription></Alert>)}
           <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3"><div className="space-y-1"><p className="text-xs text-blue-300">💡 Repaying reduces your debt and improves your health factor</p><p className="text-xs text-blue-300">💡 Partial repayments are allowed</p></div></div>
