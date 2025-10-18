@@ -12,6 +12,7 @@ import { Navbar, NavbarLeft, NavbarRight } from "@/components/ui/navbar";
 import Navigation from "@/components/ui/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { AppShowcase } from "@/components/sections/app-showcase";
 
 // Protocol data
 const protocols = [
@@ -400,6 +401,9 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* App Showcase - Screenshots Carousel + Bento Grid */}
+      <AppShowcase />
 
       {/* Protocol Showcase */}
       <section className="py-32 bg-gradient-to-b from-primary/5 to-background">
