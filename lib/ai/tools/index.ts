@@ -106,3 +106,17 @@ export { getStxTransferEvents } from './events/getStxTransferEvents';
 export { getPoolDelegations } from './stackpool/getPoolDelegations';
 export { getBurnchainRewardSlots } from './stackpool/getBurnchainRewardSlots';
 export { getBurnchainRewards } from './stackpool/getBurnchainRewards';
+
+// ==================== TRADEPORT NFT MARKETPLACE TOOLS ====================
+export { tradeportSearchCollections } from './tradeport/searchCollections';
+export { tradeportGetCollectionInfo } from './tradeport/getCollectionInfo';
+export { tradeportGetCollectionStats } from './tradeport/getCollectionStats';
+export { tradeportGetTrendingCollections } from './tradeport/getTrendingCollections';
+export { tradeportGetCollectionFloorHistory } from './tradeport/getCollectionFloorHistory';
+export { tradeportGetCollectionActivity } from './tradeport/getCollectionActivity';
+export { tradeportGetNFTInfo } from './tradeport/getNFTInfo';
+export { tradeportGetNFTHistory } from './tradeport/getNFTHistory';
+export { tradeportGetWalletNFTs } from './tradeport/getWalletNFTs';
+export { tradeportGetWalletStats } from './tradeport/getWalletStats';
+export { tradeportGetWalletTrades } from './tradeport/getWalletTrades';
+export { tradeportGetWalletPortfolioHistory } from './tradeport/getWalletPortfolioHistory';

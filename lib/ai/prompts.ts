@@ -38,6 +38,8 @@ Stacks is a Bitcoin Layer 2 that enables smart contracts and DeFi while settling
    - SIP-009 tokens: Stacks NFT standard (non-fungible tokens)
    - NFT transfers, minting, and marketplace interactions
    - Bitcoin Name Service (.btc domains)
+   - TradePort marketplace: Buy, sell, and discover NFT collections
+   - Track NFT portfolio value and trading history
 
 4. **Stacking (Bitcoin Yield)**
    - Lock STX to earn Bitcoin rewards
@@ -130,6 +132,17 @@ Stacks is a Bitcoin Layer 2 that enables smart contracts and DeFi while settling
 - Decentralized naming system
 - Transfer and manage domain ownership
 - Tools: bns_register_name, bns_get_name_info, bns_transfer_name
+
+### **TradePort (NFT Marketplace)**
+- Largest NFT marketplace on Stacks blockchain
+- Discover trending collections and track floor prices
+- View NFT holdings, listings, and portfolio analytics
+- Historical price data and collection statistics
+- Real-time trading activity and marketplace events
+- Tools:
+  - Collection: tradeport_search_collections, tradeport_get_collection_info, tradeport_get_trending_collections, tradeport_get_collection_stats, tradeport_get_collection_floor_history, tradeport_get_collection_activity
+  - NFT: tradeport_get_nft_info, tradeport_get_nft_history
+  - Wallet: tradeport_get_wallet_nfts, tradeport_get_wallet_stats, tradeport_get_wallet_trades, tradeport_get_wallet_portfolio_history
 
 ---
 # IMPORTANT
@@ -316,6 +329,48 @@ Use BNS tools for .btc domain management:
 BNS domains are Bitcoin-anchored and fully decentralized.
 `;
 
+// -------------------- TRADEPORT NFT MARKETPLACE --------------------
+export const tradeportPrompt = `
+Use TradePort tools for comprehensive NFT marketplace operations:
+
+**Collection Discovery:**
+- tradeport_search_collections: Search NFT collections by name/keyword
+- tradeport_get_trending_collections: Get trending collections by volume/trades
+  * Periods: days_1, days_7, days_30
+  * Metrics: volume, trades, usd_volume
+- tradeport_get_collection_info: Get detailed collection information (floor, volume, supply, social links)
+- tradeport_get_collection_stats: Get collection statistics (total sales, mints, daily metrics)
+
+**Price & Market Analysis:**
+- tradeport_get_collection_floor_history: Track floor price changes over time
+  * Periods: hours_1, hours_24, days_7, days_30, days_90, all
+  * Returns both STX and USD values
+- tradeport_get_collection_activity: View recent sales, listings, and transfers
+
+**NFT Information:**
+- tradeport_get_nft_info: Get specific NFT details (attributes, listings, bids, ownership)
+- tradeport_get_nft_history: View complete transaction history for an NFT
+
+**Wallet Portfolio:**
+- tradeport_get_wallet_nfts: Get all NFT holdings for a wallet address
+- tradeport_get_wallet_stats: Portfolio value, P&L metrics, buy/sell volumes
+- tradeport_get_wallet_trades: Realized profit/loss on completed trades
+- tradeport_get_wallet_portfolio_history: Track portfolio value over time
+
+**Best Practices:**
+- Use collection slug (e.g., 'bitcoin-monkeys') for collection queries
+- Collection IDs are UUIDs for activity and NFT queries
+- Always show floor prices in both STX and USD when available
+- Highlight verified collections for user safety
+- Display staked/listed status for NFTs in wallets
+- Compare current vs previous metrics for trending analysis
+
+**Popular Collections:**
+- Bitcoin Monkeys, Stacks Punks, Megapont, Bitcoin Wizards, and more
+- Use search to discover collections by name
+- Trending shows most active collections by volume or trades
+`;
+
 // -------------------- STACKING (POX) --------------------
 export const stackingPrompt = `
 Use Stacking tools to earn Bitcoin yield:
@@ -417,6 +472,8 @@ ${graniteLendingPrompt}
 ${zestLendingPrompt}
 
 ${bnsPrompt}
+
+${tradeportPrompt}
 
 ${stackingPrompt}
 
