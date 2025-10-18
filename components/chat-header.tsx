@@ -18,8 +18,8 @@ function PureChatHeader() {
 
   const { width: windowWidth } = useWindowSize();
   return (
-    <header className="flex sticky top-0 bg-background py-1.5 items-center justify-between px-2 md:px-2 gap-2 z-10">
-      <div className="flex items-center gap-2">
+    <header className="flex sticky top-0 bg-background py-1.5 items-center justify-between px-2 sm:px-4 md:px-2 gap-2 z-10 w-full max-w-full min-w-0">
+      <div className="flex items-center gap-2 min-w-0 flex-shrink">
         <SidebarToggle />
 
         {(!open || windowWidth < 768) && (
@@ -27,7 +27,7 @@ function PureChatHeader() {
             <TooltipTrigger asChild>
               <Button
                 variant="outline"
-                className="order-2 md:order-1 md:px-2 px-2 md:h-fit ml-auto md:ml-0"
+                className="order-2 md:order-1 md:px-2 px-2 md:h-fit ml-auto md:ml-0 flex-shrink-0"
                 onClick={() => {
                   router.push("/");
                   router.refresh();
@@ -41,7 +41,7 @@ function PureChatHeader() {
           </Tooltip>
         )}
       </div>
-      <div className="flex flex-row gap-2 items-center">
+      <div className="flex flex-row gap-2 items-center flex-shrink-0">
         <StacksConnectButton />
       </div>
     </header>

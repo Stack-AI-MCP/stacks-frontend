@@ -15,15 +15,15 @@ export function PageHeader() {
       <div className="container mx-auto px-4">
         <Navbar>
           <NavbarLeft>
-            <Link href="/" className="flex items-center gap-2 text-xl font-bold">
+            <Link href="/" className="flex items-center gap-1.5 sm:gap-2 text-base sm:text-xl font-bold">
               <Image
                 src="/images/stacks.png"
                 alt="Stacks"
-                width={32}
-                height={32}
-                className="rounded-lg"
+                width={24}
+                height={24}
+                className="rounded-lg sm:w-8 sm:h-8"
               />
-              StacksAI
+              Stacks<span className="text-primary">AI</span>
             </Link>
             <Navigation />
           </NavbarLeft>
@@ -34,23 +34,38 @@ export function PageHeader() {
             >
               Documentation
             </Link>
-            <Button asChild variant="outline">
+            {/* Desktop button */}
+            <Button asChild variant="outline" size="sm" className="hidden sm:flex">
               <Link href="/chat">
                 Launch Terminal
                 <ArrowLeft className="ml-2 h-4 w-4 rotate-180" />
               </Link>
             </Button>
+            {/* Mobile button - compact */}
+            <Button asChild variant="outline" size="sm" className="sm:hidden px-2.5 text-xs h-8">
+              <Link href="/chat">
+                Launch
+                <ArrowLeft className="ml-1 h-3 w-3 rotate-180" />
+              </Link>
+            </Button>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="shrink-0 md:hidden">
-                  <Menu className="h-5 w-5" />
+                <Button variant="ghost" size="icon" className="shrink-0 md:hidden h-8 w-8">
+                  <Menu className="h-4 w-4" />
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
                 <nav className="grid gap-6 text-lg font-medium">
                   <Link href="/" className="flex items-center gap-2 text-xl font-bold">
-                    <span>StacksAI</span>
+                    <Image
+                      src="/images/stacks.png"
+                      alt="Stacks"
+                      width={32}
+                      height={32}
+                      className="rounded-lg"
+                    />
+                    <span>Stacks<span className="text-primary">AI</span></span>
                   </Link>
                   <Link href="/about" className="text-muted-foreground hover:text-foreground">
                     About

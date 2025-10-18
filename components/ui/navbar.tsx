@@ -28,7 +28,7 @@ export function NavbarLeft({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("flex items-center gap-6", className)}
+      className={cn("flex items-center gap-2 sm:gap-6", className)}
       {...props}
     >
       {children}
@@ -43,7 +43,7 @@ export function NavbarRight({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("flex items-center gap-4", className)}
+      className={cn("flex items-center gap-1.5 sm:gap-4", className)}
       {...props}
     >
       {children}

@@ -52,11 +52,11 @@ const components: Partial<Components> = {
     const convertedSrc = convertToPublicIPFS(src) || src;
 
     return (
-      <span className="relative inline-block max-w-full my-2">
+      <span className="relative inline-block max-w-full my-2 overflow-hidden">
         <img
           src={convertedSrc}
           alt={alt || ""}
-          className="rounded-lg max-w-full h-auto"
+          className="rounded-lg max-w-full w-full h-auto object-contain"
           loading="lazy"
           onError={(e) => {
             // Hide broken images gracefully
@@ -76,7 +76,7 @@ const NonMemoizedMarkdown = ({ children }: { children: string }) => {
     <Streamdown
       remarkPlugins={remarkPlugins}
       components={components}
-      className="w-full "
+      className="w-full max-w-full min-w-0 overflow-hidden break-words"
     >
       {children}
     </Streamdown>

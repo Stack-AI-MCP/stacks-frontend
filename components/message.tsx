@@ -183,14 +183,14 @@ const PurePreviewMessage = ({
     <AnimatePresence>
       <motion.div
         data-testid={`message-${message.role}`}
-        className="w-full mx-auto max-w-3xl px-4 group/message"
+        className="w-full mx-auto max-w-3xl px-4 group/message min-w-0"
         initial={{ y: 5, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         data-role={message.role}
       >
         <div
           className={cn(
-            "flex gap-4 w-full group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl",
+            "flex gap-4 w-full min-w-0 group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl",
             {
               "w-full": mode === "edit",
               "group-data-[role=user]/message:w-fit": mode !== "edit",
@@ -214,7 +214,7 @@ const PurePreviewMessage = ({
 
           <div
             className={cn(
-              "flex flex-col gap-4 w-full  overflow-clip break-words whitespace-normal",
+              "flex flex-col gap-4 w-full min-w-0 overflow-hidden break-words",
               {
                 "min-h-96":
                   message.role === "assistant" && requiresScrollPadding,
@@ -224,7 +224,7 @@ const PurePreviewMessage = ({
             {attachmentsFromMessage.length > 0 && (
               <div
                 data-testid={`message-attachments`}
-                className="flex flex-row justify-end gap-2"
+                className="flex flex-row justify-end gap-2 flex-wrap"
               >
                 {attachmentsFromMessage.map((attachment) => (
                   <PreviewAttachment
@@ -266,14 +266,14 @@ const PurePreviewMessage = ({
               if (type === "text") {
                 if (mode === "view") {
                   return (
-                    <div key={key} className="flex flex-row gap-2 items-start ">
+                    <div key={key} className="flex flex-row gap-2 items-start min-w-0">
                       {message.role === "user" && !isReadonly && (
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <Button
                               data-testid="message-edit-button"
                               variant="ghost"
-                              className="px-2 h-fit rounded-full text-muted-foreground opacity-0 group-hover/message:opacity-100"
+                              className="px-2 h-fit rounded-full text-muted-foreground opacity-0 group-hover/message:opacity-100 flex-shrink-0"
                               onClick={() => {
                                 setMode("edit");
                               }}
@@ -287,7 +287,7 @@ const PurePreviewMessage = ({
 
                       <div
                         data-testid="message-content"
-                        className={cn("flex flex-col gap-4", {
+                        className={cn("flex flex-col gap-4 min-w-0 max-w-full overflow-hidden", {
                           "bg-primary text-primary-foreground px-3 py-2 rounded-xl":
                             message.role === "user",
                         })}
@@ -2413,14 +2413,14 @@ export const ThinkingMessage = () => {
   return (
     <motion.div
       data-testid="message-assistant-loading"
-      className="w-full mx-auto max-w-3xl px-4 group/message min-h-96"
+      className="w-full mx-auto max-w-3xl px-4 group/message min-h-96 min-w-0"
       initial={{ y: 5, opacity: 0 }}
       animate={{ y: 0, opacity: 1, transition: { delay: 1 } }}
       data-role={role}
     >
       <div
         className={cx(
-          "flex gap-4 group-data-[role=user]/message:px-3 w-full group-data-[role=user]/message:w-fit group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl group-data-[role=user]/message:py-2 rounded-xl",
+          "flex gap-4 group-data-[role=user]/message:px-3 w-full min-w-0 group-data-[role=user]/message:w-fit group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl group-data-[role=user]/message:py-2 rounded-xl",
           {
             "group-data-[role=user]/message:bg-muted": true,
           }
@@ -2430,7 +2430,7 @@ export const ThinkingMessage = () => {
           <SparklesIcon size={14} />
         </div>
 
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex flex-col gap-2 w-full min-w-0">
           <div className="flex flex-col gap-4 text-muted-foreground">
             Thinking...
           </div>

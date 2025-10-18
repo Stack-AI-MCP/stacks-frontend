@@ -278,8 +278,8 @@ export function MultimodalInput({
   }, [status, scrollToBottom]);
 
   return (
-    <div className="flex flex-col gap-1 w-full">
-      <div className="relative w-full flex flex-col gap-4">
+    <div className="flex flex-col gap-1 w-full max-w-full min-w-0">
+      <div className="relative w-full max-w-full min-w-0 flex flex-col gap-4">
         <AnimatePresence>
           {!isAtBottom && (
             <motion.div
@@ -327,7 +327,7 @@ export function MultimodalInput({
         {(attachments.length > 0 || uploadQueue.length > 0) && (
           <div
             data-testid="attachments-preview"
-            className="flex flex-row gap-2 overflow-x-scroll items-end"
+            className="flex flex-row gap-2 overflow-x-auto items-end scrollbar-hide"
           >
             {attachments.map((attachment) => (
               <PreviewAttachment key={attachment.url} attachment={attachment} />
@@ -354,7 +354,7 @@ export function MultimodalInput({
           value={input}
           onChange={handleInput}
           className={cx(
-            "min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-2xl !text-base bg-muted pb-10 dark:border-zinc-700",
+            "min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-2xl !text-base bg-muted pb-10 dark:border-zinc-700 w-full max-w-full min-w-0",
             className
           )}
           rows={1}
@@ -377,7 +377,7 @@ export function MultimodalInput({
             }
           }}
         />
-        {/* 
+        {/*
       <div className="absolute bottom-0 p-2 w-fit flex flex-row justify-start">
         <AttachmentsButton fileInputRef={fileInputRef} status={status} />
       </div> */}

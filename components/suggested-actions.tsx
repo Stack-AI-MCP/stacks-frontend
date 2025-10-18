@@ -522,9 +522,9 @@ function PureSuggestedActions({
   };
 
   return (
-    <div data-testid="suggested-actions" className="w-full space-y-4">
+    <div data-testid="suggested-actions" className="w-full max-w-full overflow-hidden space-y-4 px-4 md:px-0">
       {/* Category Pills - Terminal Style */}
-      <div className="relative">
+      <div className="w-full max-w-full overflow-hidden">
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
           {categories.map((category, index) => (
             <motion.button
@@ -537,7 +537,7 @@ function PureSuggestedActions({
                 e.preventDefault();
                 setActiveCategory(index);
               }}
-              className={`flex items-center gap-2 px-4 py-2 rounded-md border text-sm font-medium whitespace-nowrap transition-all snap-start ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-md border text-xs sm:text-sm font-medium whitespace-nowrap transition-all snap-start flex-shrink-0 ${
                 activeCategory === index
                   ? "bg-[#1A1A1A] border-[#5546FF] shadow-[0_0_15px_rgba(85,70,255,0.2)]"
                   : "bg-[#0A0A0A] border-[#2E2E2E] hover:border-[#5546FF]/50 hover:bg-[#1A1A1A]/50"
@@ -551,31 +551,29 @@ function PureSuggestedActions({
                   : undefined
               }
             >
-              <span style={activeCategory === index ? { color: category.accent } : undefined}>
+              <span style={activeCategory === index ? { color: category.accent } : undefined} className="flex-shrink-0">
                 {category.icon}
               </span>
-              <span className={activeCategory === index ? "text-[#E0E0E0]" : "text-[#A0A0A0]"}>
+              <span className={`${activeCategory === index ? "text-[#E0E0E0]" : "text-[#A0A0A0]"}`}>
                 {category.name}
               </span>
-              <span className="text-xs opacity-50">({category.actions.length})</span>
+              <span className="text-[10px] sm:text-xs opacity-50">({category.actions.length})</span>
             </motion.button>
           ))}
         </div>
-        {/* Fade edge indicator */}
-        <div className="absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-l from-[#0A0A0A] to-transparent pointer-events-none" />
       </div>
 
       {/* Action Cards - Terminal Card Style */}
-      <div className="relative">
+      <div className="w-full max-w-full overflow-hidden">
         <div className="overflow-x-auto pb-2 scrollbar-hide">
-          <div className="flex gap-3 pr-4">
+          <div className="flex gap-2 sm:gap-3">
             {categories[activeCategory].actions.map((suggestedAction, index) => (
               <motion.div
                 key={`${suggestedAction.title}-${index}`}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.05 * index }}
-                className="flex-shrink-0 w-[280px] sm:w-[320px]"
+                className="flex-shrink-0 w-[240px] sm:w-[280px] md:w-[320px]"
               >
                 <button
                   type="button"
@@ -583,7 +581,7 @@ function PureSuggestedActions({
                     e.preventDefault();
                     await handleActionClick(suggestedAction.action);
                   }}
-                  className="relative text-left border border-[#2E2E2E] rounded-lg px-4 py-4 w-full h-full bg-[#1A1A1A] hover:bg-[#242424] hover:border-[#5546FF]/50 transition-all group"
+                  className="relative text-left border border-[#2E2E2E] rounded-lg px-3 sm:px-4 py-3 sm:py-4 w-full h-full bg-[#1A1A1A] hover:bg-[#242424] hover:border-[#5546FF]/50 transition-all group"
                   style={{
                     boxShadow: "0 1px 3px rgba(0, 0, 0, 0.3)",
                   }}
@@ -595,16 +593,16 @@ function PureSuggestedActions({
                   />
 
                   {/* Content */}
-                  <div className="pl-0 group-hover:pl-2 transition-all space-y-2">
+                  <div className="pl-0 group-hover:pl-2 transition-all space-y-1.5 sm:space-y-2">
                     <div className="flex items-start justify-between gap-2">
-                      <span className="font-semibold text-[#E0E0E0] text-base leading-tight">
+                      <span className="font-semibold text-[#E0E0E0] text-sm sm:text-base leading-tight break-words">
                         {suggestedAction.title}
                       </span>
                       <ChevronRight
-                        className="w-5 h-5 text-[#5546FF] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-[#5546FF] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5"
                       />
                     </div>
-                    <span className="text-[#A0A0A0] text-xs block">
+                    <span className="text-[#A0A0A0] text-[10px] sm:text-xs block break-words">
                       {suggestedAction.label}
                     </span>
                   </div>
@@ -621,12 +619,6 @@ function PureSuggestedActions({
             ))}
           </div>
         </div>
-        {/* Peek indicator */}
-        {categories[activeCategory].actions.length > 2 && (
-          <div className="absolute right-0 top-0 bottom-2 w-16 bg-gradient-to-l from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent pointer-events-none flex items-center justify-end pr-2">
-            <ChevronRight className="w-5 h-5 text-[#5546FF] animate-pulse" />
-          </div>
-        )}
       </div>
 
       {/* Stats Footer - Terminal Style */}
@@ -634,10 +626,10 @@ function PureSuggestedActions({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="flex items-center justify-center gap-2 text-xs text-[#A0A0A0] pt-2 border-t border-[#2E2E2E]/50"
+        className="flex items-center justify-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-[#A0A0A0] pt-2 border-t border-[#2E2E2E]/50"
       >
-        <Zap className="w-3 h-3 text-[#5546FF]" />
-        <span>
+        <Zap className="w-3 h-3 text-[#5546FF] flex-shrink-0" />
+        <span className="text-center break-words">
           {categories.reduce((sum, cat) => sum + cat.actions.length, 0)}+ AI-powered tools
           across {categories.length} categories
         </span>

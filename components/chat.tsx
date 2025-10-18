@@ -139,7 +139,7 @@ export function Chat({
 
   return (
     <>
-      <div className="flex flex-col min-w-0 h-dvh bg-background">
+      <div className="flex flex-col min-w-0 max-w-full h-dvh bg-background overflow-x-hidden">
         <ChatHeader />
 
         <Messages
@@ -153,7 +153,7 @@ export function Chat({
           walletAddress={address}
         />
 
-        <form className="flex mx-auto px-4 bg-background pb-4 md:pb-3 gap-2 w-full md:max-w-3xl">
+        <form className="flex mx-auto px-4 sm:px-6 bg-background pb-4 md:pb-3 gap-2 w-full max-w-full md:max-w-3xl min-w-0">
           {!isReadonly && (
             <MultimodalInput
               chatId={id}
