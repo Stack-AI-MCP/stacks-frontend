@@ -111,6 +111,12 @@ import NFTGallery from "@/components/stacks-nfts/NFTGallery";
 import NFTHistory from "@/components/stacks-nfts/NFTHistory";
 import NFTTransfer from "@/components/stacks-nfts/NFTTransfer";
 
+// TradePort NFT Marketplace Components
+import CollectionSearch from "@/components/stacks-tradeport/CollectionSearch";
+import CollectionInfo from "@/components/stacks-tradeport/CollectionInfo";
+import TrendingCollections from "@/components/stacks-tradeport/TrendingCollections";
+import WalletNFTs from "@/components/stacks-tradeport/WalletNFTs";
+
 // Stacks Contract Components
 import ContractInfo from "@/components/stacks-contracts/ContractInfo";
 import ContractInterface from "@/components/stacks-contracts/ContractInterface";
@@ -1036,6 +1042,100 @@ const PurePreviewMessage = ({
                     const { output } = part;
                     return (
                       <NFTTransfer
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              // ========================= TRADEPORT NFT MARKETPLACE TOOLS =========================
+
+              if (type === "tool-tradeport_search_collections") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Searching NFT collections..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <CollectionSearch
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-tradeport_get_collection_info" || type === "tool-tradeport_get_collection_stats") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting collection details..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <CollectionInfo
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-tradeport_get_trending_collections") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting trending collections..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <TrendingCollections
+                        key={toolCallId}
+                        data={output as any}
+                        isLoading={false}
+                      />
+                    );
+                  }
+                }
+              }
+
+              if (type === "tool-tradeport_get_wallet_nfts") {
+                if ("toolCallId" in part && "state" in part) {
+                  const { toolCallId, state } = part;
+                  if (state === "input-available") {
+                    return (
+                      <div key={toolCallId}>
+                        <ToolCallLoader loadingMessage="Getting wallet NFTs..." />
+                      </div>
+                    );
+                  }
+                  if (state === "output-available" && "output" in part) {
+                    const { output } = part;
+                    return (
+                      <WalletNFTs
                         key={toolCallId}
                         data={output as any}
                         isLoading={false}

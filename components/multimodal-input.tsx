@@ -94,7 +94,7 @@ function SendButton({
         submitForm();
       }}
       disabled={input.length === 0 || uploadQueue.length > 0}
-      variant="accent"
+      variant="default"
     >
       <ArrowUpIcon size={14} />
     </Button>
