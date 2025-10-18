@@ -12,13 +12,22 @@ export const granitePrepareStake = tool({
 
   execute: async ({ lp_tokens, from, network }) => {
     try {
+      // Granite Protocol is only deployed on mainnet
+      if (network === "testnet") {
+        return {
+          success: false,
+          error: "Granite Protocol is only available on mainnet. Please switch to mainnet network.",
+          message: "Granite Protocol is not deployed on testnet - mainnet only",
+        };
+      }
+
       return {
         success: true,
         transaction: {
           type: "contract_call" as const,
           from,
-          contractAddress: "SP3Y2ZSH8P7D50B0VBTSX11S7XSG24M1VB9YFQA4K",
-          contractName: "granite-staking",
+          contractAddress: "SP3BJR4P3W2Y9G22HA595Z59VHBC9EQYRFWSKG743",
+          contractName: "staking-v1",
           functionName: "stake",
           functionArgs: [
             { type: "uint", value: lp_tokens.toString() }

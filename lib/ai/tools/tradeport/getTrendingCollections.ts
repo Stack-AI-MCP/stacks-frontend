@@ -11,7 +11,7 @@ export const tradeportGetTrendingCollections = tool({
 
   inputSchema: z.object({
     period: z.enum(["days_1", "days_7", "days_30"]).default("days_7").describe("Time period (1d, 7d, or 30d)"),
-    trending_by: z.enum(["volume", "trades", "usd_volume"]).default("volume").describe("Metric to rank by"),
+    trending_by: z.enum(["trades_count", "average_trade", "usd_volume", "crypto_volume"]).default("usd_volume").describe("Metric to rank by: trades_count, average_trade, usd_volume, or crypto_volume"),
     limit: z.number().optional().default(10).describe("Number of collections to return"),
     offset: z.number().optional().default(0).describe("Offset for pagination"),
   }),

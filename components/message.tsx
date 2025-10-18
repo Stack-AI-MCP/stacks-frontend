@@ -1053,7 +1053,7 @@ const PurePreviewMessage = ({
 
               // ========================= TRADEPORT NFT MARKETPLACE TOOLS =========================
 
-              if (type === "tool-tradeport_search_collections") {
+              if (type === "tool-tradeportSearchCollections") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
@@ -1076,7 +1076,7 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-tradeport_get_collection_info" || type === "tool-tradeport_get_collection_stats") {
+              if (type === "tool-tradeportGetCollectionInfo" || type === "tool-tradeportGetCollectionStats") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
@@ -1099,7 +1099,7 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-tradeport_get_trending_collections") {
+              if (type === "tool-tradeportGetTrendingCollections") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {
@@ -1122,7 +1122,7 @@ const PurePreviewMessage = ({
                 }
               }
 
-              if (type === "tool-tradeport_get_wallet_nfts") {
+              if (type === "tool-tradeportGetWalletNFTs") {
                 if ("toolCallId" in part && "state" in part) {
                   const { toolCallId, state } = part;
                   if (state === "input-available") {

@@ -1,10 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import React, { memo } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import { Streamdown } from "streamdown";
 
 import remarkGfm from "remark-gfm";
 import { CodeBlock } from "./code-block";
+import { convertToPublicIPFS } from "@/lib/utils/ipfs";
 
 const components: Partial<Components> = {
   pre: ({ children }) => <>{children}</>,
@@ -41,6 +43,28 @@ const components: Partial<Components> = {
       >
         {children}
       </Link>
+    );
+  },
+  img: ({ node, src, alt, ...props }) => {
+    if (!src) return null;
+
+    // Convert IPFS/Arweave URLs to public gateways
+    const convertedSrc = convertToPublicIPFS(src) || src;
+
+    return (
+      <span className="relative inline-block max-w-full my-2">
+        <img
+          src={convertedSrc}
+          alt={alt || ""}
+          className="rounded-lg max-w-full h-auto"
+          loading="lazy"
+          onError={(e) => {
+            // Hide broken images gracefully
+            e.currentTarget.style.display = "none";
+          }}
+          {...props}
+        />
+      </span>
     );
   },
 };

@@ -114,11 +114,12 @@ Stacks is a Bitcoin Layer 2 that enables smart contracts and DeFi while settling
 - Liquidation system for undercollateralized positions
 - Tools: arkadiko_open_vault, arkadiko_deposit, arkadiko_mint, arkadiko_burn
 
-### **Granite (Multi-Collateral Lending)**
+### **Granite (Multi-Collateral Lending)** ⚠️ MAINNET ONLY
 - Borrow stablecoins against sBTC collateral
 - Supply stablecoins to earn lending yield
 - Stake LP tokens for additional rewards
 - Bitcoin-native lending protocol
+- **IMPORTANT: Granite is only deployed on mainnet - not available on testnet**
 - Tools: granite_borrow, granite_repay, granite_deposit, granite_withdraw, granite_stake
 
 ### **Zest (Bitcoin Capital Markets)**
@@ -306,6 +307,11 @@ Use Granite for sBTC-backed stablecoin lending:
 - granite_withdraw: Withdraw supplied assets plus interest
 - granite_stake: Stake LP tokens for additional rewards
 
+**IMPORTANT: Granite Protocol is ONLY deployed on MAINNET.**
+- If user is on testnet, inform them Granite is not available and suggest switching to mainnet
+- All Granite operations will fail on testnet with a clear error message
+- Recommend alternative lending protocols for testnet (if available)
+
 Granite offers Bitcoin-native lending with sBTC collateral.
 Check collateral health factor before borrowing more.
 `;
@@ -335,9 +341,9 @@ Use TradePort tools for comprehensive NFT marketplace operations:
 
 **Collection Discovery:**
 - tradeport_search_collections: Search NFT collections by name/keyword
-- tradeport_get_trending_collections: Get trending collections by volume/trades
+- tradeport_get_trending_collections: Get trending collections by activity metrics
   * Periods: days_1, days_7, days_30
-  * Metrics: volume, trades, usd_volume
+  * Metrics: trades_count, average_trade, usd_volume, crypto_volume
 - tradeport_get_collection_info: Get detailed collection information (floor, volume, supply, social links)
 - tradeport_get_collection_stats: Get collection statistics (total sales, mints, daily metrics)
 
@@ -368,7 +374,7 @@ Use TradePort tools for comprehensive NFT marketplace operations:
 **Popular Collections:**
 - Bitcoin Monkeys, Stacks Punks, Megapont, Bitcoin Wizards, and more
 - Use search to discover collections by name
-- Trending shows most active collections by volume or trades
+- Trending shows most active collections by trades_count, usd_volume, or crypto_volume
 `;
 
 // -------------------- STACKING (POX) --------------------

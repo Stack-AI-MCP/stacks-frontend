@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatVolume } from "@/lib/utils/format";
 import { TrendingUp, TrendingDown, CheckCircle2 } from "lucide-react";
+import { convertToPublicIPFS } from "@/lib/utils/ipfs";
 
 type Collection = {
   id: string;
@@ -128,11 +130,15 @@ export default function TrendingCollections({ data, isLoading }: TrendingCollect
                       <TableCell>
                         <div className="flex items-center gap-3">
                           {item.collection.cover_url && (
-                            <img
-                              src={item.collection.cover_url}
-                              alt={item.collection.title}
-                              className="w-10 h-10 rounded-md object-cover"
-                            />
+                            <div className="relative w-10 h-10 rounded-md overflow-hidden bg-muted">
+                              <Image
+                                src={convertToPublicIPFS(item.collection.cover_url) || item.collection.cover_url}
+                                alt={item.collection.title}
+                                fill
+                                className="object-cover"
+                                unoptimized
+                              />
+                            </div>
                           )}
                           <div className="flex items-center gap-2">
                             <span className="font-medium">{item.collection.title}</span>

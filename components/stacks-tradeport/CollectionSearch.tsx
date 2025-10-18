@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatVolume } from "@/lib/utils/format";
 import { ExternalLink, CheckCircle2 } from "lucide-react";
+import { convertToPublicIPFS } from "@/lib/utils/ipfs";
 
 type Collection = {
   id: string;
@@ -99,11 +101,19 @@ export default function CollectionSearch({ data, isLoading }: CollectionSearchPr
                     <TableCell>
                       <div className="flex items-center gap-3">
                         {collection.cover_url && (
-                          <img
-                            src={collection.cover_url}
-                            alt={collection.title}
-                            className="w-10 h-10 rounded-md object-cover"
-                          />
+                          <div className="relative w-10 h-10 rounded-md bg-muted overflow-hidden">
+                            <Image
+                              src={convertToPublicIPFS(collection.cover_url) || collection.cover_url}
+                              alt={collection.title}
+                              fill
+                              className="object-cover"
+                              unoptimized
+                              onError={(e) => {
+                                // Hide image on error, show placeholder background
+                                e.currentTarget.style.display = "none";
+                              }}
+                            />
+                          </div>
                         )}
                         <div className="flex flex-col">
                           <div className="flex items-center gap-2">

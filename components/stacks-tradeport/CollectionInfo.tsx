@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatVolume } from "@/lib/utils/format";
 import { ExternalLink, CheckCircle2, Users, TrendingUp, DollarSign } from "lucide-react";
+import { convertToPublicIPFS } from "@/lib/utils/ipfs";
 
 type Collection = {
   id: string;
@@ -69,10 +71,12 @@ export default function CollectionInfo({ data, isLoading }: CollectionInfoProps)
       {/* Collection Banner */}
       {collection.cover_url && (
         <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
-          <img
-            src={collection.cover_url}
+          <Image
+            src={convertToPublicIPFS(collection.cover_url) || collection.cover_url}
             alt={collection.title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         </div>

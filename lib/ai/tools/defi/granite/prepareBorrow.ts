@@ -12,14 +12,22 @@ export const granitePrepareBorrow = tool({
 
   execute: async ({ amount, from, network }) => {
     try {
-      // Return transaction object for wallet to sign
+      // Granite Protocol is only deployed on mainnet
+      if (network === "testnet") {
+        return {
+          success: false,
+          error: "Granite Protocol is only available on mainnet. Please switch to mainnet network.",
+          message: "Granite Protocol is not deployed on testnet - mainnet only",
+        };
+      }
+
       return {
         success: true,
         transaction: {
           type: "contract_call" as const,
           from,
-          contractAddress: "SP3Y2ZSH8P7D50B0VBTSX11S7XSG24M1VB9YFQA4K",
-          contractName: "granite-core",
+          contractAddress: "SP26NGV9AFZBX7XBDBS2C7EC7FCPSAV9PKREQNMVS",
+          contractName: "borrower-v1",
           functionName: "borrow",
           functionArgs: [
             { type: "uint", value: amount.toString() }

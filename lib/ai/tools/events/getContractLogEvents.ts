@@ -5,33 +5,32 @@ const STACKS_API_MAINNET = "https://api.mainnet.hiro.so";
 const STACKS_API_TESTNET = "https://api.testnet.hiro.so";
 
 export const getContractLogEvents = tool({
-  description: `Get smart contract log events with filtering by contract and topic.`,
+  description: `Get smart contract events for a specific contract. Shows print events, contract calls, and other contract activity.`,
 
   inputSchema: z.object({
-    contract_id: z.string().optional().describe("Filter by contract ID (address.contract-name)"),
-    topic: z.string().optional().describe("Filter by log topic"),
+    contract_id: z.string().describe("Contract ID (address.contract-name) - REQUIRED"),
     limit: z.number().optional().default(20).describe("Number of events to return"),
     offset: z.number().optional().default(0).describe("Event offset for pagination"),
+    unanchored: z.boolean().optional().default(false).describe("Include unanchored (microblock) events"),
     network: z.enum(["mainnet", "testnet"]).default("mainnet").describe("Stacks network"),
   }),
 
-  execute: async ({ contract_id, topic, limit, offset, network }) => {
+  execute: async ({ contract_id, limit, offset, unanchored, network }) => {
     try {
       const apiUrl = network === "mainnet" ? STACKS_API_MAINNET : STACKS_API_TESTNET;
       const params = new URLSearchParams({
         limit: limit?.toString() ?? '20',
         offset: offset?.toString() ?? '0',
+        unanchored: unanchored?.toString() ?? 'false',
       });
 
-      if (contract_id) params.append('contract_id', contract_id);
-      if (topic) params.append('topic', topic);
-
-      const response = await fetch(`${apiUrl}/extended/v1/tx/events?type=smart_contract_log&${params}`, {
+      // Use the dedicated contract events endpoint
+      const response = await fetch(`${apiUrl}/extended/v1/contract/${contract_id}/events?${params}`, {
         headers: { 'Accept': 'application/json' }
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to get contract log events: ${response.statusText}`);
+        throw new Error(`Failed to get contract events: ${response.statusText}`);
       }
 
       const data = await response.json();
@@ -39,14 +38,16 @@ export const getContractLogEvents = tool({
       return {
         success: true,
         data,
-        message: `Retrieved ${data.events?.length || 0} contract log events`,
+        contract_id,
+        message: `Retrieved ${data.results?.length || 0} events for contract ${contract_id}`,
       };
     } catch (error: any) {
       console.error("Error getting contract log events:", error);
       return {
         success: false,
         error: error.message,
-        message: "Failed to get contract log events",
+        message: `Failed to get events for contract ${contract_id}`,
+        contract_id,
       };
     }
   },

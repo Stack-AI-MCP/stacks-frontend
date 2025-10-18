@@ -20,7 +20,10 @@ type CharismaOrder = {
 
 type CharismaOrdersResponse = {
   success: boolean;
-  data: CharismaOrder[];
+  data: {
+    status: string;
+    data: CharismaOrder[];
+  };
   error?: string;
   message?: string;
 };
@@ -49,7 +52,7 @@ export default function CharismaOrders({ data, isLoading }: CharismaOrdersProps)
     );
   }
 
-  if (!data.success || !data.data) {
+  if (!data.success || !data.data || !data.data.data) {
     return (
       <Card className="w-full border-destructive">
         <CardHeader>
@@ -60,7 +63,7 @@ export default function CharismaOrders({ data, isLoading }: CharismaOrdersProps)
     );
   }
 
-  const orders = data.data;
+  const orders = data.data.data;
 
   return (
     <Card className="w-full bg-gradient-to-br from-purple-500/5 to-pink-500/5">
@@ -92,7 +95,7 @@ export default function CharismaOrders({ data, isLoading }: CharismaOrdersProps)
               </TableRow>
             </TableHeader>
             <TableBody>
-              {orders.length === 0 ? (
+              {orders?.length === 0 ? (
                 <TableRow>
                   <TableCell colSpan={5} className="text-center text-muted-foreground">
                     No orders found

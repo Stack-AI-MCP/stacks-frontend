@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
+import { convertToPublicIPFS } from "@/lib/utils/ipfs";
 
 type Collection = {
   id: string;
@@ -112,17 +114,32 @@ export default function WalletNFTs({ data, isLoading }: WalletNFTsProps) {
                     {nft.media_url ? (
                       nft.media_type?.startsWith('video') ? (
                         <video
-                          src={nft.media_url}
+                          src={convertToPublicIPFS(nft.media_url) || nft.media_url}
                           className="w-full h-full object-cover"
                           loop
                           muted
                           playsInline
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none";
+                          }}
                         />
                       ) : (
-                        <img
-                          src={nft.media_url}
+                        <Image
+                          src={convertToPublicIPFS(nft.media_url) || nft.media_url}
                           alt={nft.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform"
+                          unoptimized
+                          onError={(e) => {
+                            const parent = e.currentTarget.parentElement;
+                            e.currentTarget.style.display = "none";
+                            if (parent) {
+                              const placeholder = document.createElement("div");
+                              placeholder.className = "w-full h-full flex items-center justify-center text-muted-foreground text-xs";
+                              placeholder.textContent = "Image unavailable";
+                              parent.appendChild(placeholder);
+                            }
+                          }}
                         />
                       )
                     ) : (
